@@ -63,7 +63,7 @@
                 <div class="card ">
                     <div class="card-body d-flex justify-content-center">
                         <div class="row">
-`						
+						
                             <%if (request.getAttribute("productExist") == "FOUND"){ %>
                             <div class="col mt-3">
                                 <div class="card" style="width: 18rem;">
@@ -81,7 +81,7 @@
                                         <form action='display-single-product.action' method='GET'>
                                             <p>
                                                 <input type="hidden"
-                                                    value="${requestScope.searchResult.getProductName().toUpperCase()}"
+                                                    value="${requestScope.searchResult.getProductName()}"
                                                     name='selectedProduct'>
                                                 <button type="submit" class="btn btn-danger mt-2">Take a look</button>
                                             </p>

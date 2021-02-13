@@ -3,6 +3,7 @@
 	<name>SEG31-DESPATT-SAQUILAYAN_AND_CLAMOR-MP3</name>
 	<comment></comment>
 	<projects>
+		<project>mysql-connector-java-8.0.22</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

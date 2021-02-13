@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import = "product.utility.SingletonDB" %>
+<%@ page import = "product.model.ProductBean" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,10 +58,11 @@
     <main>
         <section class="product-list">
             <div class="contrainer fluid m-sm-5 ">
+            
                 <div class="card">
-
+                
                     <div class="card-body">
-
+                    
                         <div class="row">
                             <div class='col'>
                                 <nav aria-label="breadcrumb ">
@@ -72,15 +76,48 @@
                             </div>
                         </div>
 
-                        <div class="row ">
-                        
-                            <div class="print_products d-inline-flex flex-wrap justify-content-between">
-                                <!-- PRODUCTS DISPLAY HERE -->
-                            </div>
-
-                        </div>
-
-                    </div>
+                        <div class="row">
+	                        <div class="d-inline-flex flex-wrap justify-content-between">
+		                    <!-- PRODUCTS DISPLAY HERE -->
+		                    <%for (ProductBean product : SingletonDB.displayAllProducts()) {%>
+		                        <%if (product.isAvailable() == true){ %>
+		                        <div class="col mt-5">
+			                        <div class="card" style="width: 18rem;">
+			                        <img src="<%= product.getImgPath() %>" class="card-img-top" alt="...">
+				                        <div class="card-body">
+				                            <h5 class="card-title"><%=product.getProductName() %></h5>
+				                            <span class='ht-tm-element badge badge-pill badge-primary'>Available</span>
+				                            <h4>Price: <%= product.getProductPrice() %></h4>
+				                            <form action='display-single-product.action' method='POST'>
+				                                <input type="hidden" name="selectedProduct" value="<%= product.getProductName() %>" >
+				                                <button type="submit" class="btn btn-danger mt-2">Take a look</button>
+				                            </form>
+				                        </div>
+			                    	</div>
+		                    	</div>
+			                    <%}else{ %>
+			                    	<div class="col mt-5">
+			                        	<div class="card" style="width: 18rem;">
+				                        <img src="<%= product.getImgPath() %>" class="card-img-top" alt="...">
+					                        <div class="card-body">
+					                            <h5 class="card-title"><%=product.getProductName() %></h5>
+					                            <span class='ht-tm-element badge badge-pill badge-warning'> Not Available </span>
+					                        
+					                            <h4>Price: <%= product.getProductPrice() %></h4>
+					                            <form action='display-single-product.action' method='POST'>
+					                                <input type="hidden"  name='selectedProduct' value='<%= product.getProductName() %>' >
+					                                <button disabled type="submit" class="btn btn-danger mt-2">Take a look</button>
+					                            </form>
+					                        </div>
+			                    		</div>
+			                    	</div>
+			              	        <%} %>
+			              	   <%} %>
+		                     </div>
+                         </div>
+                         <!-- END OF INNER CARD BODY -->
+                     </div>
+                     <!-- END OF INNER CARD  -->
                 </div>
             </div>
         </section>
@@ -94,7 +131,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.2.1/bloodhound.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.2.1/typeahead.jquery.min.js"></script>
-  	<script src="javascript/assets/product-list.js"></script>
+  	
     <script src="javascript/assets/autocomplete.js"></script>
 </body>
 

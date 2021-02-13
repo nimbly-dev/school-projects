@@ -3,7 +3,10 @@ package product.utility;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.spi.ServiceRegistry;
 import javax.naming.InitialContext;
@@ -56,7 +59,7 @@ public class SingletonDB {
 			+ "(productTypeID,productTypeName)"
 			+ "VALUES (?,?)";
 	
-	
+	private final static String DISPLAY_ALL_PRODUCTS = "SELECT * FROM `products` ";
 	
 	private SingletonDB() {
 	}
@@ -108,6 +111,38 @@ public class SingletonDB {
 			e.printStackTrace();
 		}
 	}
+	
+	public static List<ProductBean> displayAllProducts(){
+		List<ProductBean> products = new ArrayList<ProductBean>();
+		try {
+			Connection conn = getConnection();
+			PreparedStatement st = conn.prepareStatement(DISPLAY_ALL_PRODUCTS);
+			ResultSet rs = st.executeQuery();	
+			while(rs.next()) {
+				ProductBean product = new ProductBean();
+				//Initialize ProductType in order to avoid Null Pointer Exception
+				ProductTypeBean productType = new ProductTypeBean();
+				product.setProductType(productType);
+				
+				product.setAvailable(rs.getBoolean("isAvailable"));;
+				product.setImgPath(rs.getString("imgPath"));
+				product.setProductId(rs.getInt("productID"));
+				product.setProductInfo(rs.getString("productInfo"));
+				product.setProductName(rs.getString("productName"));
+				product.setProductPrice(rs.getDouble("productPrice"));
+				
+			
+				product.getProductType().setProductTypeId(rs.getInt("productTypeID"));
+				
+				
+				products.add(product);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return products;
+	}
+	
 	
 	
 	//SingletonDB Method for Inserting Products to DB

@@ -25,6 +25,7 @@ public class SinglePageDisplayProductServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Product product = null;
 		String selectedProductName = request.getParameter("selectedProduct");
+		System.out.println(selectedProductName);
 		try {
 			Product prototype = (Product) Factory.getProduct(selectedProductName.toUpperCase());
 			ProductClone productType =  ProductTypeFactory.getProductType(selectedProductName);
@@ -33,7 +34,9 @@ public class SinglePageDisplayProductServlet extends HttpServlet {
 			prototype.setProductType((ProductType) productType);
 			DisplayProducts.viewProductDetails((Product) prototype);
 			
-			request.setAttribute("displayDetails", product);
+			System.out.println(prototype.getProductType().getProductTypeName());
+			
+			request.setAttribute("displayDetails", prototype);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("single-page.jsp");
 			dispatcher.forward(request, response);
