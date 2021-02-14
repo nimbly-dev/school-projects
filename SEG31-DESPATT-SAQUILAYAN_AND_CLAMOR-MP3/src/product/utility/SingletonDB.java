@@ -71,7 +71,6 @@ public class SingletonDB {
 			
 			try {
 				connection = ( (DataSource)InitialContext.doLookup("java:/comp/env/jdbc/MP3_DESPATT")).getConnection();
-				System.out.println("CONNECTED");
 			} catch (NamingException e) {
 				e.printStackTrace();
 			}
@@ -90,7 +89,7 @@ public class SingletonDB {
 	
 	
 	//INITIALIZE TABLE AND FOREIGN KEY CONSTRAINTS
-	public static void initializeTablesAndConstraints() {
+	public static boolean initializeTablesAndConstraints() {
 		try {
 			Connection conn = getConnection();
 			
@@ -109,7 +108,11 @@ public class SingletonDB {
 			ptstAddForeignKeyProductTypeID.close();
 		}catch(SQLException e) {
 			e.printStackTrace();
+			//Initialization Failed
+			return false;
 		}
+		//Initialization Successful
+		return true;
 	}
 	
 	public static List<ProductBean> displayAllProducts(){

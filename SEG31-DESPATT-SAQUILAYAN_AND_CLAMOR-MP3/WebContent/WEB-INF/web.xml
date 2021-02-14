@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <display-name>SEG31-DESPATT-SAQUILAYAN_ALTHEO-MP1</display-name>
+  <display-name>SEG31-DESPATT-SAQUILAYAN_AND_CLAMOR-MP3</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -31,4 +31,9 @@
     <url-pattern>/display-single-product.action</url-pattern>
   </servlet-mapping>
   
+  
+  <!-- Web Listeners  -->
+  <listener>
+    <listener-class>product.config.InitializeConfig</listener-class>
+  </listener>
 </web-app>

@@ -29,12 +29,9 @@ public class SearchProductServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		SingletonDB.initializeTablesAndConstraints();
-		SingletonDB.populateDb();
 		//Initialize Product object	
 		String searchInput = request.getParameter("searchInput");
 
-		
 		
 		//Create Helper Variables
 		boolean isAvailableInBoolean = false;
