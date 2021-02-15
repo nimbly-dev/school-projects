@@ -1,7 +1,7 @@
-package product.model;
+package product.view;
 
 
-public class ProductBean {
+public class DisplayProductBean {
 	
 	int productId;
 	String productName;
@@ -10,7 +10,7 @@ public class ProductBean {
 	double productPrice;
 	boolean isAvailable;
 	
-	ProductTypeBean productType;
+	DisplayProductTypeBean productType;
 	   
 	public int getProductId() {
 		return productId;
@@ -48,10 +48,10 @@ public class ProductBean {
 	public void setAvailable(boolean isAvailable) {
 		this.isAvailable = isAvailable;
 	}
-	public ProductTypeBean getProductType() {
+	public DisplayProductTypeBean getProductType() {
 		return productType;
 	}
-	public void setProductType(ProductTypeBean productType) {
+	public void setProductType(DisplayProductTypeBean productType) {
 		this.productType = productType;
 	}
 	

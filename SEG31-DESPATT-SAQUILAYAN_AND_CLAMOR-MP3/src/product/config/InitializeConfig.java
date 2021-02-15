@@ -1,5 +1,6 @@
 package product.config;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -21,11 +22,12 @@ public class InitializeConfig implements ServletContextListener {
     	System.out.println("Database Populated");
     	
     	System.out.println("Sweetx Data has been loaded");
-    	
+
     }
     
     
     public void contextDestroyed(ServletContextEvent event) {
         // Do stuff during webapp's shutdown.
+    	SingletonDB.disposeDb();
     }
 }

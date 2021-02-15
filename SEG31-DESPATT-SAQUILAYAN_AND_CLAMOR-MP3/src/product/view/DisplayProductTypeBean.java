@@ -1,6 +1,6 @@
-package product.model;
+package product.view;
 
-public class ProductTypeBean {
+public class DisplayProductTypeBean {
 	int productTypeId;
 	String productTypeName;
 	

@@ -15,19 +15,13 @@ import javax.sql.DataSource;
 
 import product.model.*;
 import product.model.productType.*;
+import product.view.DisplayProductBean;
+import product.view.DisplayProductTypeBean;
 
 public class SingletonDB {
 	
 	//this is defaulted to null
 	private static Connection connection; 
-	
-		
-	//for database setting
-//	private static String jdbcUrl;
-//	private static String jdbcDriver;
-//	private static String dbUserName;
-//	private static String dbPassword;
-	
 	
 	private final static String CREATE_PRODUCT_TABLE = "CREATE TABLE IF NOT EXISTS `products` "
 			+ "(`productID` int(50) NOT NULL AUTO_INCREMENT,"
@@ -61,6 +55,12 @@ public class SingletonDB {
 	
 	private final static String DISPLAY_ALL_PRODUCTS = "SELECT * FROM `products` ";
 	
+	private final static String DISPLAY_CANDY = "SELECT * FROM `products` WHERE productTypeID=1";
+	
+	private final static String DISPLAY_CUPCAKES = "SELECT * FROM `products` WHERE productTypeID=2";
+	
+	private final static String DISPLAY_PASTRY = "SELECT * FROM `products` WHERE productTypeID=3";
+	
 	private SingletonDB() {
 	}
 
@@ -77,6 +77,8 @@ public class SingletonDB {
 			
 		} catch (SQLException sqle) {
 			System.err.println(sqle.getMessage());
+		}catch (Exception npe) {
+			npe.printStackTrace();
 		}
 		return connection;
 	}
@@ -106,6 +108,8 @@ public class SingletonDB {
 			PreparedStatement ptstAddForeignKeyProductTypeID = conn.prepareStatement(ADD_FOREIGN_KEY_PRODUCT_TYPE_ID);
 			ptstAddForeignKeyProductTypeID.executeUpdate();
 			ptstAddForeignKeyProductTypeID.close();
+			
+			conn.close();
 		}catch(SQLException e) {
 			e.printStackTrace();
 			//Initialization Failed
@@ -115,16 +119,17 @@ public class SingletonDB {
 		return true;
 	}
 	
-	public static List<ProductBean> displayAllProducts(){
-		List<ProductBean> products = new ArrayList<ProductBean>();
+	//Calls data from the Database and creates an Array List
+	public static List<DisplayProductBean> displayAllProducts(){
+		List<DisplayProductBean> products = new ArrayList<DisplayProductBean>();
 		try {
 			Connection conn = getConnection();
 			PreparedStatement st = conn.prepareStatement(DISPLAY_ALL_PRODUCTS);
 			ResultSet rs = st.executeQuery();	
 			while(rs.next()) {
-				ProductBean product = new ProductBean();
+				DisplayProductBean product = new DisplayProductBean();
 				//Initialize ProductType in order to avoid Null Pointer Exception
-				ProductTypeBean productType = new ProductTypeBean();
+				DisplayProductTypeBean productType = new DisplayProductTypeBean();
 				product.setProductType(productType);
 				
 				product.setAvailable(rs.getBoolean("isAvailable"));;
@@ -147,6 +152,127 @@ public class SingletonDB {
 	}
 	
 	
+	/**WORK IN PROGRESS*/
+	//Sorts Products based on user input
+	public static List<DisplayProductBean> sortProducts(String selectedTypeOfProduct){
+		List<DisplayProductBean> products = new ArrayList<DisplayProductBean>();
+		System.out.println("SELECTED IS: " + selectedTypeOfProduct);
+		try {
+			System.out.println("INSIDE TRY BLOCK");
+			//Print Candy Products Only
+			if(selectedTypeOfProduct.equalsIgnoreCase("Candy") == true) {
+				System.out.println("Inside If candy");
+				Connection conn = getConnection();
+				System.out.println("CONNECTION LOADED");
+				PreparedStatement st = conn.prepareStatement(DISPLAY_CANDY);
+				System.out.println("STATEMENT PREPARED");
+				ResultSet rs = st.executeQuery();
+				System.out.println("EXECUTED QUERY");
+				while(rs.next()) {
+					System.out.println("PROCESSING PRODUCTS");
+					DisplayProductBean product = new DisplayProductBean();
+					//Initialize ProductType in order to avoid Null Pointer Exception
+					DisplayProductTypeBean productType = new DisplayProductTypeBean();
+					product.setProductType(productType);
+					
+					
+					product.setAvailable(rs.getBoolean("isAvailable"));;
+					product.setImgPath(rs.getString("imgPath"));
+					product.setProductId(rs.getInt("productID"));
+					product.setProductInfo(rs.getString("productInfo"));
+					product.setProductName(rs.getString("productName"));
+					product.setProductPrice(rs.getDouble("productPrice"));
+					
+					product.getProductType().setProductTypeId(rs.getInt("productTypeID"));
+					
+					System.out.println("An Product was added");
+					products.add(product);
+				}
+				return products;
+			}
+			//Print Cupcake Products Only
+			else if(selectedTypeOfProduct.equalsIgnoreCase("Cupcakes") == true) {
+				System.out.println("Inside If cupcake");
+				Connection conn = getConnection();
+				PreparedStatement st = conn.prepareStatement(DISPLAY_CUPCAKES);
+				ResultSet rs = st.executeQuery();
+				while(rs.next()) {
+					DisplayProductBean product = new DisplayProductBean();
+					//Initialize ProductType in order to avoid Null Pointer Exception
+					DisplayProductTypeBean productType = new DisplayProductTypeBean();
+					product.setProductType(productType);
+					
+					product.setAvailable(rs.getBoolean("isAvailable"));;
+					product.setImgPath(rs.getString("imgPath"));
+					product.setProductId(rs.getInt("productID"));
+					product.setProductInfo(rs.getString("productInfo"));
+					product.setProductName(rs.getString("productName"));
+					product.setProductPrice(rs.getDouble("productPrice"));
+					
+					product.getProductType().setProductTypeId(rs.getInt("productTypeID"));
+					
+					products.add(product);
+				}
+				return products;
+			}
+			//Print Pastry Products Only
+			else if(selectedTypeOfProduct.equals("Pastry")) {
+				System.out.println("Inside If pastry");
+				Connection conn = getConnection();
+				PreparedStatement st = conn.prepareStatement(DISPLAY_PASTRY);
+				ResultSet rs = st.executeQuery();
+				while(rs.next()) {
+					DisplayProductBean product = new DisplayProductBean();
+					//Initialize ProductType in order to avoid Null Pointer Exception
+					DisplayProductTypeBean productType = new DisplayProductTypeBean();
+					product.setProductType(productType);
+					
+					product.setAvailable(rs.getBoolean("isAvailable"));;
+					product.setImgPath(rs.getString("imgPath"));
+					product.setProductId(rs.getInt("productID"));
+					product.setProductInfo(rs.getString("productInfo"));
+					product.setProductName(rs.getString("productName"));
+					product.setProductPrice(rs.getDouble("productPrice"));
+					
+					product.getProductType().setProductTypeId(rs.getInt("productTypeID"));
+					
+					products.add(product);
+				}
+				return products;
+			}
+			//Print All Products
+			else if(selectedTypeOfProduct.equals("All")) {
+				System.out.println("Inside If all");
+				Connection conn = getConnection();
+				PreparedStatement st = conn.prepareStatement(DISPLAY_ALL_PRODUCTS);
+				ResultSet rs = st.executeQuery();
+				while(rs.next()) {
+					DisplayProductBean product = new DisplayProductBean();
+					//Initialize ProductType in order to avoid Null Pointer Exception
+					DisplayProductTypeBean productType = new DisplayProductTypeBean();
+					product.setProductType(productType);
+					
+					product.setAvailable(rs.getBoolean("isAvailable"));;
+					product.setImgPath(rs.getString("imgPath"));
+					product.setProductId(rs.getInt("productID"));
+					product.setProductInfo(rs.getString("productInfo"));
+					product.setProductName(rs.getString("productName"));
+					product.setProductPrice(rs.getDouble("productPrice"));
+					
+					product.getProductType().setProductTypeId(rs.getInt("productTypeID"));
+					
+					products.add(product);
+				}
+				return products;
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("FAILED TO SORT");
+		return null;
+	}
 	
 	//SingletonDB Method for Inserting Products to DB
 	public static void insertProducts(
@@ -196,7 +322,6 @@ public class SingletonDB {
 	
 	
 	//PopulateDB with pre-defined products and product types
-	@SuppressWarnings("unused")
 	public static void populateDb(
 			//Products Parameters
 //			AvocadoCupcake avodcadoCupcake, CandyCane candyCane,
@@ -211,14 +336,26 @@ public class SingletonDB {
 		/**
 		CODE BLOCK TO POPULATEDB WITH PREDEFINED PRODUCT TYPES DATA
 		 */
+		//INSERTING CANDY DATATYPE TO DATABASE  -- ID 1
+		Candy candyProductType = new Candy();
+		candyProductType.setProductTypeName();
+		candyProductType.setProductTypeId();
 		
+		insertProductTypes(candyProductType.getProductTypeId(), candyProductType.getProductTypeName());
 		
-		//INSERTING CUPCAKE DATATYPE TO DATABASE
+		//INSERTING CUPCAKE DATATYPE TO DATABASE -- ID 2
 		Cupcake cupcakeProductType = new Cupcake();
 		cupcakeProductType.setProductTypeName();
 		cupcakeProductType.setProductTypeId();
 		
 		insertProductTypes(cupcakeProductType.getProductTypeId() ,cupcakeProductType.getProductTypeName());
+		
+		//INSERTING PASTRY DATATYPE TO DATABASE -- ID 3
+		Pastry pastryProductType = new Pastry();
+		pastryProductType.setProductTypeName();
+		pastryProductType.setProductTypeId();
+		
+		insertProductTypes(pastryProductType.getProductTypeId(), pastryProductType.getProductTypeName());
 		
 		/**END OF PRODUCT TYPE INSERTION*/
 		
@@ -241,9 +378,49 @@ public class SingletonDB {
 				avocadoCupcake.getProductInfo(), avocadoCupcake.getProductPrice(), 
 				avocadoCupcake.getAvailibility(), cupcakeProductType.getProductTypeId());
 		
+			
+		//INSERTING CHURRO STICKS TO DATABASE
+		ChurroSticks churroSticks = new ChurroSticks();
+		churroSticks.setProductName();
+		churroSticks.setProductPrice();
+		churroSticks.setImgPath();
+		churroSticks.setAvailibility();
+		churroSticks.setProductInfo();
+		
+		insertProducts(churroSticks.getProductName(), churroSticks.getImgPath(), 
+				churroSticks.getProductInfo(), churroSticks.getProductPrice(), 
+				churroSticks.getAvailibility(), pastryProductType.getProductTypeId());
 	
 		
+		//INSERTING CANDT CANE TO DATABASE
+		CandyCane candyCane = new CandyCane();
+		candyCane.setProductName();
+		candyCane.setProductPrice();
+		candyCane.setImgPath();
+		candyCane.setAvailibility();
+		candyCane.setProductInfo();
+		
+		insertProducts(candyCane.getProductName(), candyCane.getImgPath(), 
+				candyCane.getProductInfo(), candyCane.getProductPrice(), 
+				candyCane.getAvailibility(), candyProductType.getProductTypeId());
+		
 		/**END OF PRODUCT TYPE INSERTION*/
+	}
+	
+	
+	
+	//FOR TESTING
+	public static void disposeDb() {
+		String dropDb = "DROP DATABASE `seg31_despatt`";
+		try {
+			Connection conn = getConnection();
+			PreparedStatement ptst = conn.prepareStatement(dropDb);
+			
+			ptst.executeQuery();
+			ptst.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

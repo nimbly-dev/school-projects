@@ -32,28 +32,19 @@ public class SearchProductServlet extends HttpServlet {
 		//Initialize Product object	
 		String searchInput = request.getParameter("searchInput");
 
-		
 		//Create Helper Variables
 		boolean isAvailableInBoolean = false;
 		String isAvailableInString = "";
 		String isProductExist = "";
 		
-		
 		try {
-//			product = (Product) new Factory().searchProduct(searchInput.toUpperCase());
-//			ProductType productType = new ProductTypeFactory().getProductTypeName(searchInput);
-			
 			Product prototype = (Product) Factory.getProduct(searchInput.toUpperCase());
 			ProductClone productType =  ProductTypeFactory.getProductType(searchInput);
 			
-			
 			prototype.setProductType((ProductType) productType);
-//			product.setProductType(productType);
 			
 			DisplayProducts.viewProductDetails((Product) prototype);
 			
-			
-//			System.out.println("FOUND " + product.getProductName());
 			//Convert Boolean to String
 			isAvailableInBoolean = prototype.getAvailibility();
 			isAvailableInString = convertToString(isAvailableInBoolean);
@@ -79,7 +70,6 @@ public class SearchProductServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-
 	}
 	
 	
@@ -87,5 +77,4 @@ public class SearchProductServlet extends HttpServlet {
 		if(toBeConverted == true) {return "true";} else{return "false";}
 	}
 	
-
 }

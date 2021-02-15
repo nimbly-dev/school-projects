@@ -1,8 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import = "product.utility.SingletonDB" %>
-<%@ page import = "product.model.ProductBean" %>
+<%@ page autoFlush="true"  import = "product.utility.SingletonDB" %>
+<%@ page autoFlush="true" import = "product.view.DisplayProductBean" %>
 
+<%! 
+	//Servlet URLs for product sorting
+	String displayAllUrl = "product-list.jsp?selectedProductType=All";
+	String displayCupcakeUrl = "product-list.jsp?selectedProductType=Cupcake";
+	String displayCandyUrl = "product-list.jsp?selectedProductType=Candy";
+	String displayPastryUrl = "product-list.jsp?selectedProductType=Pastry";
+	
+	//Helper Boolean variables for UI
+	boolean isSelectedAll = false;
+	boolean isSelectedCupcake = false;
+	boolean isSelectedCandy = false;
+	boolean isSelectedPastry = false;
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,9 +81,9 @@
                                 <nav aria-label="breadcrumb ">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item active" aria-current="page">All</li>
-                                        <li class="breadcrumb-item"><a href="#">Cupcake</a></li>
-                                        <li class="breadcrumb-item"><a href="#">Pastry</a></li>
-                                        <li class="breadcrumb-item"><a href="#">Candy</a></li>
+                                        <li class="breadcrumb-item"><a href="#WIP">Cupcake</a></li>
+                                        <li class="breadcrumb-item"><a href="#WIP">Pastry</a></li>
+                                        <li class="breadcrumb-item"><a href="#WIP">Candy</a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -79,7 +92,9 @@
                         <div class="row">
 	                        <div class="d-inline-flex flex-wrap justify-content-between">
 		                    <!-- PRODUCTS DISPLAY HERE -->
-		                    <%for (ProductBean product : SingletonDB.displayAllProducts()) {%>
+		                    <%
+		                    	for (DisplayProductBean product : SingletonDB.displayAllProducts()) {
+		                    %>
 		                        <%if (product.isAvailable() == true){ %>
 		                        <div class="col mt-5">
 			                        <div class="card" style="width: 18rem;">
