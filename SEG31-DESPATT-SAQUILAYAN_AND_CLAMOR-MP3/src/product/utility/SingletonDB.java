@@ -404,6 +404,19 @@ public class SingletonDB {
 				candyCane.getProductInfo(), candyCane.getProductPrice(), 
 				candyCane.getAvailibility(), candyProductType.getProductTypeId());
 		
+		
+		//INSERTING VALENTINE CUPCAKE TO DATABASE
+		ValentineCupcake valentineCupcake = new ValentineCupcake();
+		valentineCupcake.setProductName();
+		valentineCupcake.setProductPrice();
+		valentineCupcake.setImgPath();
+		valentineCupcake.setAvailibility();
+		valentineCupcake.setProductInfo();
+		
+		insertProducts(valentineCupcake.getProductName(), valentineCupcake.getImgPath(),
+				valentineCupcake.getProductInfo(), valentineCupcake.getProductPrice(),
+				valentineCupcake.getAvailibility(), valentineCupcake.getProductId());
+		
 		/**END OF PRODUCT TYPE INSERTION*/
 	}
 	

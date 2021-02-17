@@ -1,8 +1,9 @@
 package product.model;
 
 import product.model.productType.ProductType;
+import product.utility.ProductClone;
 
-public class ValentineCupcake extends Product{
+public class ValentineCupcake extends Product implements ProductClone{
 	
 	//Setters
 	@Override
@@ -63,5 +64,10 @@ public class ValentineCupcake extends Product{
 	@Override
 	public ProductType getProductType() {
 		return productType;
+	}
+	
+	@Override
+	public ProductClone clone() {
+		return new ValentineCupcake();
 	}
 }

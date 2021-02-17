@@ -16,7 +16,7 @@ public interface ProductName {
 	//Pastry
 	String englishSausage = "English Sausage";
 	String churroSticks = "Churro Sticks";
-	String PuffedDanishPastry = "Puffed Danish Pastry";
+	String puffedDanishPastry = "Puffed Danish Pastry";
 	
 	
 	//Candies

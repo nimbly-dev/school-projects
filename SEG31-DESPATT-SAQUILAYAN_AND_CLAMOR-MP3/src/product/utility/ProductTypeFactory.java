@@ -14,6 +14,13 @@ public class ProductTypeFactory implements AbstractFactory, ProductName{
 	
 	static {
 		prototypes.put(avocadoCupcake, new Cupcake());
+		prototypes.put(candyCane, new Candy());
+		prototypes.put(strawberryCupcake, new Cupcake());
+		prototypes.put(jellyBeans, new Candy());
+		prototypes.put(englishSausage, new Pastry());
+		prototypes.put(valentineCupcake, new Cupcake());
+		prototypes.put(puffedDanishPastry, new Pastry());
+		prototypes.put(churroSticks, new Pastry());
 	}
 	
 	public static ProductClone getProductType(String productInput) {
@@ -41,7 +48,7 @@ public class ProductTypeFactory implements AbstractFactory, ProductName{
 		//Product Type is Pastry
 		else if(productInput.equalsIgnoreCase(englishSausage) ||
 				productInput.equalsIgnoreCase(churroSticks) ||
-				productInput.equalsIgnoreCase(PuffedDanishPastry) 
+				productInput.equalsIgnoreCase(puffedDanishPastry) 
 				){
 			
 		   productType = new Pastry();

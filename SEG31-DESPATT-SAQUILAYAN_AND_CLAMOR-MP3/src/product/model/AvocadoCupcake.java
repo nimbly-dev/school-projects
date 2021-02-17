@@ -1,6 +1,7 @@
 package product.model;
 
 import product.model.productType.ProductType;
+
 import product.utility.ProductClone;
 
 public class AvocadoCupcake extends Product implements ProductClone{

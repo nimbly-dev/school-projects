@@ -1,6 +1,8 @@
 package product.model.productType;
 
-public class Candy extends ProductType{
+import product.utility.ProductClone;
+
+public class Candy extends ProductType implements ProductClone {
 	
 	@Override
 	public int getProductTypeId() {
@@ -20,5 +22,10 @@ public class Candy extends ProductType{
 	@Override
 	public void setProductTypeId() {
 		this.productTypeId = 1;
+	}
+	
+	@Override
+	public ProductClone clone() {
+		return new Candy();
 	}
 }

@@ -2,7 +2,10 @@ package product.model;
 
 import product.model.productType.ProductType;
 
-public class CandyCane extends Product{
+import product.utility.ProductClone;
+
+
+public class CandyCane extends Product implements ProductClone{
 
 	//SETTERS
 	@Override
@@ -67,6 +70,11 @@ public class CandyCane extends Product{
 	@Override
 	public ProductType getProductType() {
 		return productType;
+	}
+	
+	@Override
+	public ProductClone clone() {
+		return new CandyCane();
 	}
 	
 

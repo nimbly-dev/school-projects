@@ -16,13 +16,13 @@ public class Factory implements AbstractFactory{
 	static {
 		System.out.println("Inside Factory Static");
 		prototypes.put("AVOCADO CUPCAKE", new AvocadoCupcake());
-//		prototypes.put("CANDY CANE", new CandyCane());
-//		prototypes.put("CHURRO STICKS", new ChurroSticks());
-//		prototypes.put("ENGLISH SAUSAGE", new EnglishSausage());
-//		prototypes.put("JELLY BEANS", new JellyBeans());
-//		prototypes.put("PUFFED DANISH FRUIT PASTRY", new PuffedDanishPastry());
-//		prototypes.put("VALENTINE CUPCAKE", new ValentineCupcake());
-//		prototypes.put("STRAWBERRY CUPCAKE", new StrawberryCupcake());
+		prototypes.put("CANDY CANE", new CandyCane());
+		prototypes.put("CHURRO STICKS", new ChurroSticks());
+		prototypes.put("ENGLISH SAUSAGE", new EnglishSausage());
+		prototypes.put("JELLY BEANS", new JellyBeans());
+		prototypes.put("PUFFED DANISH FRUIT PASTRY", new PuffedDanishPastry());
+		prototypes.put("VALENTINE CUPCAKE", new ValentineCupcake());
+		prototypes.put("STRAWBERRY CUPCAKE", new StrawberryCupcake());
 	}
 
 

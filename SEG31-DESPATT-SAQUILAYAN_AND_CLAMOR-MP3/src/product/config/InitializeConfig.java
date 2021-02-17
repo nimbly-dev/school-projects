@@ -1,10 +1,7 @@
 package product.config;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import javax.servlet.annotation.WebListener;
-
 import product.utility.SingletonDB;
 
 public class InitializeConfig implements ServletContextListener {
