@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <%!
-	String displayAllUrl = "product-list.jsp?selectedProductType=All";
+	String displayAllUrl = "display-products.action?selectedProductType=All";
 %>
 <html lang="en">
 
@@ -36,7 +36,7 @@
                     <li class="nav-item">
                         <form id="sortProducts">
                             <input type="hidden" value="All" id="displayProductType" />
-                            <a class="nav-link" href="product-list.jsp">Browse Products</a>
+                            <a class="nav-link" href="<%=displayAllUrl %>">Browse Products</a>
                         </form>
                     </li>
                     <li class="nav-item">

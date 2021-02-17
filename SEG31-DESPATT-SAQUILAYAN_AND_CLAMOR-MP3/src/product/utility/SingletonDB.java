@@ -110,6 +110,7 @@ public class SingletonDB {
 			ptstAddForeignKeyProductTypeID.close();
 			
 			conn.close();
+			
 		}catch(SQLException e) {
 			e.printStackTrace();
 			//Initialization Failed
@@ -119,160 +120,50 @@ public class SingletonDB {
 		return true;
 	}
 	
-	//Calls data from the Database and creates an Array List
-	public static List<DisplayProductBean> displayAllProducts(){
+	
+	/**PRODUCT SORT METHOD*/
+	public static List<DisplayProductBean> getProductList(String selectedTypeOfProduct){
+		//Calls data from the Database and creates an Array List
 		List<DisplayProductBean> products = new ArrayList<DisplayProductBean>();
 		try {
 			Connection conn = getConnection();
-			PreparedStatement st = conn.prepareStatement(DISPLAY_ALL_PRODUCTS);
-			ResultSet rs = st.executeQuery();	
+			PreparedStatement st = null;
+			if(selectedTypeOfProduct.equalsIgnoreCase("Candy")) {
+				st = conn.prepareStatement(DISPLAY_CANDY);
+			}else if(selectedTypeOfProduct.equalsIgnoreCase("Cupcake")){
+			    st = conn.prepareStatement(DISPLAY_CUPCAKES);
+			}else if(selectedTypeOfProduct.equalsIgnoreCase("Pastry")) {
+			    st = conn.prepareStatement(DISPLAY_PASTRY);
+			}else if(selectedTypeOfProduct.equalsIgnoreCase("All")) {
+			    st = conn.prepareStatement(DISPLAY_ALL_PRODUCTS);
+			}
+			ResultSet rs = st.executeQuery();
 			while(rs.next()) {
 				DisplayProductBean product = new DisplayProductBean();
 				//Initialize ProductType in order to avoid Null Pointer Exception
 				DisplayProductTypeBean productType = new DisplayProductTypeBean();
 				product.setProductType(productType);
 				
-				product.setAvailable(rs.getBoolean("isAvailable"));;
+				product.setAvailable(rs.getBoolean("isAvailable"));
 				product.setImgPath(rs.getString("imgPath"));
 				product.setProductId(rs.getInt("productID"));
 				product.setProductInfo(rs.getString("productInfo"));
 				product.setProductName(rs.getString("productName"));
 				product.setProductPrice(rs.getDouble("productPrice"));
 				
-			
 				product.getProductType().setProductTypeId(rs.getInt("productTypeID"));
-				
 				
 				products.add(product);
 			}
-		}catch(SQLException e){
-			e.printStackTrace();
+			
+		}catch(SQLException sqlException) {
+			sqlException.getStackTrace();
+		}catch(NullPointerException npe) {
+			npe.getStackTrace();
 		}
 		return products;
 	}
 	
-	
-	/**WORK IN PROGRESS*/
-	//Sorts Products based on user input
-	public static List<DisplayProductBean> sortProducts(String selectedTypeOfProduct){
-		List<DisplayProductBean> products = new ArrayList<DisplayProductBean>();
-		System.out.println("SELECTED IS: " + selectedTypeOfProduct);
-		try {
-			System.out.println("INSIDE TRY BLOCK");
-			//Print Candy Products Only
-			if(selectedTypeOfProduct.equalsIgnoreCase("Candy") == true) {
-				System.out.println("Inside If candy");
-				Connection conn = getConnection();
-				System.out.println("CONNECTION LOADED");
-				PreparedStatement st = conn.prepareStatement(DISPLAY_CANDY);
-				System.out.println("STATEMENT PREPARED");
-				ResultSet rs = st.executeQuery();
-				System.out.println("EXECUTED QUERY");
-				while(rs.next()) {
-					System.out.println("PROCESSING PRODUCTS");
-					DisplayProductBean product = new DisplayProductBean();
-					//Initialize ProductType in order to avoid Null Pointer Exception
-					DisplayProductTypeBean productType = new DisplayProductTypeBean();
-					product.setProductType(productType);
-					
-					
-					product.setAvailable(rs.getBoolean("isAvailable"));;
-					product.setImgPath(rs.getString("imgPath"));
-					product.setProductId(rs.getInt("productID"));
-					product.setProductInfo(rs.getString("productInfo"));
-					product.setProductName(rs.getString("productName"));
-					product.setProductPrice(rs.getDouble("productPrice"));
-					
-					product.getProductType().setProductTypeId(rs.getInt("productTypeID"));
-					
-					System.out.println("An Product was added");
-					products.add(product);
-				}
-				return products;
-			}
-			//Print Cupcake Products Only
-			else if(selectedTypeOfProduct.equalsIgnoreCase("Cupcakes") == true) {
-				System.out.println("Inside If cupcake");
-				Connection conn = getConnection();
-				PreparedStatement st = conn.prepareStatement(DISPLAY_CUPCAKES);
-				ResultSet rs = st.executeQuery();
-				while(rs.next()) {
-					DisplayProductBean product = new DisplayProductBean();
-					//Initialize ProductType in order to avoid Null Pointer Exception
-					DisplayProductTypeBean productType = new DisplayProductTypeBean();
-					product.setProductType(productType);
-					
-					product.setAvailable(rs.getBoolean("isAvailable"));;
-					product.setImgPath(rs.getString("imgPath"));
-					product.setProductId(rs.getInt("productID"));
-					product.setProductInfo(rs.getString("productInfo"));
-					product.setProductName(rs.getString("productName"));
-					product.setProductPrice(rs.getDouble("productPrice"));
-					
-					product.getProductType().setProductTypeId(rs.getInt("productTypeID"));
-					
-					products.add(product);
-				}
-				return products;
-			}
-			//Print Pastry Products Only
-			else if(selectedTypeOfProduct.equals("Pastry")) {
-				System.out.println("Inside If pastry");
-				Connection conn = getConnection();
-				PreparedStatement st = conn.prepareStatement(DISPLAY_PASTRY);
-				ResultSet rs = st.executeQuery();
-				while(rs.next()) {
-					DisplayProductBean product = new DisplayProductBean();
-					//Initialize ProductType in order to avoid Null Pointer Exception
-					DisplayProductTypeBean productType = new DisplayProductTypeBean();
-					product.setProductType(productType);
-					
-					product.setAvailable(rs.getBoolean("isAvailable"));;
-					product.setImgPath(rs.getString("imgPath"));
-					product.setProductId(rs.getInt("productID"));
-					product.setProductInfo(rs.getString("productInfo"));
-					product.setProductName(rs.getString("productName"));
-					product.setProductPrice(rs.getDouble("productPrice"));
-					
-					product.getProductType().setProductTypeId(rs.getInt("productTypeID"));
-					
-					products.add(product);
-				}
-				return products;
-			}
-			//Print All Products
-			else if(selectedTypeOfProduct.equals("All")) {
-				System.out.println("Inside If all");
-				Connection conn = getConnection();
-				PreparedStatement st = conn.prepareStatement(DISPLAY_ALL_PRODUCTS);
-				ResultSet rs = st.executeQuery();
-				while(rs.next()) {
-					DisplayProductBean product = new DisplayProductBean();
-					//Initialize ProductType in order to avoid Null Pointer Exception
-					DisplayProductTypeBean productType = new DisplayProductTypeBean();
-					product.setProductType(productType);
-					
-					product.setAvailable(rs.getBoolean("isAvailable"));;
-					product.setImgPath(rs.getString("imgPath"));
-					product.setProductId(rs.getInt("productID"));
-					product.setProductInfo(rs.getString("productInfo"));
-					product.setProductName(rs.getString("productName"));
-					product.setProductPrice(rs.getDouble("productPrice"));
-					
-					product.getProductType().setProductTypeId(rs.getInt("productTypeID"));
-					
-					products.add(product);
-				}
-				return products;
-			}
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		System.out.println("FAILED TO SORT");
-		return null;
-	}
 	
 	//SingletonDB Method for Inserting Products to DB
 	public static void insertProducts(
@@ -294,6 +185,7 @@ public class SingletonDB {
 				ptst.executeUpdate();
 				ptst.close();
 			}
+			conn.close();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -313,7 +205,7 @@ public class SingletonDB {
 				ptst.executeUpdate();
 				ptst.close();
 			}
-			
+			conn.close();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -322,15 +214,7 @@ public class SingletonDB {
 	
 	
 	//PopulateDB with pre-defined products and product types
-	public static void populateDb(
-			//Products Parameters
-//			AvocadoCupcake avodcadoCupcake, CandyCane candyCane,
-//			ChurroSticks churroSticks, EnglishSausage englishSausage,
-//			JellyBeans jellyBeans, PuffedDanishPastry puffedDanishPastry,
-//			ValentineCupcake valentineCupcake, StrawberryCupcake strawberryCupcake,
-//			//Product Types Parameters
-//			Cupcake cupcakeProductType, Candy candyProductType, Pastry pastryProductType
-			) {
+	public static void populateDb() {
 		
 		
 		/**

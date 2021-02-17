@@ -31,7 +31,7 @@
                         <a class="nav-link" href="index.jsp">Home</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="product-list.jsp">Browse Products <span
+                        <a class="nav-link" href=display-products.action?selectedProductType=All">Browse Products <span
                                 class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">

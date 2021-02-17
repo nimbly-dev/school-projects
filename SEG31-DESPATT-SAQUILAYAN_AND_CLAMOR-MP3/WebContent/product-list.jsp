@@ -1,20 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page autoFlush="true"  import = "product.utility.SingletonDB" %>
-<%@ page autoFlush="true" import = "product.view.DisplayProductBean" %>
+<%@ page import = "product.utility.SingletonDB" %>
+<%@ page import = "product.view.DisplayProductBean" %>
 
 <%! 
 	//Servlet URLs for product sorting
-	String displayAllUrl = "product-list.jsp?selectedProductType=All";
-	String displayCupcakeUrl = "product-list.jsp?selectedProductType=Cupcake";
-	String displayCandyUrl = "product-list.jsp?selectedProductType=Candy";
-	String displayPastryUrl = "product-list.jsp?selectedProductType=Pastry";
+	String displayAllUrl = "display-products.action?selectedProductType=All";
+	String displayCupcakeUrl = "display-products.action?selectedProductType=Cupcake";
+	String displayCandyUrl = "display-products.action?selectedProductType=Candy";
+	String displayPastryUrl = "display-products.action?selectedProductType=Pastry";
 	
-	//Helper Boolean variables for UI
-	boolean isSelectedAll = false;
-	boolean isSelectedCupcake = false;
-	boolean isSelectedCandy = false;
-	boolean isSelectedPastry = false;
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +42,7 @@
                         <a class="nav-link" href="index.jsp">Home</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="product-list.jsp">Browse Products<span
+                        <a class="nav-link" href="display-products.action?selectedProductType=All">Browse Products<span
                                 class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
@@ -80,10 +75,32 @@
                             <div class='col'>
                                 <nav aria-label="breadcrumb ">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item active" aria-current="page">All</li>
-                                        <li class="breadcrumb-item"><a href="#WIP">Cupcake</a></li>
-                                        <li class="breadcrumb-item"><a href="#WIP">Pastry</a></li>
-                                        <li class="breadcrumb-item"><a href="#WIP">Candy</a></li>
+                                        
+                                        <%if(request.getAttribute("selectedProductSort").equals("All")) { %>
+                                        	<li class="breadcrumb-item active" aria-current="page">All</li>
+	                                        <li class="breadcrumb-item"><a href="display-products.action?selectedProductType=Cupcake">Cupcake</a></li>
+	                                        <li class="breadcrumb-item"><a href="display-products.action?selectedProductType=Pastry">Pastry</a></li>
+	                                        <li class="breadcrumb-item"><a href="display-products.action?selectedProductType=Candy">Candy</a></li>
+                                        
+                                        <%}else if(request.getAttribute("selectedProductSort").equals("Cupcake")){ %>
+                                        	<li class="breadcrumb-item active"><a href="display-products.action?selectedProductType=All">All</a></li>
+	                                        <li class="breadcrumb-item" aria-current="page">Cupcake</li>
+	                                        <li class="breadcrumb-item"><a href="display-products.action?selectedProductType=Pastry">Pastry</a></li>
+	                                        <li class="breadcrumb-item"><a href="display-products.action?selectedProductType=Candy">Candy</a></li>
+                                        
+                                        <%}else if(request.getAttribute("selectedProductSort").equals("Pastry")){%>
+                                        	<li class="breadcrumb-item active"><a href="display-products.action?selectedProductType=All">All</a></li>
+	                                        <li class="breadcrumb-item"><a href="display-products.action?selectedProductType=Cupcake">Cupcake</a></li>
+	                                        <li class="breadcrumb-item" aria-current="page">Pastry</a></li>
+	                                        <li class="breadcrumb-item"><a href="display-products.action?selectedProductType=Candy">Candy</a></li>
+                                        
+                                        <%}else if(request.getAttribute("selectedProductSort").equals("Candy")){%>
+                                        	<li class="breadcrumb-item active"><a href="display-products.action?selectedProductType=All">All</a></li>
+	                                        <li class="breadcrumb-item"><a href="display-products.action?selectedProductType=Cupcake">Cupcake</a></li>
+	                                        <li class="breadcrumb-item"><a href="display-products.action?selectedProductType=Pastry">Pastry</a></li>
+	                                        <li class="breadcrumb-item" aria-current="page">Candy</li>
+                                        
+                                        <%}%>
                                     </ol>
                                 </nav>
                             </div>
@@ -93,7 +110,8 @@
 	                        <div class="d-inline-flex flex-wrap justify-content-between">
 		                    <!-- PRODUCTS DISPLAY HERE -->
 		                    <%
-		                    	for (DisplayProductBean product : SingletonDB.displayAllProducts()) {
+		                    	for (DisplayProductBean product : SingletonDB.getProductList(
+		                    			(String) request.getParameter("selectedProductType"))) {
 		                    %>
 		                        <%if (product.isAvailable() == true){ %>
 		                        <div class="col mt-5">
@@ -126,7 +144,7 @@
 					                        </div>
 			                    		</div>
 			                    	</div>
-			              	        <%} %>
+			              	        <%} %> 
 			              	   <%} %>
 		                     </div>
                          </div>

@@ -15,26 +15,22 @@ public class ListProductServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String selectedTypeOfProduct = request.getParameter("selectedProductType");
-		System.out.println(selectedTypeOfProduct);
+		
 		try {
 			if(selectedTypeOfProduct.equals("Candy")){
-				System.out.println("Inside Candy If-block");
-//				response.sendRedirect("product-list.jsp?selectedProductType=Candy");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("product-list.jsp");
+				request.setAttribute("selectedProductSort", "Candy");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("product-list.jsp?selectedProductType=Candy");
 				dispatcher.forward(request, response);
 			}else if(selectedTypeOfProduct.equals("Cupcake")){
-				System.out.println("Inside Cupcake If-block");
-//				response.sendRedirect("product-list.jsp?selectedProductType=Cupcake");
+				request.setAttribute("selectedProductSort", "Cupcake");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("product-list.jsp?selectedProductType=Cupcake");
 				dispatcher.forward(request, response);
 			}else if(selectedTypeOfProduct.equals("Pastry")){
-				System.out.println("Inside Pastry If-block");
-//				response.sendRedirect("product-list.jsp?selectedProductType=Pastry");
+				request.setAttribute("selectedProductSort", "Pastry");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("product-list.jsp?selectedProductType=Pastry");
 				dispatcher.forward(request, response);
 			}else {
-				System.out.println("Inside All If-block");
-//				response.sendRedirect("product-list.jsp?selectedProductType=All");
+				request.setAttribute("selectedProductSort", "All");;
 				RequestDispatcher dispatcher = request.getRequestDispatcher("product-list.jsp?selectedProductType=All");
 				dispatcher.forward(request, response);
 			}
