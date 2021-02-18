@@ -1,16 +1,16 @@
 package product.config;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import javax.servlet.annotation.WebListener;
 
 import product.utility.SingletonDB;
+import product.utility.ProductHelperMethods;
 
 public class InitializeConfig implements ServletContextListener {
     public void contextInitialized(ServletContextEvent event) {
-        // Do stuff during webapp's startup.
+    	String userPath = event.getServletContext().getRealPath("/javascript/data/product-list.json");
     	
+        // Do stuff during webapp's startup.
     	System.out.println("Initializing Sweetx Data.....");
     	
     	//CREATE TABLE AND ADD CONSTRAINTS
@@ -20,12 +20,16 @@ public class InitializeConfig implements ServletContextListener {
     	//POPULATE DB
     	SingletonDB.populateDb();
     	System.out.println("Database Populated");
+    
+    	//GENERATING CLIENT-SIDE JSON PRODUCT LIST
+    	System.out.println("Now generating Product List JSON");
+    	System.out.println("TEST USER PATH: " + userPath);
+    	ProductHelperMethods.productListToJson(userPath);
     	
     	System.out.println("Sweetx Data has been loaded");
-
     }
     
-    
+
     public void contextDestroyed(ServletContextEvent event) {
         // Do stuff during webapp's shutdown.
     	SingletonDB.disposeDb();

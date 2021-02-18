@@ -121,6 +121,37 @@ public class SingletonDB {
 	}
 	
 	
+	/*PRINT PRODUCTS*/
+	public static List<DisplayProductBean> getAllProducts(){
+		//Calls data from the Database and creates an Array List
+		List<DisplayProductBean> products = new ArrayList<DisplayProductBean>();
+		try {
+			Connection conn = getConnection();
+			PreparedStatement st = conn.prepareStatement(DISPLAY_ALL_PRODUCTS);
+			ResultSet rs = st.executeQuery();
+			while(rs.next()) {
+				DisplayProductBean product = new DisplayProductBean();
+				//Initialize ProductType in order to avoid Null Pointer Exception
+				DisplayProductTypeBean productType = new DisplayProductTypeBean();
+				product.setProductType(productType);
+				
+				product.setAvailable(rs.getBoolean("isAvailable"));
+				product.setImgPath(rs.getString("imgPath"));
+				product.setProductId(rs.getInt("productID"));
+				product.setProductInfo(rs.getString("productInfo"));
+				product.setProductName(rs.getString("productName"));
+				product.setProductPrice(rs.getDouble("productPrice"));
+				
+				product.getProductType().setProductTypeId(rs.getInt("productTypeID"));
+				
+				products.add(product);
+			}
+		}catch(SQLException sqlException){
+			sqlException.getStackTrace();
+		}
+		return products;
+	}
+	
 	/**PRODUCT SORT METHOD*/
 	public static List<DisplayProductBean> getProductList(String selectedTypeOfProduct){
 		//Calls data from the Database and creates an Array List
@@ -154,7 +185,7 @@ public class SingletonDB {
 				product.getProductType().setProductTypeId(rs.getInt("productTypeID"));
 				
 				products.add(product);
-			}
+			}	
 			
 		}catch(SQLException sqlException) {
 			sqlException.getStackTrace();
