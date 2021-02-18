@@ -1,14 +1,16 @@
 package product.model;
 
-import product.model.productType.ProductType;
 
-public class StrawberryCupcake extends Product{
+import product.model.productType.ProductType;
+import product.utility.ProductClone;
+
+public class StrawberryCupcake extends Product implements ProductClone{
 	
 	
 	//Setters
 	@Override
 	public void setProductId() {
-		this.productId = 1;
+		this.productId = 7;
 	}
 	
 	@Override
@@ -29,7 +31,7 @@ public class StrawberryCupcake extends Product{
 	}
 	@Override
 	public void setProductInfo() {
-		this.productInfo = "Strawberry  Cupcake for everyone!";
+		this.productInfo = "Strawberry Cupcake for everyone!";
 	}
 	@Override
 	public void setProductType(ProductType productType) {
@@ -66,5 +68,11 @@ public class StrawberryCupcake extends Product{
 	@Override
 	public ProductType getProductType() {
 		return productType;
+	}
+	
+	//CLONING
+	@Override
+	public ProductClone clone() {
+		return new StrawberryCupcake();
 	}
 }

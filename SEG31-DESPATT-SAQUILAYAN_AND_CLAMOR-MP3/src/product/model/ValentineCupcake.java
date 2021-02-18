@@ -1,13 +1,14 @@
 package product.model;
 
 import product.model.productType.ProductType;
+import product.utility.ProductClone;
 
-public class ValentineCupcake extends Product{
+public class ValentineCupcake extends Product implements ProductClone{
 	
 	//Setters
 	@Override
 	public void setProductId() {
-		this.productId = 1;
+		this.productId = 8;
 	}
 	
 	@Override
@@ -28,7 +29,7 @@ public class ValentineCupcake extends Product{
 	}
 	@Override
 	public void setProductInfo() {
-		this.productInfo = "Valentine themed  Cupcake for loved ones!";
+		this.productInfo = "Valentine themed Cupcake for loved ones!";
 	}
 	@Override
 	public void setProductType(ProductType productType) {
@@ -63,5 +64,11 @@ public class ValentineCupcake extends Product{
 	@Override
 	public ProductType getProductType() {
 		return productType;
+	}
+	
+	//CLONING
+	@Override
+	public ProductClone clone() {
+		return new ValentineCupcake();
 	}
 }

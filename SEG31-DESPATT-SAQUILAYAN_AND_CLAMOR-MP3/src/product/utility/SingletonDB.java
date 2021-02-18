@@ -61,9 +61,11 @@ public class SingletonDB {
 	
 	private final static String DISPLAY_PASTRY = "SELECT * FROM `products` WHERE productTypeID=3";
 	
+	private final static String SEARCH_PRODUCT = "SELECT * FROM `products`" 
+			+ "WHERE `productName` LIKE '?'";
+	
 	private SingletonDB() {
 	}
-
 	
 	public static Connection getDBConnection() {
 		Connection connection = null;
@@ -319,7 +321,69 @@ public class SingletonDB {
 				candyCane.getProductInfo(), candyCane.getProductPrice(), 
 				candyCane.getAvailibility(), candyProductType.getProductTypeId());
 		
-		/**END OF PRODUCT TYPE INSERTION*/
+		//INSERTING VALENTINE CUPCAKE TO DATABASE
+		ValentineCupcake valentineCupcake = new ValentineCupcake();
+		valentineCupcake.setProductName();
+		valentineCupcake.setProductPrice();
+		valentineCupcake.setImgPath();
+		valentineCupcake.setAvailibility();
+		valentineCupcake.setProductInfo();
+				
+		insertProducts(valentineCupcake.getProductName(), valentineCupcake.getImgPath(), 
+				valentineCupcake.getProductInfo(), valentineCupcake.getProductPrice(), 
+				valentineCupcake.getAvailibility(), cupcakeProductType.getProductTypeId());
+		
+		
+		//INSERTING VALENTINE CUPCAKE TO DATABASE
+		JellyBeans jellyBeans = new JellyBeans();
+		jellyBeans.setProductName();
+		jellyBeans.setProductPrice();
+		jellyBeans.setImgPath();
+		jellyBeans.setAvailibility();
+		jellyBeans.setProductInfo();
+						
+		insertProducts(jellyBeans.getProductName(), jellyBeans.getImgPath(), 
+				jellyBeans.getProductInfo(), jellyBeans.getProductPrice(), 
+				jellyBeans.getAvailibility(), candyProductType.getProductTypeId());
+		
+		//INSERTING Puffed Danish Pastry TO DATABASE
+		PuffedDanishPastry puffedDanishPastry = new PuffedDanishPastry();
+		puffedDanishPastry.setProductName();
+		puffedDanishPastry.setProductPrice();
+		puffedDanishPastry.setImgPath();
+		puffedDanishPastry.setAvailibility();
+		puffedDanishPastry.setProductInfo();
+						
+		insertProducts(puffedDanishPastry.getProductName(), puffedDanishPastry.getImgPath(), 
+				puffedDanishPastry.getProductInfo(), puffedDanishPastry.getProductPrice(), 
+				puffedDanishPastry.getAvailibility(), pastryProductType.getProductTypeId());
+		
+		
+		//INSERTING STRAWBERRY CUPCAKE TO DATABASE
+		StrawberryCupcake strawberryCupcake = new StrawberryCupcake();
+		strawberryCupcake.setProductName();
+		strawberryCupcake.setProductPrice();
+		strawberryCupcake.setImgPath();
+		strawberryCupcake.setAvailibility();
+		strawberryCupcake.setProductInfo();
+						
+		insertProducts(strawberryCupcake.getProductName(), strawberryCupcake.getImgPath(), 
+				strawberryCupcake.getProductInfo(), strawberryCupcake.getProductPrice(), 
+				strawberryCupcake.getAvailibility(), pastryProductType.getProductTypeId());
+		
+		//INSERTING ENGLISH SAUSAGE TO DATABASE
+		EnglishSausage englishSausage = new EnglishSausage();
+		englishSausage.setProductName();
+		englishSausage.setProductPrice();
+		englishSausage.setImgPath();
+		englishSausage.setAvailibility();
+		englishSausage.setProductInfo();
+						
+		insertProducts(englishSausage.getProductName(), englishSausage.getImgPath(), 
+				englishSausage.getProductInfo(), englishSausage.getProductPrice(), 
+				englishSausage.getAvailibility(), pastryProductType.getProductTypeId());
+		
+				
 	}
 	
 	

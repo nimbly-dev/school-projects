@@ -1,13 +1,14 @@
 package product.model;
 
 import product.model.productType.ProductType;
+import product.utility.ProductClone;
 
-public class PuffedDanishPastry extends Product{
+public class PuffedDanishPastry extends Product implements ProductClone{
 	
 	//Setters
 	@Override
 	public void setProductId() {
-		this.productId = 7;
+		this.productId = 6;
 	}
 	
 	@Override
@@ -66,5 +67,11 @@ public class PuffedDanishPastry extends Product{
 	@Override
 	public ProductType getProductType() {
 		return productType;
+	}
+	
+	//CLONING
+	@Override
+	public ProductClone clone() {
+		return new PuffedDanishPastry();
 	}
 }

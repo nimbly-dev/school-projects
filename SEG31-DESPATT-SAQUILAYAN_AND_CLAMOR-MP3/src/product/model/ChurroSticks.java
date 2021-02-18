@@ -1,8 +1,9 @@
 package product.model;
 
 import product.model.productType.ProductType;
+import product.utility.ProductClone;
 
-public class ChurroSticks extends Product{
+public class ChurroSticks extends Product implements ProductClone{
 	
 	//Setters
 	@Override
@@ -66,6 +67,12 @@ public class ChurroSticks extends Product{
 	@Override
 	public ProductType getProductType() {
 		return productType;
+	}
+	
+	//CLONING
+	@Override
+	public ProductClone clone() {
+		return new ChurroSticks();
 	}
 	
 }

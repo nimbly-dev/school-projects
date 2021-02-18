@@ -1,13 +1,14 @@
 package product.model;
 
 import product.model.productType.ProductType;
+import product.utility.ProductClone;
 
-public class JellyBeans extends Product{
+public class JellyBeans extends Product implements ProductClone{
 	
 	//Setters
 	@Override
 	public void setProductId() {
-		this.productId = 6;
+		this.productId = 5;
 	}
 	
 	@Override
@@ -70,6 +71,10 @@ public class JellyBeans extends Product{
 		return productType;
 	}
 	
-	
+	//CLONING
+	@Override
+	public ProductClone clone() {
+		return new JellyBeans();
+	}
 
 }
