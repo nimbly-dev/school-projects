@@ -26,9 +26,7 @@ public class Factory implements AbstractFactory, ProductNames{
 		ConnectionPrototype.put(strawberryCupcake,SingletonDB.getConnection());
 	}
 
-
 	public static Connection getConnectionObject(String searchInput){
-		System.out.println("CALLED getConnectionObject Method");
 		switch(searchInput) {
 			case avocadoCupcake:
 				System.out.println("CONNECTION (AVOCADO CUPCAKE): " +  ConnectionPrototype.get(avocadoCupcake));
@@ -46,7 +44,7 @@ public class Factory implements AbstractFactory, ProductNames{
 				System.out.println("CONNECTION (JELLY BEANS): " +  ConnectionPrototype.get(jellyBeans));
 				return ConnectionPrototype.get(jellyBeans);
 			case "Puffed Pastry Cream Bread":
-				System.out.println("CON	NECTION (PUFFED PASTRY CREAM BREAD): " +  ConnectionPrototype.get(PuffedDanishPastry));
+				System.out.println("CONNECTION (PUFFED PASTRY CREAM BREAD): " +  ConnectionPrototype.get(PuffedDanishPastry));
 				return ConnectionPrototype.get(PuffedDanishPastry);
 			case "Valentine Cupcake":
 				System.out.println("CONNECTION (VALENTINE CUPCAKE): " +  ConnectionPrototype.get(valentineCupcake));

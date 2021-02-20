@@ -20,7 +20,7 @@ public interface ProductNames {
 //	@Description(value = "Pastry Products")
 	String englishSausage = "English Sausage";
 	String churroSticks = "Churro Sticks";
-	String PuffedDanishPastry = "Puffed Danish Pastry";
+	String PuffedDanishPastry = "Puffed Pastry Cream Bread";
 	
 	
 //	@Description(value = "Candy Products")

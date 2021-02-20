@@ -2,7 +2,7 @@ package application.utility;
 
 public interface DBOperations {
 	
-	
+	//DB INITIALIZER OPERATIONS
 	final static String CREATE_PRODUCT_TABLE = "CREATE TABLE IF NOT EXISTS `products` "
 			+ "(`productID` int(50) NOT NULL AUTO_INCREMENT,"
 			+ "`productTypeID` int(50) NOT NULL,"
@@ -24,6 +24,7 @@ public interface DBOperations {
 			+ "FOREIGN KEY (`productTypeID`) "
 			+ "REFERENCES `product_types` (`productTypeID`) ON UPDATE CASCADE";
 	
+	//INSERT OPERATIONS
 	final static String INSERT_PRODUCTS = "INSERT INTO `products`"
 			+ "(productTypeID,productName,imgPath,productInfo,productPrice,isAvailable)"
 			+ "VALUES (?,?,?,?,?,?)";
@@ -33,6 +34,7 @@ public interface DBOperations {
 			+ "VALUES (?,?)";
 	
 	
+	//DISPLAY OPERATIONS
 	final static String DISPLAY_ALL_PRODUCTS = "SELECT * FROM `products` ";
 	
 	final static String DISPLAY_CANDY = "SELECT * FROM `products` WHERE productTypeID=1";
@@ -43,4 +45,7 @@ public interface DBOperations {
 	
 	final static String RETRIEVE_PRODUCT = "SELECT * FROM `products`" 
 			+ "WHERE `productName` = ?";
+	
+	final static String RETRIEVE_PRODUCT_TYPE = "SELECT * FROM `product_types`"
+			+ " WHERE `productTypeID` = ?";
 }

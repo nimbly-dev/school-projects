@@ -177,21 +177,44 @@ public class SingletonDB implements DBOperations{
 				
 				DisplayProductBean product = new DisplayProductBean();
 				while(rs.next()) {
-										
+					//MAIN DATA
 					product.setProductName(rs.getString("productName"));
 					product.setProductInfo(rs.getString("productInfo"));
 					product.setImgPath(rs.getString("imgPath"));
 					product.setProductPrice(rs.getDouble("productPrice"));
 					product.setAvailibility(rs.getBoolean("isAvailable"));
 					
+					//FOR SQL QUERIES
+					product.setProductTypeID(rs.getInt("productTypeID"));
 				}
-//				System.out.println("FOUND PRODUCT: " + rs.getString("productName"));
 				return product;
 			}
 		}catch(SQLException sqle) {
 			sqle.getStackTrace();
 		}
 		System.out.println("NOT FOUND NOT FOUND");
+		return null;
+	}
+	
+	public static DisplayProductTypeBean getProductType(int productTypeID) {
+		try {
+			Connection conn = getConnection();
+			if(conn != null) {
+				PreparedStatement ptst = conn.prepareStatement(RETRIEVE_PRODUCT_TYPE);
+				ptst.setInt(1, productTypeID);
+				ResultSet rs = ptst.executeQuery();
+				
+				DisplayProductTypeBean productType = new DisplayProductTypeBean();
+				while(rs.next()) {
+					//MAIN DATA
+					productType.setProductTypeId(rs.getInt("productTypeID"));
+					productType.setProductTypeName(rs.getString("productTypeName"));
+				}
+				return productType;
+			}
+		}catch(SQLException sqle) {
+			sqle.getStackTrace();
+		}
 		return null;
 	}
 	
@@ -280,7 +303,7 @@ public class SingletonDB implements DBOperations{
 		avocadoCupcake.setProductName("Avocado Cupcake");
 		avocadoCupcake.setProductPrice(500);
 		avocadoCupcake.setImgPath("images/products/avocado-biscuit-cupcake.PNG");
-		avocadoCupcake.setAvailibility(false);
+		avocadoCupcake.setAvailibility(true);
 		avocadoCupcake.setProductInfo("Avocado and coconut oil give these simple and "
 				+ "delicious Avocado Cupcakes with Whipped Avocado "
 				+ "Cream a healthier upgrade – making them perfect for "
@@ -335,7 +358,7 @@ public class SingletonDB implements DBOperations{
 				valentineCupcake.getAvailibility(), cupcakeProductType.getProductTypeId());
 		
 		
-		//INSERTING VALENTINE CUPCAKE TO DATABASE
+		//INSERTING JELLY BEANS TO DATABASE
 		Product jellyBeans = new JellyBeans().clone();
 		jellyBeans.setProductName("Jelly Beans");
 		jellyBeans.setProductPrice(105);

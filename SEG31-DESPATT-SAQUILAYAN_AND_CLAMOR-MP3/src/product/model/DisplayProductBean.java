@@ -8,7 +8,7 @@ public class DisplayProductBean extends Product implements ProductPrototype{
 	
 	//CLONING
 	@Override
-	public ProductPrototype clone() {
+	public DisplayProductBean clone() {
 		return new DisplayProductBean();
 	}
 
@@ -82,6 +82,13 @@ public class DisplayProductBean extends Product implements ProductPrototype{
 		return productType;
 	}
 
+	//GET AND SET PRODUCT TYPE ID
+	public void setProductTypeID(int productTypeID) {
+		this.productTypeID = productTypeID;
+	}
 	
-
+	public int getProductTypeID() {
+		return productTypeID;
+	}
+	
 }

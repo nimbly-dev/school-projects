@@ -8,12 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import application.utility.Factory;
-import application.utility.ProductPrototype;
+
 import application.utility.ProductTypeFactory;
 import application.utility.SingletonDB;
-import application.view.*;
-import product.exceptions.ProductNotFoundException;
 import product.model.*;
 import productType.model.*;
 
@@ -22,6 +19,7 @@ public class SearchProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request,response);
 	}
@@ -30,7 +28,6 @@ public class SearchProductServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		ProductTypeFactory productTypeFactory = new ProductTypeFactory();
 		
-	
 		//Initialize Product object	
 		String searchInput = request.getParameter("searchInput");
 		
@@ -40,11 +37,9 @@ public class SearchProductServlet extends HttpServlet {
 		String isProductExist = "";
 		
 		try {
-			System.out.println("ATTEMPTING TO GET REQUESTED PRODUCT");
 			DisplayProductBean product = SingletonDB.getProduct(searchInput);
-			System.out.println("PRODUCT HAS BEEN FOUND");
-			ProductType productType =  productTypeFactory.getProductTypeName(searchInput);
-			System.out.println("PRODUCT TYPE HAS BEEN SETTED");
+			System.out.println("PRODUCT TYPE ID: " + product.getProductTypeID());
+			ProductType productType =  SingletonDB.getProductType(product.getProductTypeID());
 			
 			product.setProductType(productType);
 			
@@ -52,12 +47,6 @@ public class SearchProductServlet extends HttpServlet {
 			isAvailableInBoolean = product.getAvailibility();
 			isAvailableInString = convertToString(isAvailableInBoolean);
 			
-			
-			//TESTING
-			System.out.println("SEARCH RESULTS: " 
-			+ product.getProductName() 
-			+ product.getProductPrice() 
-			+ product.getImgPath());
 			
 			//Create request Scope variables
 			isProductExist = "FOUND";

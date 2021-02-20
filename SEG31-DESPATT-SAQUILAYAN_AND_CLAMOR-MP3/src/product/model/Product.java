@@ -7,7 +7,9 @@ import productType.model.ProductType;
 
 
 public abstract class Product{
-		
+	
+	//FOR SQL QUERY
+	protected int productTypeID;
 
 	protected int productId;
 	protected String productName;
@@ -17,6 +19,7 @@ public abstract class Product{
 	protected boolean isAvailable;
 	
     protected ProductType productType;
+    
 	
 	//SETTERS
     public abstract void setProductId(int productId);

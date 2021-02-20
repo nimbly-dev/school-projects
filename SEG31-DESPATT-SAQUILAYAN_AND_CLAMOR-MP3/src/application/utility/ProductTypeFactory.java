@@ -15,9 +15,11 @@ import productType.model.Candy.Candy;
 import productType.model.Cupcake.Cupcake;
 import productType.model.Pastry.Pastry;
 
+@Deprecated
 public class ProductTypeFactory implements AbstractFactory, ProductNames{
 
 	
+	@Deprecated
 	public ProductType getProductTypeName(String productInput) {
 		ProductType productType = null;
 		
@@ -26,7 +28,7 @@ public class ProductTypeFactory implements AbstractFactory, ProductNames{
 		   productInput.equalsIgnoreCase(strawberryCupcake) ||
 		   productInput.equalsIgnoreCase(avocadoCupcake)) {
 			System.out.println("FOUND PRODUCT TYPE");
-		   productType = new Cupcake();
+		   return productType = new Cupcake();
 				
 		}
 		//Product Type is Pastry
@@ -34,15 +36,16 @@ public class ProductTypeFactory implements AbstractFactory, ProductNames{
 				productInput.equalsIgnoreCase(churroSticks) ||
 				productInput.equalsIgnoreCase(PuffedDanishPastry) 
 				){
-			
-		   productType = new Pastry();
+			System.out.println("FOUND PRODUCT TYPE");
+			return productType = new Pastry();
 		}
 		//Product Type is Candy
 		else if(productInput.equalsIgnoreCase(candyCane) || 
 				productInput.equalsIgnoreCase(jellyBeans)) {
-			productType = new Candy();
+			System.out.println("FOUND PRODUCT TYPE");
+			return productType = new Candy();
 		}
-
+		System.out.println("PRODUCT TYPE NOT FOUND");
 		return productType;
 	}
 

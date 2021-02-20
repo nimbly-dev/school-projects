@@ -3,14 +3,7 @@
 <%@ page import = "application.utility.SingletonDB" %>
 <%@ page import = "product.model.DisplayProductBean" %>
 
-<%! 
-	//Servlet URLs for product sorting
-	String displayAllUrl = "display-products.action?selectedProductType=All";
-	String displayCupcakeUrl = "display-products.action?selectedProductType=Cupcake";
-	String displayCandyUrl = "display-products.action?selectedProductType=Candy";
-	String displayPastryUrl = "display-products.action?selectedProductType=Pastry";
-	
-%>
+
 <!DOCTYPE html>
 <html lang="en">
 

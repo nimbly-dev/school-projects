@@ -21,18 +21,17 @@ public class SinglePageDisplayProductServlet extends HttpServlet {
 		doPost(request,response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductTypeFactory productTypeFactory = new ProductTypeFactory();
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		String selectedProductName = request.getParameter("selectedProduct");
 		System.out.println(selectedProductName);
 		try {
-			DisplayProductBean product = (DisplayProductBean) SingletonDB.getProduct(selectedProductName);
-			ProductType productType =  productTypeFactory.getProductTypeName(selectedProductName);
+			DisplayProductBean product = SingletonDB.getProduct(selectedProductName);
+			ProductType productType = SingletonDB.getProductType(product.getProductTypeID());
 			
 			product.setProductType(productType);
 			
-			
+			System.out.println("PRODUCT TYPE: " + product.getProductType());
+			System.out.println("PRODUCT TYPE NAME: " + product.getProductType().getProductTypeName());
 			request.setAttribute("displayDetails", product);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("single-page.jsp");

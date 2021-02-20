@@ -10,12 +10,12 @@ public class DisplayProductTypeBean extends ProductType{
 	private static final long serialVersionUID = -3106175797721867166L;
 
 	@Override
-	protected int getProductTypeId() {
+	public int getProductTypeId() {
 		return productTypeId;
 	}
 
 	@Override
-	protected String getProductTypeName() {
+	public String getProductTypeName() {
 		return productTypeName;
 	}
 
@@ -25,7 +25,7 @@ public class DisplayProductTypeBean extends ProductType{
 	}
 
 	@Override
-	protected void setProductTypeName(String productTypeName) {
+	public void setProductTypeName(String productTypeName) {
 		this.productTypeName = productTypeName;
 	}
 	

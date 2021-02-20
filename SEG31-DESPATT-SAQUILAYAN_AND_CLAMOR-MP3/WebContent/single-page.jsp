@@ -11,7 +11,7 @@
     <link rel="icon" href="images/icon/favicon.png" type="image/png">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
-    <title>Insert Selected Product</title>
+    <title>${requestScope.displayDetails.getProductName()}</title>
 </head>
 
 <body>
