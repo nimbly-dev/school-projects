@@ -43,6 +43,6 @@
   
   <!-- Web Listeners  -->
   <listener>
-    <listener-class>product.config.InitializeConfig</listener-class>
+    <listener-class>application.config.InitializeConfig</listener-class>
   </listener>
 </web-app>

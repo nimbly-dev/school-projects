@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import = "product.utility.SingletonDB" %>
-<%@ page import = "product.view.DisplayProductBean" %>
+<%@ page import = "application.utility.SingletonDB" %>
+<%@ page import = "product.model.DisplayProductBean" %>
 
 <%! 
 	//Servlet URLs for product sorting
@@ -113,7 +113,7 @@
 		                    	for (DisplayProductBean product : SingletonDB.getProductList(
 		                    			(String) request.getParameter("selectedProductType"))) {
 		                    %>
-		                        <%if (product.isAvailable() == true){ %>
+		                        <%if (product.getAvailibility() == true){ %>
 		                        <div class="col mt-5">
 			                        <div class="card" style="width: 18rem;">
 			                        <img src="<%= product.getImgPath() %>" class="card-img-top" alt="...">

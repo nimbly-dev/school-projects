@@ -8,11 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import application.utility.*;
 import product.exceptions.ProductNotFoundException;
 import product.model.*;
-import product.model.productType.ProductType;
-import product.utility.*;
-import product.view.DisplayProducts;
+import productType.model.ProductType;
 
 public class SinglePageDisplayProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -23,20 +22,18 @@ public class SinglePageDisplayProductServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Product product = null;
+		ProductTypeFactory productTypeFactory = new ProductTypeFactory();
+		
 		String selectedProductName = request.getParameter("selectedProduct");
 		System.out.println(selectedProductName);
 		try {
-			Product prototype = (Product) Factory.getProduct(selectedProductName.toUpperCase());
-			ProductClone productType =  ProductTypeFactory.getProductType(selectedProductName);
+			DisplayProductBean product = (DisplayProductBean) SingletonDB.getProduct(selectedProductName);
+			ProductType productType =  productTypeFactory.getProductTypeName(selectedProductName);
+			
+			product.setProductType(productType);
 			
 			
-			prototype.setProductType((ProductType) productType);
-			DisplayProducts.viewProductDetails((Product) prototype);
-			
-			System.out.println(prototype.getProductType().getProductTypeName());
-			
-			request.setAttribute("displayDetails", prototype);
+			request.setAttribute("displayDetails", product);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("single-page.jsp");
 			dispatcher.forward(request, response);

@@ -8,15 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import application.utility.Factory;
+import application.utility.ProductPrototype;
+import application.utility.ProductTypeFactory;
+import application.utility.SingletonDB;
+import application.view.*;
 import product.exceptions.ProductNotFoundException;
 import product.model.*;
-import product.view.*;
-import product.model.productType.*;
-
-import product.utility.Factory;
-import product.utility.ProductTypeFactory;
-import product.utility.SingletonDB;
-import product.utility.ProductClone;
+import productType.model.*;
 
 
 public class SearchProductServlet extends HttpServlet {
@@ -29,37 +28,47 @@ public class SearchProductServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		ProductTypeFactory productTypeFactory = new ProductTypeFactory();
+		
+	
 		//Initialize Product object	
 		String searchInput = request.getParameter("searchInput");
-
+		
 		//Create Helper Variables
 		boolean isAvailableInBoolean = false;
 		String isAvailableInString = "";
 		String isProductExist = "";
 		
 		try {
-			Product prototype = (Product) Factory.getProduct(searchInput.toUpperCase());
-			ProductClone productType =  ProductTypeFactory.getProductType(searchInput);
+			System.out.println("ATTEMPTING TO GET REQUESTED PRODUCT");
+			DisplayProductBean product = SingletonDB.getProduct(searchInput);
+			System.out.println("PRODUCT HAS BEEN FOUND");
+			ProductType productType =  productTypeFactory.getProductTypeName(searchInput);
+			System.out.println("PRODUCT TYPE HAS BEEN SETTED");
 			
-			prototype.setProductType((ProductType) productType);
-			
-			DisplayProducts.viewProductDetails((Product) prototype);
+			product.setProductType(productType);
 			
 			//Convert Boolean to String
-			isAvailableInBoolean = prototype.getAvailibility();
+			isAvailableInBoolean = product.getAvailibility();
 			isAvailableInString = convertToString(isAvailableInBoolean);
+			
+			
+			//TESTING
+			System.out.println("SEARCH RESULTS: " 
+			+ product.getProductName() 
+			+ product.getProductPrice() 
+			+ product.getImgPath());
 			
 			//Create request Scope variables
 			isProductExist = "FOUND";
 			request.setAttribute("productExist", isProductExist);
 			request.setAttribute("searchInput", searchInput);
-			request.setAttribute("searchResult", prototype);
+			request.setAttribute("searchResult", product);
 			request.setAttribute("isAvailable", isAvailableInString);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("search-result.jsp");
 			dispatcher.forward(request, response);
-		} catch (Exception e) { //Throws an product not found exception if there is no result
-
+		} catch (NullPointerException e) { //Throws an product not found exception if there is no result
 			System.out.println("PRODUCT NOT FOUND");
 			request.setAttribute("productExist", isProductExist);
 			isProductExist = "NOT_FOUND";

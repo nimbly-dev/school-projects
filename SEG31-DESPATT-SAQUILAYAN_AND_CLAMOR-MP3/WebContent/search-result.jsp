@@ -60,7 +60,7 @@
                         <h5>Result for: <%= request.getAttribute("searchInput") %></h5>
                     </div>
                 </div>
-                <div class="card ">
+                <div class="card">
                     <div class="card-body d-flex justify-content-center">
                         <div class="row">
 						
