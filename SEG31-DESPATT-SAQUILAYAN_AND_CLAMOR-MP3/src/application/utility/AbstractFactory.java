@@ -9,5 +9,5 @@ import productType.model.ProductType;
 
 public interface AbstractFactory {
 	ProductType getProductTypeName(String productInput);
-
+    Connection getConnectionObject(String searchInput)throws ProductNotFoundException;
 }

@@ -29,7 +29,6 @@ public class InitializeConfig implements ServletContextListener {
     	System.out.println("Sweetx Data has been loaded");
     }
     
-
     public void contextDestroyed(ServletContextEvent event) {
         // Do stuff during webapp's shutdown.
     	SingletonDB.disposeDb();

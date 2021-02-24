@@ -13,6 +13,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import product.exceptions.ProductNotFoundException;
 import product.model.*;
 import product.model.AvocadoCupcake.AvocadoCupcake;
 import product.model.CandyCane.CandyCane;
@@ -167,9 +168,10 @@ public class SingletonDB implements DBOperations{
 		return products;
 	}
 	
-	public static DisplayProductBean getProduct(String searchInput) {
+	public static DisplayProductBean getProduct(String searchInput) throws ProductNotFoundException {
+		Factory factory = new Factory();
 		try {
-			Connection conn = Factory.getConnectionObject(searchInput);
+			Connection conn = factory.getConnectionObject(searchInput);
 			if(conn !=null) {
 				PreparedStatement ptst = conn.prepareStatement(RETRIEVE_PRODUCT);
 				ptst.setString(1, searchInput);
@@ -303,7 +305,7 @@ public class SingletonDB implements DBOperations{
 		Product avocadoCupcake = new AvocadoCupcake().clone();
 		
 		avocadoCupcake.setProductName("Avocado Cupcake");
-		avocadoCupcake.setProductPrice(500);
+		avocadoCupcake.setProductPrice(500.00);
 		avocadoCupcake.setImgPath("images/products/avocado-biscuit-cupcake.PNG");
 		avocadoCupcake.setAvailibility(true);
 		avocadoCupcake.setProductInfo("Avocado and coconut oil give these simple and "
@@ -320,7 +322,7 @@ public class SingletonDB implements DBOperations{
 //		//INSERTING CHURRO STICKS TO DATABASE
 		Product churroSticks = new ChurroSticks().clone();
 		churroSticks.setProductName("Churro Sticks");
-		churroSticks.setProductPrice(50);
+		churroSticks.setProductPrice(50.00);
 		churroSticks.setImgPath("images/products/churro-sticks.jpg");
 		churroSticks.setAvailibility(false);
 		churroSticks.setProductInfo("A pastry originating in Spain, that is basically "
@@ -335,7 +337,7 @@ public class SingletonDB implements DBOperations{
 //		//INSERTING CANDY CANE TO DATABASE
 		Product candyCane = new CandyCane().clone();
 		candyCane.setProductName("Candy Cane");
-		candyCane.setProductPrice(5000);
+		candyCane.setProductPrice(500.00);
 		candyCane.setImgPath("images/products/candy-cane.jpg");
 		candyCane.setAvailibility(false);
 		candyCane.setProductInfo( "A candy cane is a cane-shaped stick candy often "
@@ -350,7 +352,7 @@ public class SingletonDB implements DBOperations{
 //		//INSERTING VALENTINE CUPCAKE TO DATABASE
 		Product valentineCupcake = new ValentineCupcake().clone();
 		valentineCupcake.setProductName("Valentine Cupcake");
-		valentineCupcake.setProductPrice(123);
+		valentineCupcake.setProductPrice(123.00);
 		valentineCupcake.setImgPath("images/products/valentine-cupcake.jpg");
 		valentineCupcake.setAvailibility(false);
 		valentineCupcake.setProductInfo("Valentine themed Cupcake for loved ones!");
@@ -363,7 +365,7 @@ public class SingletonDB implements DBOperations{
 		//INSERTING JELLY BEANS TO DATABASE
 		Product jellyBeans = new JellyBeans().clone();
 		jellyBeans.setProductName("Jelly Beans");
-		jellyBeans.setProductPrice(105);
+		jellyBeans.setProductPrice(105.00);
 		jellyBeans.setImgPath("images/products/jelly-beans.jpg");
 		jellyBeans.setAvailibility(true);
 		jellyBeans.setProductInfo("Jelly beans are small bean-shaped sugar candies with soft candy shells and thick gel interiors "
@@ -377,7 +379,7 @@ public class SingletonDB implements DBOperations{
 		//INSERTING Puffed Danish Pastry TO DATABASE
 		Product puffedDanishPastry = new PuffedDanishPastry().clone();
 		puffedDanishPastry.setProductName("Puffed Pastry Cream Bread");
-		puffedDanishPastry.setProductPrice(105);
+		puffedDanishPastry.setProductPrice(105.00);
 		puffedDanishPastry.setImgPath("images/products/puff-sweetflatbread-pastry.jpg");
 		puffedDanishPastry.setAvailibility(true);
 		puffedDanishPastry.setProductInfo("These cream cheese danish are a light and flaky pastry topped "
@@ -392,7 +394,7 @@ public class SingletonDB implements DBOperations{
 		//INSERTING STRAWBERRY CUPCAKE TO DATABASE
 		Product strawberryCupcake = new StrawberryCupcake().clone();
 		strawberryCupcake.setProductName("Strawberry Cupcake");
-		strawberryCupcake.setProductPrice(115);
+		strawberryCupcake.setProductPrice(115.00);
 		strawberryCupcake.setImgPath("images/products/strawberry-cupcake.jpg");
 		strawberryCupcake.setAvailibility(true);
 		strawberryCupcake.setProductInfo("Strawberry Cupcake for everyone!");
@@ -404,7 +406,7 @@ public class SingletonDB implements DBOperations{
 //		//INSERTING ENGLISH SAUSAGE TO DATABASE
 		Product englishSausage = new EnglishSausage().clone();
 		englishSausage.setProductName("English Sausage");
-		englishSausage.setProductPrice(100);
+		englishSausage.setProductPrice(100.00);
 		englishSausage.setImgPath( "images/products/English-Sausage.jpg");
 		englishSausage.setAvailibility(true);
 		englishSausage.setProductInfo( "Savory pork sausage wrapped in puff pastry, "

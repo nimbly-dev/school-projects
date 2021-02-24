@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import application.utility.ProductTypeFactory;
 import application.utility.SingletonDB;
+import product.exceptions.ProductNotFoundException;
 import product.model.*;
 import productType.model.*;
 
@@ -57,7 +58,7 @@ public class SearchProductServlet extends HttpServlet {
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("search-result.jsp");
 			dispatcher.forward(request, response);
-		} catch (NullPointerException e) { //Throws an product not found exception if there is no result
+		} catch (NullPointerException | ProductNotFoundException e) { //Throws an product not found exception if there is no result
 			System.out.println("PRODUCT NOT FOUND");
 			request.setAttribute("productExist", isProductExist);
 			isProductExist = "NOT_FOUND";
