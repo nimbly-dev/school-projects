@@ -15,7 +15,7 @@ public class ListProductServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String selectedTypeOfProduct = request.getParameter("selectedProductType");
-		
+	
 		try {
 			if(selectedTypeOfProduct.equals("Candy")){
 				request.setAttribute("selectedProductSort", "Candy");

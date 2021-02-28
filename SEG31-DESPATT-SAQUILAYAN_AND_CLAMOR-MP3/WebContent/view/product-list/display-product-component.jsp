@@ -20,7 +20,15 @@
                     <form action='display-single-product.action' method='POST'>
                         <input type="hidden" name="selectedProduct" value="<%= product.getProductName() %>">
                         <button type="submit" class="btn btn-danger mt-2">Take a look</button>
-                        <button type="submit" class="btn btn-warning mt-2">Add to cart</button>
+     					<!-- ADD TO CART BUTTON -->
+                        <a 
+                        onclick='addToCart(this)'
+                        class="btn btn-warning mt-2" 
+                        data-productname="<%=product.getProductName() %>"
+                        data-productprice="<%=product.getProductPrice()%>"
+                        data-productimgpath="<%=product.getImgPath()%>">
+                        Add to cart
+                        </a>
                     </form>
                 </div>
             </div>
@@ -32,7 +40,6 @@
                 <div class="card-body">
                     <h5 class="card-title"><%=product.getProductName() %></h5>
                     <span class='ht-tm-element badge badge-pill badge-warning'> Not Available </span>
-
                     <h4>Price: <%= product.getProductPrice() %></h4>
                 </div>
             </div>

@@ -150,6 +150,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.2.1/bloodhound.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.2.1/typeahead.jquery.min.js"></script>
+    <script src="javascript/assets/cart.js"></script>
     <script src="javascript/assets/product-list.js"></script>
     <script src="javascript/assets/autocomplete.js"></script>
 </body>
