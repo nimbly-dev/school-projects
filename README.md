@@ -7,13 +7,17 @@ TODO:
   2. Fix Cart Design
   3. Fix Confirm Page Design
   4. Fix process-payment page form inline javascript on securityNumber input box
-  5. Add process-payment.jsp page
-  6. Add order-successful.jsp page
-  7. Add Java Mail
-  8. Add Luhn Javascript Validation
-  9. Add pdf receipt generator method
-  10. Add Confirm-Page Servlet
-  11. Add Process-payment Servlet
+  5. Add order-successful.jsp page
+  6. Add Java Mail
+  7. Add pdf receipt generator method
+  8. Add Confirm-Page Servlet
+  9. Add Process-payment Servlet
+
+0.42:
+ 
+  * Added process-payment.jsp
+  
+  * Implemented Credit Card Validation using JQuery Validation library on process-payment.jsp form
 
 0.41: 
 
