@@ -10,6 +10,9 @@ TODO:
   5. Add order-successful.jsp page
   6. Add Java Mail
   7. Add Luhn Javascript Validation
+  8. Add pdf receipt generator method
+  9. Add Confirm-Page Servlet
+  10. Add Process-payment Servlet
 
 0.41: 
 
