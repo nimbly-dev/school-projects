@@ -1,5 +1,15 @@
 # school-projects
-Repository for School Projects and Activities
+Repository for Ent Jav 2 Project
+
+TODO: 
+
+  1. Facade Design Pattern
+  2. Fix Cart Design
+  3. Fix Confirm Page Design
+  4. Add process-payment.jsp page
+  5. Add order-successful.jsp page
+  6. Add Java Mail
+  7. Add Luhn Javascript Validation
 
 0.41: 
 
