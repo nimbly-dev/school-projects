@@ -15,6 +15,7 @@ TODO:
   10. Bug on confirm-order.jsp where reloading the page will cause to insert again the cart-items data to db
   11. Disposal of Cart-items upon successful order.
   12. Possible security vulnerability on credit card validation (Need a safer way of validating or double cleaning the input on server side)
+  13. 404 Error Page
 
 0.42:
  
