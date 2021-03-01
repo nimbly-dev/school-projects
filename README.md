@@ -12,6 +12,8 @@ TODO:
   7. Add pdf receipt generator method
   8. Add Confirm-Page Servlet
   9. Add Process-payment Servlet
+  10. Bug on confirm-order.jsp where reloading the page will cause to insert again the cart-items data to db
+  11. Disposal of Cart-items upon successful order.
 
 0.42:
  
