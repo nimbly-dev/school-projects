@@ -53,6 +53,16 @@
     <url-pattern>/process-cart.action</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>ProcessPaymentServlet</servlet-name>
+    <servlet-class>payment.controller.ProcessPaymentServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ProcessPaymentServlet</servlet-name>
+    <url-pattern>/process-payment.action</url-pattern>
+  </servlet-mapping>
+  
   <!-- Web Listeners  -->
   <listener>
     <listener-class>application.config.InitializeConfig</listener-class>

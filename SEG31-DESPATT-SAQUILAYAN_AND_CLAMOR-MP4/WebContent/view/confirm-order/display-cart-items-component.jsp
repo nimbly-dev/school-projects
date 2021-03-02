@@ -40,19 +40,21 @@
                                         <span style="margin-left: 45rem;">Total Price: P <%=session.getAttribute("totalPrice") %> </span>
                                     </div>
                                 </div>
-
+								
+								
                                 <div class="mt-5">
                                     <div class="row">
                                         <div class="col">
                                             <button type="button" class="btn btn-warning"
                                                 style="margin-left: 45rem;">Cancel
                                             </button>
-                                            <button type="button" class="btn btn-danger ml-3">Proceed
+                                            <button type="button" class="btn btn-danger ml-3"
+                                            onclick="location.href='payment-form.jsp'">Proceed
                                                 Order</button>
                                         </div>
                                     </div>
-                                    
                                 </div>
+
                             </div>
                             
                         </div>

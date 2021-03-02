@@ -47,7 +47,6 @@ public class ProcessCartServlet extends HttpServlet {
 		
 		session.setAttribute("totalPrice", totalPrice);
 		
-		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("confirm-order.jsp");
 		dispatcher.forward(request, response);
 		
