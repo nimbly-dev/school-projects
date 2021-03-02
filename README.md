@@ -11,7 +11,6 @@ TODO:
   6. Add pdf receipt generator method (REQUIRED)
   7. Bug on confirm-order.jsp where reloading the page will cause to insert again the cart-items data to db
   8. Disposal of Cart-items upon successful order.
-  9. Implementing Error Page Forward Dispatcher to All Servlets
   
 0.43:
 
