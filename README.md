@@ -3,12 +3,12 @@ Repository for Ent Jav 2 Project
 
 TODO: 
 
-  1. Facade Design Pattern
-  2. Fix Cart Design
-  3. Fix Confirm Page Design
+  1. Facade Design Pattern (REQUIRED)
+  2. Fix Cart Design 
+  3. Fix Confirm Page Design 
   4. Fix process-payment page form inline javascript on securityNumber input box
-  5. Add Java Mail
-  6. Add pdf receipt generator method
+  5. Add Java Mail (REQUIRED)
+  6. Add pdf receipt generator method (REQUIRED)
   7. Bug on confirm-order.jsp where reloading the page will cause to insert again the cart-items data to db
   8. Disposal of Cart-items upon successful order.
   9. Implementing Error Page Forward Dispatcher to All Servlets
