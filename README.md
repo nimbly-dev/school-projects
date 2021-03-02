@@ -7,15 +7,21 @@ TODO:
   2. Fix Cart Design
   3. Fix Confirm Page Design
   4. Fix process-payment page form inline javascript on securityNumber input box
-  5. Add order-successful.jsp page
-  6. Add Java Mail
-  7. Add pdf receipt generator method
-  8. Add Confirm-Page Servlet
-  9. Add Process-payment Servlet
-  10. Bug on confirm-order.jsp where reloading the page will cause to insert again the cart-items data to db
-  11. Disposal of Cart-items upon successful order.
-  12. Possible security vulnerability on credit card validation (Need a safer way of validating or double cleaning the input on server side)
-  13. 404 Error Page
+  5. Add Java Mail
+  6. Add pdf receipt generator method
+  7. Bug on confirm-order.jsp where reloading the page will cause to insert again the cart-items data to db
+  8. Disposal of Cart-items upon successful order.
+  9. Implementing Error Page Forward Dispatcher to All Servlets
+  
+0.43:
+
+  * Added payment-successful.jsp page
+  
+  * Added Product Payment Servlet
+  
+  * Added server-side creditcard and security number validation
+  
+  * Added Error Page for Process Payment Servlet
 
 0.42:
  
