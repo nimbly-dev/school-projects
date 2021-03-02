@@ -16,6 +16,7 @@ public class ListProductServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String selectedTypeOfProduct = request.getParameter("selectedProductType");
 	
+				
 		try {
 			if(selectedTypeOfProduct.equals("Candy")){
 				request.setAttribute("selectedProductSort", "Candy");
@@ -34,9 +35,9 @@ public class ListProductServlet extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("product-list.jsp?selectedProductType=All");
 				dispatcher.forward(request, response);
 			}
-		}catch(Exception npe) {
+		}catch(NullPointerException npe) {
 			npe.getStackTrace();
-			RequestDispatcher dispatcher = request.getRequestDispatcher("product-list.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("error-page.jsp");
 			dispatcher.forward(request, response);
 		}
 	}

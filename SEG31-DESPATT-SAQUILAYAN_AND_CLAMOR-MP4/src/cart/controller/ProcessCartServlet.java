@@ -24,6 +24,7 @@ public class ProcessCartServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
 		String[] productNames = request.getParameterValues("productName");
 		String[] productImgPath = request.getParameterValues("productImgPath");
 		String[] productCount = request.getParameterValues("count");
@@ -31,25 +32,31 @@ public class ProcessCartServlet extends HttpServlet {
 		
 		String totalPrice = request.getParameter("totalPrice");
 		
-		HttpSession session = request.getSession();
-		
-		//Inserting Cart Data to database
-		for(int i=0; i<productNames.length; i++){
-			System.out.println("PRODUCT NAME: " + productNames[i]);
+		if(productNames != null && productImgPath != null && productCount != null && productPrice != null) {
+			HttpSession session = request.getSession();
 			
-			String holder_productName = productNames[i];
-			String holder_productImgPath = productImgPath[i];
-			String holder_productCount = productCount[i];
-			String holder_productPrice = productPrice[i];
+			//Inserting Cart Data to database
+			for(int i=0; i<productNames.length; i++){
+				System.out.println("PRODUCT NAME: " + productNames[i]);
+				
+				String holder_productName = productNames[i];
+				String holder_productImgPath = productImgPath[i];
+				String holder_productCount = productCount[i];
+				String holder_productPrice = productPrice[i];
+				
+				SingletonDB.insertCartProduct(holder_productName, holder_productPrice, holder_productImgPath, holder_productCount);
+			}
 			
-			SingletonDB.insertCartProduct(holder_productName, holder_productPrice, holder_productImgPath, holder_productCount);
+			session.setAttribute("totalPrice", totalPrice);
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("confirm-order.jsp");
+			dispatcher.forward(request, response);
 		}
 		
-		session.setAttribute("totalPrice", totalPrice);
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("confirm-order.jsp");
-		dispatcher.forward(request, response);
-		
+		else {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("error-page.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 }
