@@ -4,15 +4,19 @@ Repository for Ent Jav 2 Project
 TODO: 
 
   1. Facade Design Pattern (REQUIRED)
-  2. Fix Cart Design 
-  3. Fix Confirm Page Design 
-  4. Fix process-payment page form inline javascript on securityNumber input box
-  5. Add Java Mail (REQUIRED)
-  6. Add pdf receipt generator method (REQUIRED)
-  7. Bug on confirm-order.jsp where reloading the page will cause to insert again the cart-items data to db
-  8. Disposal of Cart-items upon successful order.
-  9. Navbar Highlighting Fix
+  2. Fix process-payment page form inline javascript on securityNumber input box
+  3. Add Java Mail (REQUIRED)
+  4. Add pdf receipt generator method (REQUIRED)
+  5. Bug on confirm-order.jsp where reloading the page will cause to insert again the cart-items data to db
+  6. Disposal of Cart-items upon successful order.
+  7. Navbar Highlighting Fix
  
+0.45: 
+
+  * Fixed Cart Design Spacing
+
+  * Fixed confirm-page.jsp design Spacing
+
 0.44: 
 
   * Added Error Page to All Servlets
