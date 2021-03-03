@@ -8,9 +8,12 @@ TODO:
   3. Add Java Mail (REQUIRED)
   4. Add pdf receipt generator method (REQUIRED)
   5. Bug on confirm-order.jsp where reloading the page will cause to insert again the cart-items data to db
-  6. Disposal of Cart-items upon successful order.
-  7. Navbar Highlighting Fix
+  6. Navbar Highlighting Fix
  
+0.46: 
+
+  * Disposal of Cart Items Data upon cancel order or succesful payment
+
 0.45: 
 
   * Fixed Cart Design Spacing
