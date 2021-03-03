@@ -17,7 +17,7 @@
     <title>Credit Card</title>
 </head>
 
-<body>
+<body onload="shoppingCart.clearCart()">
     <header>
         <nav class="navbar fixed-top navbar-expand-md ht-tm-element navbar-dark bg-danger">
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
