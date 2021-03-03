@@ -27,7 +27,7 @@
                    <%}else if(request.getAttribute("selectedProductSort").equals("Pastry")){%>
                    	<li class="breadcrumb-item active"><a href="<%=sortAll%>">All</a></li>
                     <li class="breadcrumb-item"><a href="<%=sortCupcake%>">Cupcake</a></li>
-                    <li class="breadcrumb-item" aria-current="page">Pastry</a></li>
+                    <li class="breadcrumb-item" aria-current="page">Pastry</li>
                     <li class="breadcrumb-item"><a href="<%=sortCandy%>">Candy</a></li>
                    
                    <%}else if(request.getAttribute("selectedProductSort").equals("Candy")){%>

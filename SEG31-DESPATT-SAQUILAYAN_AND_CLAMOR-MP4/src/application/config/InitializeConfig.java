@@ -22,9 +22,7 @@ public class InitializeConfig implements ServletContextListener {
     	System.out.println("Database Populated");
     
     	//GENERATING CLIENT-SIDE JSON PRODUCT LIST
-    	System.out.println("Now generating Product List JSON");
-    	System.out.println("TEST USER PATH: " + userPath);
-    	HelperMethods.productListToJson(userPath);
+    	System.out.println("USER PATH: " + userPath);
     	
     	System.out.println("Sweetx Data has been loaded");
     }

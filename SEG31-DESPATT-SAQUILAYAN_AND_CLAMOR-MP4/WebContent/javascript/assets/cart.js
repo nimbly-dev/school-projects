@@ -223,9 +223,9 @@ function displayCart() {
         `;
         displayCartArray.push(output);
     }
-    $('.display-cart-items').html(displayCartArray);
-    $('.total-items-cart').html(shoppingCart.totalCart());
-    $('.total-items-count').html(shoppingCart.totalCount());
-    document.getElementById('totalPrice').value = shoppingCart.totalCart();
+    $('.display-cart-items').html(displayCartArray); //Cart-Items
+    $('.total-items-cart').html(shoppingCart.totalCart()); //Total Price
+    $('.total-items-count').html(shoppingCart.totalCount());//Total Quantity
+    document.getElementById('totalPrice').value = shoppingCart.totalCart();//Total Price
 }
 displayCart();

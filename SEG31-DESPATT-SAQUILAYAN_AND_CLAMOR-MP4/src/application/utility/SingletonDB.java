@@ -326,6 +326,20 @@ public class SingletonDB implements DBOperations{
 		}
 	}
 	
+	//SingletonDB Method for Dispoting Cart Table Data
+	public static void disposeCartTableData() {
+		Connection conn = getConnection();
+		try {
+			if(conn!=null) {
+				PreparedStatement ptst = conn.prepareStatement(CART_DATA_DISPOSAL);
+				
+				ptst.executeUpdate();
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	//PopulateDB with pre-defined products and product types
 	public static void populateDb() {
 		/**

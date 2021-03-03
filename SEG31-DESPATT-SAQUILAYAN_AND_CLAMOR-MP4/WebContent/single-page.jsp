@@ -94,7 +94,13 @@
                 </div>
 
                 <div class="row justify-content-center">
-                    <a href="search-result.html" class="mt-4 ht-tm-element btn btn-warning">Add to Cart</a>
+                    <button type="button" href="search-result.html" 
+                    	class="mt-4 ht-tm-element btn btn-warning"
+                    	onclick='addToCart(this)'
+                        data-productname="${requestScope.displayDetails.getProductName()}"
+                        data-productprice="${requestScope.displayDetails.getProductPrice()}"
+                        data-productimgpath="${requestScope.displayDetails.getImgPath()}">Add to Cart
+                    </button>
                 </div>
 
             </div>
@@ -109,6 +115,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.2.1/bloodhound.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.2.1/typeahead.jquery.min.js"></script>
+    <script src="javascript/assets/cart.js"></script>
     <script src="javascript/assets/autocomplete.js"></script>
 </body>
 

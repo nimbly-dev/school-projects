@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 
-              <form action="process-cart.action" method="POST">
+              <form action="process-cart.action?clickedCancelOrder=placeholder" method="POST">
                 	<input type="hidden" id="totalPrice" value="" name="totalPrice">
 	                <div class="modal-body">
 	                   <table class="table table-borderless">

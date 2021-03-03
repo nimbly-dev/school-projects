@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import application.utility.HelperMethods;
+import application.utility.SingletonDB;
 
 
 public class ProcessPaymentServlet extends HttpServlet {
@@ -29,8 +30,12 @@ public class ProcessPaymentServlet extends HttpServlet {
 		
 		
 		if(HelperMethods.luhnAlgorithmCreditCardChecker(creditCardNumber) == true && securityNumber.length() == 4) {
-			System.out.println("Expiration Date: " + expirationDate);
-			System.out.println("Name: " + fullName);
+			System.out.println("PAYMENT SUCCESFUL");
+			System.out.println("NOW SENDING RECEIPT TO " + fullName);
+
+			
+			System.out.println("DISPOSING CART ITEM");
+			SingletonDB.disposeCartTableData();
 			
 			request.setAttribute("currentDate", currentDate);
 			request.setAttribute("fullName", fullName);

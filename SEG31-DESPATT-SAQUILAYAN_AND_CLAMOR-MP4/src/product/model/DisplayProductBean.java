@@ -1,7 +1,6 @@
 package product.model;
 
 import application.utility.ProductPrototype;
-import application.utility.SingletonDB;
 import productType.model.ProductType;
 
 public class DisplayProductBean extends Product implements ProductPrototype{

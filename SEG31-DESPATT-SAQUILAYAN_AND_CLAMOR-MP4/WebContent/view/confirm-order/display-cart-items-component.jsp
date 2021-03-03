@@ -45,9 +45,11 @@
                                 <div class="mt-5">
                                     <div class="row">
                                         <div class="col">
-                                            <button type="button" class="btn btn-warning"
-                                                style="margin-left: 45rem;">Cancel
-                                            </button>
+                                        	<button type="submit" class="btn btn-warning"
+	                                                style="margin-left: 45rem;" 
+                                             onclick="location.href='process-cart.action?clickedCancelOrder=true'">
+	                                                Cancel
+	                                         </button>
                                             <button type="button" class="btn btn-danger ml-3"
                                             onclick="location.href='payment-form.jsp'">Proceed
                                                 Order</button>

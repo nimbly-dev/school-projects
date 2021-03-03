@@ -1,9 +1,5 @@
 package application.strings;
 
-import com.sun.org.glassfish.gmbal.Description;
-
-import product.model.Product;
-
 public interface ProductNames {
 	/*
 	 String variables names for product

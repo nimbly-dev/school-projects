@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import application.utility.HelperMethods;
 import application.utility.SingletonDB;
 import cart.model.CartItemBean;
 
@@ -23,8 +24,8 @@ public class ProcessCartServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+		String isCancelConfirmOrder = request.getParameter("clickedCancelOrder");
+		//Parameter Value Names
 		String[] productNames = request.getParameterValues("productName");
 		String[] productImgPath = request.getParameterValues("productImgPath");
 		String[] productCount = request.getParameterValues("count");
@@ -32,7 +33,16 @@ public class ProcessCartServlet extends HttpServlet {
 		
 		String totalPrice = request.getParameter("totalPrice");
 		
-		if(productNames != null && productImgPath != null && productCount != null && productPrice != null) {
+		//If Cancel Button is clicked on confirm-order.jsp 
+		if(isCancelConfirmOrder.contentEquals("true")) {
+			System.out.println("DISPOSING CART DATA NOW");
+			SingletonDB.disposeCartTableData();
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
+		}
+		//User is coming outside of confirm-order.jsp where submit button on the cart-modal was clicked.
+		else if(productNames != null) {
 			HttpSession session = request.getSession();
 			
 			//Inserting Cart Data to database

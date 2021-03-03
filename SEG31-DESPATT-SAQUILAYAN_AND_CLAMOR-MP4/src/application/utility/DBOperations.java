@@ -63,4 +63,6 @@ public interface DBOperations {
 	final static String RETRIEVE_PRODUCT_TYPE = "SELECT * FROM `product_types`"
 			+ " WHERE `productTypeID` = ?";
 	
+	//DATA DISPOSAL OPERATIONS
+	final static String CART_DATA_DISPOSAL = "TRUNCATE TABLE `cart_items`";
 }

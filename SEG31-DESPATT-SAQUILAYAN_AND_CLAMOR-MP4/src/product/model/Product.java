@@ -1,8 +1,6 @@
 package product.model;
 
 
-import application.utility.ProductPrototype;
-import product.model.AvocadoCupcake.AvocadoCupcake;
 import productType.model.ProductType;
 
 
