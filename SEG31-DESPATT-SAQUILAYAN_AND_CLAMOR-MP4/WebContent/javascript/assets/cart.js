@@ -188,38 +188,31 @@ function displayCart() {
     for (var i in cartArray) {
         output =
             `
-        <tr class="d-flex align-items-center">
-            <!-- DATA TO BE TRANSFERED TO SERVLET ARE HERE -->
-            <input type="hidden" value="${cartArray[i].productName}" name="productName">
-            <input type="hidden" value="${cartArray[i].productImgPath}" name="productImgPath">
-            <input type="hidden" value="${cartArray[i].count}" name="count">
-            <input type="hidden" value="${cartArray[i].productPrice}" name="productPrice">
-            <th scope="row">
-                <img src="${cartArray[i].productImgPath}" class="img-thumbnail cart-img" alt="...">
-            </th>
-            <td class="col-md-2">
+            <div class="col mt-1 mb-2 d-inline-flex d-flex align-self-end">
+                <!-- DATA TO BE TRANSFERED TO SERVLET ARE HERE -->
+                <input type="hidden" value="${cartArray[i].productName}" name="productName">
+                <input type="hidden" value="${cartArray[i].productImgPath}" name="productImgPath">
+                <input type="hidden" value="${cartArray[i].count}" name="count">
+                <input type="hidden" value="${cartArray[i].productPrice}" name="productPrice">
+                <img src="${cartArray[i].productImgPath}" class="img-thumbnail cart-img"
+                    alt="...">
                 <h6 class="d-flex align-self-end ml-2 font-weight-bold">${cartArray[i].productName}</h6>
-            </td>
-            <td>
-                <div class="d-flex align-self-end ml-5">
-                    <button type="button" class="plus-item btn btn-secondary btn-sm mr-2 ml-2" onclick="addOneItem(this)"
+                <div class="d-flex align-self-end">
+                    <button type="button" class="plus-item btn btn-secondary btn-sm mr-2 ml-3" onclick="addOneItem(this)"
                     data-productname="${cartArray[i].productName}">+
                     </button>
-                    <input class="ml-2 mr-1 w-25" min="1" type="number" value="${cartArray[i].count}">
-                    <button type="button" class="minus-item btn btn-danger btn-sm ml-1" onclick="removeOneItem(this)"
+                    <input class="ml-2 mr-2" min="1" type="number" value="${cartArray[i].count}" style="width: 5rem;">
+                    <button type="button" class="minus-item btn btn-danger btn-sm ml-3" onclick="removeOneItem(this)"
                     data-productname="${cartArray[i].productName}">
                     -
                     </button>
                 </div>
-            </td>
-            <td class="col-sm-2 d-inline-flex">
-                <h6 class="d-flex align-self-end " style="margin-right: 5rem;">${cartArray[i].total}</h6>
-            </td>
-            <td class="col-sm-1">
-                <a class="delete-item d-flex align-self-end"  href="#delete" onclick='deleteItem(this)'
-                data-productname="${cartArray[i].productName}">Delete</a>
-            </td>
-        </tr>
+                <h6 class="d-flex align-self-end " style="margin-left: 4rem;">P ${cartArray[i].total}</h6>
+                <a class="delete-item d-flex align-self-end" style="margin-left: 8rem;" href="#delete" onclick='deleteItem(this)'
+                data-productname="${cartArray[i].productName}"
+                >Delete
+                </a>
+            </div>
         `;
         displayCartArray.push(output);
     }

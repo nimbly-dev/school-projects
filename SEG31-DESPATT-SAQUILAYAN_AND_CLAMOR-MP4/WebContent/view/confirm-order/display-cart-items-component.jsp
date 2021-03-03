@@ -13,23 +13,23 @@
 								
                                 <table class="table table-borderless">
                                     <thead>
-                                        <tr class="d-flex justify-content-between">
-                                            <th scope="col" class="col-2"></th>
-                                            <th scope="col" class="col-2">Product</th>
-                                            <th scope="col" class="col-2">Price</th>
-                                            <th scope="col" class="col-2">Count</th>
+                                        <tr class="d-flex flex-wrap align-content-start">
+                                            <th style="margin-right: 16rem;"></th>
+                                            <th style="margin-right: 9rem;">Product</th>
+                                            <th style="margin-left: 5rem;">Price</th>
+                                            <th style="margin-left: 10rem;">Count</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     	<%for(CartItemBean cartItem: SingletonDB.getCartItems()){ %>
-                                        <tr class="d-flex justify-content-between">
-                                            <td>
-                                                <img src="<%=cartItem.getProductImgPath()%>" style="width: 7rem;
-                                                height: 7rem; margin-right: 3rem;" alt="NOT FOUND">
-                                            </td>
-                                            <th scope="row" class="col-2 align-self-center"><%=cartItem.getProductName() %></th>
-                                            <td scope="row" class="col-2 align-self-center"><%=cartItem.getProductPrice() %></td>
-                                            <td scope="row" class="col-2 align-self-center"><%=cartItem.getCount() %></td>
+                                        <tr class="d-flex align-items-center">
+                                            <th>
+                                                <img src="<%=cartItem.getProductImgPath()%>" style="width: 8rem;
+                                                height: 8rem;" alt="NOT FOUND">
+                                            </th>
+                                            <th scope="row" style="margin-left: 5rem;"><%=cartItem.getProductName() %></th>
+                                            <td style="margin-left: 12rem;"><%=cartItem.getProductPrice() %></td>
+                                            <td style="margin-left: 9rem;"><%=cartItem.getCount() %></td>
                                         </tr>
                                         <%} %>
                                     </tbody>
@@ -40,21 +40,19 @@
                                         <span style="margin-left: 45rem;">Total Price: P <%=session.getAttribute("totalPrice") %> </span>
                                     </div>
                                 </div>
-								
-								
+
                                 <div class="mt-5">
                                     <div class="row">
                                         <div class="col">
                                             <button type="button" class="btn btn-warning"
                                                 style="margin-left: 45rem;">Cancel
                                             </button>
-                                            <button type="button" class="btn btn-danger ml-3"
-                                            onclick="location.href='payment-form.jsp'">Proceed
+                                            <button type="button" class="btn btn-danger ml-3">Proceed
                                                 Order</button>
                                         </div>
                                     </div>
+                                    
                                 </div>
-
                             </div>
                             
                         </div>

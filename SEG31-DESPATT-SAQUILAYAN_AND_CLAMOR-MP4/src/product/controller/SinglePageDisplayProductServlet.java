@@ -40,7 +40,7 @@ public class SinglePageDisplayProductServlet extends HttpServlet {
 			System.out.println("NULL POINTER, PRODUCT DID NOT DISPLAYED");
 			 
 			request.setAttribute("displayDetails", null);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("error-page.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("single-page.jsp");
 			dispatcher.forward(request, response);
 			e.printStackTrace();
 		}

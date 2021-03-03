@@ -63,4 +63,6 @@ public interface DBOperations {
 	final static String RETRIEVE_PRODUCT_TYPE = "SELECT * FROM `product_types`"
 			+ " WHERE `productTypeID` = ?";
 	
+	final static String RETRIEVE_CART_ITEMS = "SELECT * FROM `cart_items`";
+	
 }

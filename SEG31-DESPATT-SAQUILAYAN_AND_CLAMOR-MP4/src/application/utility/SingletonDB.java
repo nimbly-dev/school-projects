@@ -36,7 +36,7 @@ public class SingletonDB implements DBOperations{
 	
 	
 	
-	private SingletonDB() {
+	SingletonDB() {
 	
 	}
 	
@@ -248,6 +248,7 @@ public class SingletonDB implements DBOperations{
 					cart.setCount(rs.getString("productCount"));
 					
 					cartItems.add(cart);
+					
 				}
 			}
 			return cartItems;
@@ -257,6 +258,8 @@ public class SingletonDB implements DBOperations{
 		}
 		return null;
 	}
+	
+	
 	
 	//SingletonDB Method for Inserting Products to DB
 	public static void insertProducts(

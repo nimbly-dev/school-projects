@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
-<style>
-.modal-body{
-    max-height: calc(100vh - 200px);
-    overflow-y: auto;
-}
-</style>
+    
 <!-- CART Modal -->
 <section class="product-cart">
     <div class="modal" id="product-cart" tabindex="-1" role="dialog" aria-labelledby="product-cart"
@@ -17,35 +11,37 @@
                     <h5 class="modal-title" id="exampleModalCenteredLabel">
                     You have <span class="total-items-count"> </span> items on your cart
                     </h5>
-                    <div class="row mr-2">
-                    	<a href="#cleared" class="clear-cart d-flex align-items-center">Clear</a>
-	                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	                        <span aria-hidden="true">x</span>
-	                    </button>
-                    </div>
+                    <button type="button" class="clear-cart btn btn-primary ml-5">Clear</button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
                 </div>
                 
-              <form action="process-cart.action" method="POST">
+                <form action="process-cart.action" method="POST">
                 	<input type="hidden" id="totalPrice" value="" name="totalPrice">
 	                <div class="modal-body">
-	                   <table class="table table-borderless">
-	                        <thead>
-	                        	<tr class="d-flex flex-wrap align-content-start	">
-	                        		<th scope="col" class="col-2"></th>
-	                        		<th scope="col" class="col ml-3">Product </th>
-		                            <th scope="col" class="col">Quantity </th>
-		                            <th scope="col" class="col-3 ml-5">Price </th>
-	                        	</tr>
-	                        </thead>
-	                     <!-- USER CART DATA IS HERE -->
-	                    <tbody class="display-cart-items"/>                   		
+	                    <div class="row">
+	                        <div class="col d-inline-flex">
+	                            <h5 class="ml-2">Product </h5>
+	                            <h5 style="margin-left: 15rem;">Quantity </h5>
+	                            <h5 style="margin-left: 7rem;">Price </h5>
+	                        </div>
+	                    </div>
 	                    
-	                 </table>   
+	                    <div class="row">
+	
+	                    	<!-- USER CART DATA IS HERE -->
+	                    	<span class="display-cart-items">
+	                    	
+	                    	</span>
+	                    </div>
+	                    
+	                    
 	                    <div class="modal-footer">
 	                        <div class="row">
 	                            <div class="col d-inline-flex">
 	                                <h5 class="cart-price-total d-flex flex-wrap align-content-start">
-	                                Total: P &nbsp;<span class="total-items-cart mr-3"></span>
+	                                P <span class="total-items-cart"></span>
 	                                </h5>
 	                                <button type="button" class="btn btn-secondary mr-1"
 	                                    data-dismiss="modal">Close</button>

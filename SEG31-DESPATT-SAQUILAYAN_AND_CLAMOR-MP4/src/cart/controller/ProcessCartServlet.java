@@ -1,6 +1,7 @@
 package cart.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +10,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;import org.apache.tomcat.util.net.ApplicationBufferHandler;
 
+import application.utility.PdfGenerator;
 import application.utility.SingletonDB;
 import cart.model.CartItemBean;
 
@@ -24,7 +26,6 @@ public class ProcessCartServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
 		String[] productNames = request.getParameterValues("productName");
 		String[] productImgPath = request.getParameterValues("productImgPath");
 		String[] productCount = request.getParameterValues("count");
@@ -32,31 +33,29 @@ public class ProcessCartServlet extends HttpServlet {
 		
 		String totalPrice = request.getParameter("totalPrice");
 		
-		if(productNames != null && productImgPath != null && productCount != null && productPrice != null) {
-			HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
+		
+		//Inserting Cart Data to database
+		for(int i=0; i<productNames.length; i++){
+			System.out.println("PRODUCT NAME: " + productNames[i]);
 			
-			//Inserting Cart Data to database
-			for(int i=0; i<productNames.length; i++){
-				System.out.println("PRODUCT NAME: " + productNames[i]);
-				
-				String holder_productName = productNames[i];
-				String holder_productImgPath = productImgPath[i];
-				String holder_productCount = productCount[i];
-				String holder_productPrice = productPrice[i];
-				
-				SingletonDB.insertCartProduct(holder_productName, holder_productPrice, holder_productImgPath, holder_productCount);
-			}
+			String holder_productName = productNames[i];
+			String holder_productImgPath = productImgPath[i];
+			String holder_productCount = productCount[i];
+			String holder_productPrice = productPrice[i];
 			
-			session.setAttribute("totalPrice", totalPrice);
+			SingletonDB.insertCartProduct(holder_productName, holder_productPrice, holder_productImgPath, holder_productCount);
+			;
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("confirm-order.jsp");
-			dispatcher.forward(request, response);
+			PdfGenerator.EmailPDF();
 		}
 		
-		else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("error-page.jsp");
-			dispatcher.forward(request, response);
-		}
+		session.setAttribute("totalPrice", totalPrice);
+		
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("confirm-order.jsp");
+		dispatcher.forward(request, response);
+		
 	}
 
 }

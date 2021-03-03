@@ -94,7 +94,7 @@
                 </div>
 
                 <div class="row justify-content-center">
-                    <a href="search-result.html" class="mt-4 ht-tm-element btn btn-warning">Add to Cart</a>
+                    <a href="search-result.jsp" class="mt-4 ht-tm-element btn btn-warning">Add to Cart</a>
                 </div>
 
             </div>

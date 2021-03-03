@@ -3,7 +3,7 @@ package application.config;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import application.utility.HelperMethods;
+import application.utility.ProductHelperMethods;
 import application.utility.SingletonDB;
 
 public class InitializeConfig implements ServletContextListener {
@@ -24,7 +24,7 @@ public class InitializeConfig implements ServletContextListener {
     	//GENERATING CLIENT-SIDE JSON PRODUCT LIST
     	System.out.println("Now generating Product List JSON");
     	System.out.println("TEST USER PATH: " + userPath);
-    	HelperMethods.productListToJson(userPath);
+ 
     	
     	System.out.println("Sweetx Data has been loaded");
     }

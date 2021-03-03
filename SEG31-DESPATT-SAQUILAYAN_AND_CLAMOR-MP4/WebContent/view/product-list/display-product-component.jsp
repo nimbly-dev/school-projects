@@ -21,14 +21,14 @@
                         <input type="hidden" name="selectedProduct" value="<%= product.getProductName() %>">
                         <button type="submit" class="btn btn-danger mt-2">Take a look</button>
      					<!-- ADD TO CART BUTTON -->
-                        <button type="button" 
+                        <a 
                         onclick='addToCart(this)'
                         class="btn btn-warning mt-2" 
                         data-productname="<%=product.getProductName() %>"
                         data-productprice="<%=product.getProductPrice()%>"
                         data-productimgpath="<%=product.getImgPath()%>">
                         Add to cart
-                        </button>
+                        </a>
                     </form>
                 </div>
             </div>

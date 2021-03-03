@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>SEG31-DESPATT-SAQUILAYAN_AND_CLAMOR-MP4</name>
+	<name>SEG31-DESPATT-SAQUILAYAN_AND_CLAMOR-MP4-PDFGENERATOR</name>
 	<comment></comment>
 	<projects>
 		<project>mysql-connector-java-8.0.22</project>
+		<project>gson-2.8.6</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
