@@ -5,8 +5,8 @@ TODO:
 
   1. Facade Design Pattern (REQUIRED)
   2. Fix process-payment page form inline javascript on securityNumber input box
-  3. Add Java Mail (REQUIRED)
-  4. Add pdf receipt generator method (REQUIRED)
+  3. Add Java Mail (REQUIRED) //DONE
+  4. Add pdf receipt generator method (REQUIRED) //Fix not getting cart items. 
   5. Bug on confirm-order.jsp where reloading the page will cause to insert again the cart-items data to db
   6. Navbar Highlighting Fix
  
