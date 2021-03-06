@@ -17,7 +17,7 @@ public class HelperMethods implements facade{
 	//CreditCard Validation returns true if credit Card is valid
 
 	
-	public boolean luhnAlgorithmCreditCardChecker(String cardNo) {
+	private boolean luhnAlgorithmCreditCardChecker(String cardNo) {
 		int nDigits = cardNo.length();
 		 
 	    int nSum = 0;

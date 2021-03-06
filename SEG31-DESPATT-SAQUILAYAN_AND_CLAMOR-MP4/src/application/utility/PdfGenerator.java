@@ -43,7 +43,7 @@ public  class PdfGenerator implements DBOperations, facade{
 	
 
 	
-	public void EmailPDF() {
+	private void EmailPDF() {
 		String sender = "owenclamor22@gmail.com"; // enter valid email of sender
 		String recipient = "clamorbackup22@gmail.com"; // replace with user input for email
 		String content = "dummy content"; //replace with proper content
@@ -114,7 +114,7 @@ public  class PdfGenerator implements DBOperations, facade{
 	}
 
 	
-	public void GeneratePDF(ByteArrayOutputStream outputStream) throws SQLException{
+	private void GeneratePDF(ByteArrayOutputStream outputStream) throws SQLException{
 		//NOT NULL POINTER SO NEED TO KNOW WHERE TO CALL TO GET CART
 		
 				String sql = RETRIEVE_PRODUCT_CART;

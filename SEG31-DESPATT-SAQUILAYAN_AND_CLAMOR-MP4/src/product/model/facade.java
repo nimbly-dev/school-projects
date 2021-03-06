@@ -13,5 +13,4 @@ public interface facade {
 	//check if card is valid
 	public boolean checkCardLuhn(String cardNo);
 	
-
 }
