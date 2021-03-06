@@ -3,10 +3,9 @@ Repository for Ent Jav 2 Project
 
 TODO: 
 
-  1. process-payment page form inline javascript on securityNumber input box.
-  2.  Bug on confirm-order.jsp where reloading the page will cause to insert again the cart-items data to db.
-  3.  Navbar Highlighting Fix.
-  4. PDF Format Fix (REQUIRED).
+  1.  Bug on confirm-order.jsp where reloading the page will cause to insert again the cart-items data to db.
+  2.  Navbar Highlighting Fix.
+  3. PDF Format Fix (REQUIRED).
 
 0.47:
 
