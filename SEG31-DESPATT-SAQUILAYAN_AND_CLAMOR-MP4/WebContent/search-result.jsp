@@ -75,7 +75,7 @@
                             <%if (request.getAttribute("productExist") == "FOUND"){ %>
                             <div class="col mt-3">
                                 <div class="card" style="width: 18rem;">
-                                    <img src='${requestScope.searchResult.getImgPath()}' class="card-img-top" alt="...">
+                                    <img src='${requestScope.searchResult.getProductImgPath()}' class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">${requestScope.searchResult.getProductName()}</h5>
                                         <h4>Php ${requestScope.searchResult.getProductPrice() }</h4>

@@ -36,8 +36,7 @@ public class ProcessCartServlet extends HttpServlet {
 		//If Cancel Button is clicked on confirm-order.jsp 
 		if(isCancelConfirmOrder.contentEquals("true")) {
 			System.out.println("DISPOSING CART DATA NOW");
-			SingletonDB database = new SingletonDB();
-			database.disposeCartTableData();
+			SingletonDB.disposeCartTableData();
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);

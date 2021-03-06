@@ -17,6 +17,7 @@ public interface DBOperations {
 	final static String CREATE_PRODUCT_TYPES_TABLE = "CREATE TABLE IF NOT EXISTS `product_types`"
 			+ "(`productTypeID` int(50) NOT NULL AUTO_INCREMENT,"
 			+ "`productTypeName` varchar(255) NOT NULL,"
+			+ "`wrapperName` varchar(255) NOT NULL,"
 			+ "PRIMARY KEY (`productTypeID`) )"
 			+ "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
 	
@@ -39,8 +40,8 @@ public interface DBOperations {
 			+ "VALUES (?,?,?,?,?,?)";
 	
 	final static String INSERT_PRODUCT_TYPES = "INSERT INTO `product_types`"
-			+ "(productTypeID,productTypeName)"
-			+ "VALUES (?,?)";
+			+ "(productTypeID,productTypeName,wrapperName)"
+			+ "VALUES (?,?,?)";
 	
 	final static String INSERT_CART_ITEMS = "INSERT INTO `cart_items`"
 			+"(productName,productPrice,productImgPath,productCount)"
@@ -60,13 +61,11 @@ public interface DBOperations {
 	final static String RETRIEVE_PRODUCT = "SELECT * FROM `products`" 
 			+ "WHERE `productName` = ?";
 	
-	final static String RETRIEVE_PRODUCT_CART = "SELECT * FROM `cart_items`";
-	
 	final static String RETRIEVE_PRODUCT_TYPE = "SELECT * FROM `product_types`"
 			+ " WHERE `productTypeID` = ?";
 	
+	final static String RETRIEVE_PRODUCT_CART = "SELECT * FROM `cart_items`";
+	
 	//DATA DISPOSAL OPERATIONS
 	final static String CART_DATA_DISPOSAL = "TRUNCATE TABLE `cart_items`";
-
-	
 }

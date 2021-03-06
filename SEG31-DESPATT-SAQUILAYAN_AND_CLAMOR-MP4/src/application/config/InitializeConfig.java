@@ -18,8 +18,7 @@ public class InitializeConfig implements ServletContextListener {
     	System.out.println("Table and Constraints created");
     	
     	//POPULATE DB
-    	SingletonDB database = new SingletonDB();
-    	database.populateDb();
+    	SingletonDB.populateDb();
     	System.out.println("Database Populated");
     
     	//GENERATING CLIENT-SIDE JSON PRODUCT LIST

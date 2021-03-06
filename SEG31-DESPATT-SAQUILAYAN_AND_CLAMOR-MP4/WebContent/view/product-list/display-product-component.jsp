@@ -9,10 +9,10 @@
         for (DisplayProductBean product : SingletonDB.getProductList(
                 (String) request.getParameter("selectedProductType"))) {
     	%>
-        <%if (product.getAvailibility() == true){ %>
+        <%if (product.isAvailable() == true){ %>
         <div class="col mt-5">
             <div class="card" style="width: 18rem;">
-                <img src="<%= product.getImgPath() %>" class="card-img-top" alt="...">
+                <img src="<%= product.getProductImgPath()%>" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title"><%=product.getProductName() %></h5>
                     <span class='ht-tm-element badge badge-pill badge-primary'>Available</span>
@@ -26,7 +26,7 @@
                         class="btn btn-warning mt-2" 
                         data-productname="<%=product.getProductName() %>"
                         data-productprice="<%=product.getProductPrice()%>"
-                        data-productimgpath="<%=product.getImgPath()%>">
+                        data-productimgpath="<%=product.getProductImgPath()%>">
                         Add to cart
                         </button>
                     </form>
@@ -36,7 +36,7 @@
         <%}else{ %>
         <div class="col mt-5">
             <div class="card" style="width: 18rem;">
-                <img src="<%= product.getImgPath() %>" class="card-img-top" alt="...">
+                <img src="<%= product.getProductImgPath() %>" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title"><%=product.getProductName() %></h5>
                     <span class='ht-tm-element badge badge-pill badge-warning'> Not Available </span>

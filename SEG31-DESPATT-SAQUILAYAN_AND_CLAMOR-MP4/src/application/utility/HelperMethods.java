@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import application.utility.SingletonDB;
-import product.model.facade;
+import product.model.Facade;
 
-public class HelperMethods implements facade{
+public class HelperMethods implements Facade{
 	
 	/**
 	 * HELPER METHODS

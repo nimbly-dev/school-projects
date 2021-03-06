@@ -77,7 +77,7 @@
 
                 <div class="row">
                     <div class="col mt-3">
-                        <img src="${requestScope.displayDetails.getImgPath()}" alt="...">
+                        <img src="${requestScope.displayDetails.getProductImgPath()}" alt="...">
                     </div>
                 </div>
 
@@ -94,12 +94,12 @@
                 </div>
 
                 <div class="row justify-content-center">
-                    <button type="button" href="search-result.html" 
+                    <button type="button"
                     	class="mt-4 ht-tm-element btn btn-warning"
                     	onclick='addToCart(this)'
                         data-productname="${requestScope.displayDetails.getProductName()}"
                         data-productprice="${requestScope.displayDetails.getProductPrice()}"
-                        data-productimgpath="${requestScope.displayDetails.getImgPath()}">Add to Cart
+                        data-productimgpath="${requestScope.displayDetails.getProductImgPath()}">Add to Cart
                     </button>
                 </div>
 

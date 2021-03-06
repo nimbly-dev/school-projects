@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import application.utility.HelperMethods;
 import application.utility.PdfGenerator;
 import application.utility.SingletonDB;
-import product.model.facade;
+import product.model.Facade;
 
 
 public class ProcessPaymentServlet extends HttpServlet {

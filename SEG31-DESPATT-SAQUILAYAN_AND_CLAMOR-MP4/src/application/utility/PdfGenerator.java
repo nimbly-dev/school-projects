@@ -36,15 +36,15 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import cart.model.CartItemBean;
-import product.model.facade;
+import product.model.Facade;
 
 
-public  class PdfGenerator implements DBOperations, facade{
+public  class PdfGenerator implements DBOperations, Facade{
 	
 
 	
 	private void EmailPDF() {
-		String sender = "owenclamor22@gmail.com"; // enter valid email of sender
+		String sender = "nimbly2016@gmail.com"; // enter valid email of sender
 		String recipient = "clamorbackup22@gmail.com"; // replace with user input for email
 		String content = "dummy content"; //replace with proper content
 		String subject = "dummy subject"; //replace with proper subject
@@ -58,7 +58,7 @@ public  class PdfGenerator implements DBOperations, facade{
 		
 		Session session = Session.getDefaultInstance(properties,new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication(sender,"whiteCharger22"); // (user name of sender, "password of email")
+						return new PasswordAuthentication(sender,"EnFeeble_Dendi12"); // (user name of sender, "password of email")
 					}
 		});
 			

@@ -16,8 +16,7 @@ public class ValentineCupcake extends Product implements ProductPrototype{
 
 	@Override
 	public int productTypeID() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 2;
 	}
 
 	@Override
