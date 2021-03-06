@@ -1,34 +1,31 @@
 package productType.model.Cupcake;
 
 import application.utility.ProductPrototype;
-import product.model.AvocadoCupcake.AvocadoCupcake;
+import packaging.model.CupcakeWrapper;
+import packaging.model.Wrapper;
 import productType.model.ProductType;
+import productType.model.ProductTypeItem;
 
-public class Cupcake extends ProductType implements ProductPrototype{
+public class Cupcake extends ProductType implements ProductPrototype, ProductTypeItem{
 
-	@Override
-	public int getProductTypeId() {
-		return productTypeId;
-	}
-	
-	
-	@Override
-	public String getProductTypeName() {
-		return productTypeName;
-	}
-
-	@Override
-	public void setProductTypeName(String productTypeName) {
-		this.productTypeName = productTypeName;
-	}
-	
-	@Override
-	public void setProductTypeId(int productTypeId) {
-		this.productTypeId = productTypeId;
-	}
 	
     @Override
     public Cupcake clone() {
         return new Cupcake();
     }
+
+	@Override
+	public int productTypeId() {
+		return 2;
+	}
+
+	@Override
+	public String productTypeName() {
+		return "Candy";
+	}
+
+	@Override
+	public Wrapper wrapper() {
+		return (Wrapper) new CupcakeWrapper();
+	}
 }

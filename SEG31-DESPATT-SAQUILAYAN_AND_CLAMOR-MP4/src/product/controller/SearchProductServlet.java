@@ -16,7 +16,7 @@ import product.model.*;
 import productType.model.*;
 
 
-public class SearchProductServlet extends HttpServlet{
+public class SearchProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
@@ -38,12 +38,12 @@ public class SearchProductServlet extends HttpServlet{
 		
 		try {
 			DisplayProductBean product = SingletonDB.getProduct(searchInput);
-			ProductType productType =  SingletonDB.getProductType(product.getProductTypeID());
+			ProductType productType =  SingletonDB.getProductType(product.getProductTypeId());
 			
 			product.setProductType(productType);
 			
 			//Convert Boolean to String
-			isAvailableInBoolean = product.getAvailibility();
+			isAvailableInBoolean = product.isAvailable();
 			isAvailableInString = convertToString(isAvailableInBoolean);
 			
 			

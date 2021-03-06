@@ -1,33 +1,50 @@
 package productType.model;
 
-import application.utility.ProductPrototype;
+import packaging.model.Wrapper;
 
 public class DisplayProductTypeBean extends ProductType{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3106175797721867166L;
-
-	@Override
+	protected int productTypeId;
+	protected String productTypeName;
+	protected String wrapper;
+	
+	
 	public int getProductTypeId() {
 		return productTypeId;
 	}
-
-	@Override
-	public String getProductTypeName() {
-		return productTypeName;
-	}
-
-	@Override
 	public void setProductTypeId(int productTypeId) {
 		this.productTypeId = productTypeId;
 	}
-
-	@Override
+	public String getProductTypeName() {
+		return productTypeName;
+	}
 	public void setProductTypeName(String productTypeName) {
 		this.productTypeName = productTypeName;
 	}
+	public String getWrapper() {
+		return wrapper;
+	}
+	public void setWrapper(String wrapper) {
+		this.wrapper = wrapper;
+	}
+	
+	@Deprecated
+	@Override
+	public int productTypeId() {
+		return 0;
+	}
+	@Deprecated
+	@Override
+	public String productTypeName() {
+		return null;
+	}
+	@Deprecated
+	@Override
+	public Wrapper wrapper() {
+		return null;
+	}
+	
+	
 	
 	
 }

@@ -3,7 +3,7 @@ package product.model;
 import application.utility.ProductPrototype;
 import productType.model.ProductType;
 
-public class DisplayProductBean extends Product implements ProductPrototype{
+public class DisplayProductBean implements ProductPrototype{
 	
 	//CLONING
 	@Override
@@ -11,83 +11,67 @@ public class DisplayProductBean extends Product implements ProductPrototype{
 		return new DisplayProductBean();
 	}
 
-	@Override
-	public void setProductId(int productId) {
-		this.productId = productId;
-	}
-
-	@Override
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-
-	@Override
-	public void setProductPrice(double productPrice) {
-		this.productPrice = productPrice;
-	}
-
-	@Override
-	public void setImgPath(String imgPath) {
-		this.imgPath = imgPath;
-	}
-
-	@Override
-	public void setAvailibility(boolean isAvailable) {
-		this.isAvailable = isAvailable;
-	}
-
-	@Override
-	public void setProductInfo(String productInfo) {
-		this.productInfo = productInfo;
-	}
-
-	@Override
-	public void setProductType(ProductType productType) {
-		this.productType = productType;
-	}
-
-	@Override
-	public int getProductId() {
-		return productId;
-	}
-
-	@Override
+	//FOR SQL QUERIES
+	public int productTypeId;
+	
+	public int productId;
+	public String productName;
+	public String productImgPath;
+	public String productInfo;
+	public boolean isAvailable;
+	public double productPrice;
+	
+	public ProductType productType;
+	
 	public String getProductName() {
 		return productName;
 	}
-
-	@Override
-	public double getProductPrice() {
-		return productPrice;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
-
-	@Override
-	public String getImgPath() {
-		return imgPath;
+	public String getProductImgPath() {
+		return productImgPath;
 	}
-
-	@Override
-	public boolean getAvailibility() {
-		return isAvailable;
+	public void setProductImgPath(String productImgPath) {
+		this.productImgPath = productImgPath;
 	}
-
-	@Override
 	public String getProductInfo() {
 		return productInfo;
 	}
-
-	@Override
+	public void setProductInfo(String productInfo) {
+		this.productInfo = productInfo;
+	}
+	public boolean isAvailable() {
+		return isAvailable;
+	}
+	public void setAvailable(boolean isAvailable) {
+		this.isAvailable = isAvailable;
+	}
+	public double getProductPrice() {
+		return productPrice;
+	}
+	public void setProductPrice(double productPrice) {
+		this.productPrice = productPrice;
+	}
 	public ProductType getProductType() {
 		return productType;
 	}
-
-	//GET AND SET PRODUCT TYPE ID
-	public void setProductTypeID(int productTypeID) {
-		this.productTypeID = productTypeID;
+	public void setProductType(ProductType productType) {
+		this.productType = productType;
+	}
+	public int getProductTypeId() {
+		return productTypeId;
+	}
+	public void setProductTypeId(int productTypeId) {
+		this.productTypeId = productTypeId;
+	}
+	public int getProductId() {
+		return productId;
+	}
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
 	
-	public int getProductTypeID() {
-		return productTypeID;
-	}
+	
 	
 }

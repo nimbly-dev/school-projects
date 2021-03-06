@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import application.utility.*;
 import product.exceptions.ProductNotFoundException;
 import product.model.*;
+import productType.model.DisplayProductTypeBean;
 import productType.model.ProductType;
 
 public class SinglePageDisplayProductServlet extends HttpServlet {
@@ -26,12 +27,12 @@ public class SinglePageDisplayProductServlet extends HttpServlet {
 		System.out.println(selectedProductName);
 		try {
 			DisplayProductBean product = SingletonDB.getProduct(selectedProductName);
-			ProductType productType = SingletonDB.getProductType(product.getProductTypeID());
+			ProductType productType = SingletonDB.getProductType(product.getProductTypeId());
 			
 			product.setProductType(productType);
 			
 			System.out.println("PRODUCT TYPE: " + product.getProductType());
-			System.out.println("PRODUCT TYPE NAME: " + product.getProductType().getProductTypeName());
+			System.out.println("PRODUCT TYPE NAME: " + ((DisplayProductTypeBean) product.getProductType()).getProductTypeName());
 			request.setAttribute("displayDetails", product);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("single-page.jsp");
