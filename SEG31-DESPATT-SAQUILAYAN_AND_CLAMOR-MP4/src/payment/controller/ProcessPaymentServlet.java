@@ -31,8 +31,10 @@ public class ProcessPaymentServlet extends HttpServlet {
 		String expirationDate = request.getParameter("expirationDate");
 		String securityNumber = request.getParameter("securityNumber");
 		String creditCardNumber = request.getParameter("creditCardNumber");
+		String shippingAddress = request.getParameter("shippingAddress");
+		
 		HelperMethods luhn = new HelperMethods();
-		if(luhn.checkCardLuhn(creditCardNumber) == true && securityNumber.length() == 4) {
+		if(luhn.checkCardLuhn(creditCardNumber) == true && securityNumber.length() == 4 || securityNumber.length() == 3) {
 			System.out.println("PAYMENT SUCCESFUL");
 			System.out.println("NOW SENDING RECEIPT TO " + fullName);
 			
