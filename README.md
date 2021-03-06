@@ -3,14 +3,12 @@ Repository for Ent Jav 2 Project
 
 TODO: 
 
-  1. process-payment page form inline javascript on securityNumber input box
-
-  2 Bug on confirm-order.jsp where reloading the page will cause to insert again the cart-items data to db
-  
-  3 Navbar Highlighting Fix
-  4. PDF Format Fix (REQUIRED)
-  5. Shipping Address on payment-form.jsp (REQUIRED)
-  6. Fix validation of cvv length must be equal to 3 or 4
+  1. process-payment page form inline javascript on securityNumber input box.
+  2 Bug on confirm-order.jsp where reloading the page will cause to insert again the cart-items data to db.
+  3 Navbar Highlighting Fix.
+  4. PDF Format Fix (REQUIRED).
+  5. Shipping Address on payment-form.jsp (REQUIRED).
+  6. Fix validation of cvv length must be equal to 3 or 4 (REQUIRED).
 
 0.47:
 
