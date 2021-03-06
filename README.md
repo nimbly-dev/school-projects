@@ -8,6 +8,7 @@ TODO:
   3 Navbar Highlighting Fix
   4. PDF Format Fix (REQUIRED)
   5. Shipping Address on payment-form.jsp (REQUIRED)
+  6. Fix validation of cvv length must be equal to 3 or 4
 
 0.47:
 
