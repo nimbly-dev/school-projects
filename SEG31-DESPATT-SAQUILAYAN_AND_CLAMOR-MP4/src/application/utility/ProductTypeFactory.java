@@ -1,12 +1,13 @@
 package application.utility;
 
 import java.sql.Connection;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.security.DenyAll;
 
-import com.sun.org.glassfish.gmbal.Description;
+
 
 import application.strings.*;
 import product.model.Product;

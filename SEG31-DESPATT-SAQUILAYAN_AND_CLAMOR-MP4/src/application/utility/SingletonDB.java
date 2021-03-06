@@ -1,5 +1,6 @@
 package application.utility;
 
+import java.io.ByteArrayOutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -29,14 +30,14 @@ import productType.model.Candy.Candy;
 import productType.model.Cupcake.Cupcake;
 import productType.model.Pastry.Pastry;
 
-public class SingletonDB implements DBOperations{
+public class SingletonDB implements DBOperations, facade{
 	
 	//this is defaulted to null
 	private static Connection connection; 
 	
 	
 	
-	private SingletonDB() {
+	public SingletonDB() {
 	
 	}
 	
@@ -285,24 +286,7 @@ public class SingletonDB implements DBOperations{
 		
 	}
 	
-	//SingletonDB Method for Inserting Product Types to DB
-	public static void insertProductTypes(int ProductTypeID, String productTypeName) {
-		try {
-			Connection conn = getConnection();
-			
-			if(conn!=null) {
-				PreparedStatement ptst = conn.prepareStatement(INSERT_PRODUCT_TYPES);
-				
-				ptst.setInt(1, ProductTypeID);
-				ptst.setString(2, productTypeName);
-				ptst.executeUpdate();
-				ptst.close();
-			}
-			conn.close();
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-	}
+
 	
 	//SingletonDB Method for Inserting Cart Items to DB
 	public static void insertCartProduct(String productName, String productPrice, String productImgPath, String productCount) {
@@ -341,7 +325,7 @@ public class SingletonDB implements DBOperations{
 	}
 	
 	//PopulateDB with pre-defined products and product types
-	public static void populateDb() {
+	public void populateDb() {
 		/**
 		CODE BLOCK TO POPULATEDB WITH PREDEFINED PRODUCT TYPES DATA
 		 */
@@ -505,5 +489,45 @@ public class SingletonDB implements DBOperations{
 			e.printStackTrace();
 		}
 	}
+
+	
+	public void insertProductTypes(int ProductTypeID, String productTypeName) {
+		try {
+			Connection conn = getConnection();
+			
+			if(conn!=null) {
+				PreparedStatement ptst = conn.prepareStatement(INSERT_PRODUCT_TYPES);
+				
+				ptst.setInt(1, ProductTypeID);
+				ptst.setString(2, productTypeName);
+				ptst.executeUpdate();
+				ptst.close();
+			}
+			conn.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void PDFfunctions() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	@Override
+	public boolean checkCardLuhn(String cardNo) {
+		return false;
+		// TODO Auto-generated method stub
+		
+	}
+	
+
+	
+	
+
+	
 	
 }

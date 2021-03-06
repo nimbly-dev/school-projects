@@ -8,9 +8,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import application.utility.HelperMethods;
+import application.utility.PdfGenerator;
 import application.utility.SingletonDB;
+import product.model.facade;
 
 
 public class ProcessPaymentServlet extends HttpServlet {
@@ -21,20 +24,21 @@ public class ProcessPaymentServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		LocalDate currentDate = LocalDate.now();
 		
 		String fullName = request.getParameter("fullName");
 		String expirationDate = request.getParameter("expirationDate");
 		String securityNumber = request.getParameter("securityNumber");
 		String creditCardNumber = request.getParameter("creditCardNumber");
-		
-		
-		if(HelperMethods.luhnAlgorithmCreditCardChecker(creditCardNumber) == true && securityNumber.length() == 4) {
+		HelperMethods luhn = new HelperMethods();
+		if(luhn.checkCardLuhn(creditCardNumber) == true && securityNumber.length() == 4) {
 			System.out.println("PAYMENT SUCCESFUL");
 			System.out.println("NOW SENDING RECEIPT TO " + fullName);
-
 			
 			System.out.println("DISPOSING CART ITEM");
+			PdfGenerator generatePDF = new PdfGenerator();
+			generatePDF.PDFfunctions();
 			SingletonDB.disposeCartTableData();
 			
 			request.setAttribute("currentDate", currentDate);

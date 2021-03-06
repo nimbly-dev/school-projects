@@ -16,7 +16,7 @@ import product.model.*;
 import productType.model.*;
 
 
-public class SearchProductServlet extends HttpServlet {
+public class SearchProductServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
        
 

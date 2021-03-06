@@ -1,19 +1,23 @@
 package application.utility;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-
+import java.sql.SQLException;
 
 import application.utility.SingletonDB;
+import product.model.facade;
 
-public class HelperMethods {
+public class HelperMethods implements facade{
 	
 	/**
 	 * HELPER METHODS
 	 * */
 	
 	//CreditCard Validation returns true if credit Card is valid
-	public static boolean luhnAlgorithmCreditCardChecker(String cardNo){
+
+	
+	public boolean luhnAlgorithmCreditCardChecker(String cardNo) {
 		int nDigits = cardNo.length();
 		 
 	    int nSum = 0;
@@ -35,6 +39,28 @@ public class HelperMethods {
 	    }
 	    return (nSum % 10 == 0);
 	}
+
+
+
+	@Override
+	public void PDFfunctions() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public boolean checkCardLuhn(String cardNo) {
+		return luhnAlgorithmCreditCardChecker(cardNo);
+		
+	}
+
+
+
+	
+
+	
 	
 
 	
