@@ -53,12 +53,7 @@ public class ProcessCartServlet extends HttpServlet {
 				String holder_productImgPath = productImgPath[i];
 				String holder_productCount = productCount[i];
 				String holder_productPrice = productPrice[i];
-			
-				int holder_originalProductCount = SingletonDB.getProductQuantity(productNames[i]);//Original Count Product
-				
-				
-				SingletonDB.deductQuantityCart(holder_originalProductCount, Integer.parseInt(holder_productCount),
-						holder_productName);
+				System.out.println("TEST");
 				SingletonDB.insertCartProduct(holder_productName, holder_productPrice, holder_productImgPath, holder_productCount);
 			}
 			

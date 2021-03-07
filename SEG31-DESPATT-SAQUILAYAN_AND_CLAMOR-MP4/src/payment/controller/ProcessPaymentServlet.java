@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import application.utility.HelperMethods;
 import application.utility.PdfGenerator;
 import application.utility.SingletonDB;
+import cart.model.CartItemBean;
 import product.model.Facade;
 
 
@@ -38,11 +39,18 @@ public class ProcessPaymentServlet extends HttpServlet {
 			System.out.println("PAYMENT SUCCESFUL");
 			System.out.println("NOW SENDING RECEIPT TO " + fullName);
 			
-			System.out.println("DISPOSING CART ITEM");
+			
+			for(CartItemBean cartItem: SingletonDB.getCartItems()){
+				int holder_originalProductCount = SingletonDB.getProductQuantity(cartItem.getProductName());//Original Count Product
+				
+				SingletonDB.deductQuantityCart(holder_originalProductCount, Integer.parseInt(cartItem.getCount()),
+						cartItem.getProductName());
+			}
+			
 			PdfGenerator generatePDF = new PdfGenerator();
 			generatePDF.PDFfunctions();
+			System.out.println("DISPOSING CART ITEM");
 			SingletonDB.disposeCartTableData();
-			
 			
 			request.setAttribute("currentDate", currentDate);
 			request.setAttribute("fullName", fullName);
