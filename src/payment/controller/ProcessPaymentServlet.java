@@ -35,25 +35,38 @@ public class ProcessPaymentServlet extends HttpServlet {
 		String creditCardNumber = request.getParameter("creditCardNumber");
 		String shippingAddress = request.getParameter("shippingAddress");
 		String emailAddress = request.getParameter("emailAddress");
-		
 		infoData.setEmail(emailAddress);
-		infoData.setShipping(shippingAddress);
-		infoData.setName(fullName);
+		
 		
 		HelperMethods luhn = new HelperMethods();
 		if(luhn.checkCardLuhn(creditCardNumber) == true && securityNumber.length() == 4 || securityNumber.length() == 3) {
 			System.out.println("PAYMENT SUCCESFUL");
 			System.out.println("NOW SENDING RECEIPT TO " + fullName);
-			
+			System.out.println(infoData.getEmail());
 			System.out.println("DISPOSING CART ITEM");
-			PdfGenerator generatePDF = new PdfGenerator();
-			generatePDF.PDFfunctions();
+			
+			
+			infoData.setShipping(shippingAddress);
+			infoData.setName(fullName);
+			
+			PdfGenerator pdf = new PdfGenerator();
+			
+			pdf.PDFfunctions(emailAddress);
+			
 			SingletonDB.disposeCartTableData();
 			
 			request.setAttribute("currentDate", currentDate);
 			request.setAttribute("fullName", fullName);
+			request.setAttribute("emailAdddress", emailAddress);
+			
+			
+			
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("payment-successful.jsp");
 			dispatcher.forward(request, response);
+			
+			
+			
 		}else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("error-page.jsp");
 			dispatcher.forward(request, response);

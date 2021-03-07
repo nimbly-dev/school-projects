@@ -47,13 +47,13 @@ public  class PdfGenerator implements DBOperations, Facade{
 	
 
 	
-	private void EmailPDF() {
+	private void EmailPDF(String paymentRecipient) {
 		paymentInfoBean paymentData = new paymentInfoBean();
 		String sender = "bscsmail.se31@gmail.com"; // enter valid email of sender
-		String recipient = "owenclamor22@gmail.com"; // replace with user input for email
+		String recipient = paymentRecipient;
 		String content = "dummy content"; //replace with proper content
 		String subject = "dummy subject"; //replace with proper subject
-		
+		System.out.println(recipient);
 		Properties properties = new Properties();
 		properties.put("mail.smtp.host", "smtp.gmail.com");
 		properties.put("mail.smtp.socketFactory.port", "465");
@@ -174,10 +174,9 @@ public  class PdfGenerator implements DBOperations, Facade{
 	}
 	
 	@Override
-	public void PDFfunctions() {
+	public void PDFfunctions(String recipient) {
 		// TODO Auto-generated method stub
-		 
-		 EmailPDF();
+		EmailPDF(recipient);
 	}
 
 
