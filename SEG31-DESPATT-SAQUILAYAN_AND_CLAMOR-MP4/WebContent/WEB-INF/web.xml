@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>SEG31-DESPATT-SAQUILAYAN_AND_CLAMOR-MP3</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- SERVLETS -->
+  
+  <servlet>
+    <servlet-name>SearchProductServlet</servlet-name>
+    <servlet-class>product.controller.SearchProductServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>SearchProductServlet</servlet-name>
+    <url-pattern>/search-product.action</url-pattern>
+  </servlet-mapping>
+  
+
+  <servlet>
+    <servlet-name>SinglePageDisplayProductServlet</servlet-name>
+    <servlet-class>product.controller.SinglePageDisplayProductServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>SinglePageDisplayProductServlet</servlet-name>
+    <url-pattern>/display-single-product.action</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ListProductServlet</servlet-name>
+    <servlet-class>product.controller.ListProductServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ListProductServlet</servlet-name>
+    <url-pattern>/display-products.action</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ProcessCartServlet</servlet-name>
+    <servlet-class>cart.controller.ProcessCartServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ProcessCartServlet</servlet-name>
+    <url-pattern>/process-cart.action</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ProcessPaymentServlet</servlet-name>
+    <servlet-class>payment.controller.ProcessPaymentServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ProcessPaymentServlet</servlet-name>
+    <url-pattern>/process-payment.action</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Web Listeners  -->
+  <listener>
+    <listener-class>application.config.InitializeConfig</listener-class>
+  </listener>
+</web-app>
