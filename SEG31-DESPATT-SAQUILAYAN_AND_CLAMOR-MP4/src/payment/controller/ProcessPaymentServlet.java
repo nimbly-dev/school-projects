@@ -33,6 +33,7 @@ public class ProcessPaymentServlet extends HttpServlet {
 		String securityNumber = request.getParameter("securityNumber");
 		String creditCardNumber = request.getParameter("creditCardNumber");
 		String shippingAddress = request.getParameter("shippingAddress");
+		String emailAddress = request.getParameter("emailAddress");
 		
 		HelperMethods luhn = new HelperMethods();
 		if(luhn.checkCardLuhn(creditCardNumber) == true && securityNumber.length() == 4 || securityNumber.length() == 3) {
@@ -48,7 +49,7 @@ public class ProcessPaymentServlet extends HttpServlet {
 			}
 			
 			PdfGenerator generatePDF = new PdfGenerator();
-			generatePDF.PDFfunctions();
+			generatePDF.PDFfunctions(emailAddress, shippingAddress, fullName);
 			System.out.println("DISPOSING CART ITEM");
 			SingletonDB.disposeCartTableData();
 			

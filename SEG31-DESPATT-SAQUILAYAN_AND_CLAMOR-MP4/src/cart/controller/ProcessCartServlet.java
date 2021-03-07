@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import application.utility.SingletonDB;
+import payment.controller.paymentInfoBean;
 
 public class ProcessCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

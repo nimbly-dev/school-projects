@@ -72,6 +72,14 @@
                                             placeholder="Enter Full Name" required>
                                         <div class="align-self-center text-danger errorTxt1 ml-1"></div>
                                     </div>
+                                    
+                                    <div class="row mt-2 mb-2">
+                                        <label for="emailAddress" class="mr-2 mt-2">Email Address: </label>
+                                        <input type="text" class="form-control w-50" id="emailAddress"
+                                            name="emailAddress" data-error=".errorTxt5"
+                                            placeholder="Enter Email Address" required>
+                                        <div class="align-self-center text-danger errorTxt5 ml-1"></div>
+                                    </div>
 
                                     <div class="row mt-2 mb-2">
                                         <label for="creditCardNumber" class="mr-3 mt-2">Credit Card Number: </label>

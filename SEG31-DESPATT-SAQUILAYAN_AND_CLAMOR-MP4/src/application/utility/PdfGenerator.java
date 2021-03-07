@@ -43,9 +43,9 @@ public  class PdfGenerator implements DBOperations, Facade{
 	
 
 	
-	private void EmailPDF() {
-		String sender = "nimbly2016@gmail.com"; // enter valid email of sender
-		String recipient = "clamorbackup22@gmail.com"; // replace with user input for email
+	private void EmailPDF(String emailPDF, String shippingAddressPDF, String fullNamePDF) {
+		String sender = "bscsmail.se31@gmail.com"; // enter valid email of sender
+		String recipient = emailPDF; // replace with user input for email
 		String content = "dummy content"; //replace with proper content
 		String subject = "dummy subject"; //replace with proper subject
 		
@@ -58,7 +58,7 @@ public  class PdfGenerator implements DBOperations, Facade{
 		
 		Session session = Session.getDefaultInstance(properties,new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication(sender,"EnFeeble_Dendi12"); // (user name of sender, "password of email")
+						return new PasswordAuthentication(sender,"BSCS-SE31"); // (user name of sender, "password of email")
 					}
 		});
 			
@@ -71,7 +71,7 @@ public  class PdfGenerator implements DBOperations, Facade{
 			
 			//write PDF content to output stream
 			outputStream = new ByteArrayOutputStream();
-			GeneratePDF(outputStream);
+			GeneratePDF(outputStream, emailPDF, shippingAddressPDF, fullNamePDF);
 			byte[] bytes = outputStream.toByteArray();
 			
 			//construct PDF body
@@ -114,7 +114,7 @@ public  class PdfGenerator implements DBOperations, Facade{
 	}
 
 	
-	private void GeneratePDF(ByteArrayOutputStream outputStream) throws SQLException{
+	private void GeneratePDF(ByteArrayOutputStream outputStream, String fullNamePDF, String shippingAddressPDF, String emailPDF) throws SQLException, DocumentException{
 		//NOT NULL POINTER SO NEED TO KNOW WHERE TO CALL TO GET CART
 		
 				String sql = DISPLAY_CART_ITEMS;
@@ -123,7 +123,20 @@ public  class PdfGenerator implements DBOperations, Facade{
 				PreparedStatement ptstRetrieveCartItems = conn.prepareStatement(sql);
 				ResultSet rs = ptstRetrieveCartItems.executeQuery();
 				
-				if(rs.next()) {
+				
+				Document pdfsup = new Document(PageSize.A4, 50, 50, 50, 50);
+				PdfWriter writer = PdfWriter.getInstance(pdfsup, outputStream);
+				
+				pdfsup.open();
+				
+				pdfsup.add(new Paragraph("Receipt PDF"));
+				pdfsup.add(new Paragraph("This is your receipt", FontFactory.getFont(FontFactory.TIMES_BOLD, 18, Font.BOLD)));
+				pdfsup.add(new Paragraph("------------------------------------------------------------------------------------"));
+				pdfsup.add(new Paragraph("Customer Name: " + fullNamePDF));
+				pdfsup.add(new Paragraph("Shipping Address: " + shippingAddressPDF));
+				pdfsup.add(new Paragraph("------------------------------------------------------------------------------------"));
+				
+				while(rs.next()) {
 					
 					String name = rs.getString("productName");
 					String price = rs.getString("productPrice");
@@ -133,23 +146,12 @@ public  class PdfGenerator implements DBOperations, Facade{
 					System.out.println(name);
 					System.out.println(price);
 					System.out.println(count);
-						
+					
+					
 						try {
 							
-							Document pdfsup = new Document(PageSize.A4, 50, 50, 50, 50);
-							PdfWriter writer = PdfWriter.getInstance(pdfsup, outputStream);
-							
-							
-							pdfsup.open();
-							pdfsup.add(new Paragraph("Receipt PDF"));
-							pdfsup.add(new Paragraph("This is your receipt", FontFactory.getFont(FontFactory.TIMES_BOLD, 18, Font.BOLD)));
-							pdfsup.add(new Paragraph("------------------------------------------------------------------------------------"));
-							pdfsup.add(new Paragraph(name));
-							pdfsup.add(new Paragraph(price));
-							pdfsup.add(new Paragraph(count));
-							
-							
-							pdfsup.close();
+							pdfsup.add(new Paragraph(name + " Price: " + price + ".00   " + count + "x"));
+							pdfsup.add(new Paragraph(""));
 							
 						} catch (DocumentException e) {
 							// TODO Auto-generated catch block
@@ -157,16 +159,15 @@ public  class PdfGenerator implements DBOperations, Facade{
 						}
 					
 					
-				}else {
-					System.out.println("No Selection");
 				}
+				pdfsup.close();
 		
 	}
 	
 	@Override
-	public void PDFfunctions() {
+	public void PDFfunctions(String emailPDF, String shippingAddressPDF, String fullNamePDF) {
 		// TODO Auto-generated method stub
-		 EmailPDF();
+		 EmailPDF(emailPDF, shippingAddressPDF, fullNamePDF);
 	}
 
 
