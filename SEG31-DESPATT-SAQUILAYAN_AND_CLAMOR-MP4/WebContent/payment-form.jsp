@@ -99,7 +99,7 @@
                                     
 									<div class="row mt-2 mb-2">
                                         <label for="shippingAddress" class="mr-2 mt-2">Shipping Address: </label>
-                                        <input type="number" class="form-control w-50" id="shippingAddress"
+                                        <input type="text" class="form-control w-50" id="shippingAddress"
                                             name="shippingAddress" data-error=".errorTxt5"
                                             placeholder="Enter Shipping Address" required>
                                         <div class="align-self-center text-danger errorTxt5 ml-1"></div>

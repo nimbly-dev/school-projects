@@ -1,8 +1,6 @@
 package cart.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,9 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import application.utility.HelperMethods;
 import application.utility.SingletonDB;
-import cart.model.CartItemBean;
 
 public class ProcessCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -55,6 +51,13 @@ public class ProcessCartServlet extends HttpServlet {
 				String holder_productPrice = productPrice[i];
 				System.out.println("TEST");
 				SingletonDB.insertCartProduct(holder_productName, holder_productPrice, holder_productImgPath, holder_productCount);
+				
+				/*INEFFICIENT NEED TO BE FIXED*/
+				//Checker if Quantity is 0
+				if(Integer.parseInt(holder_productCount) <= 0) {
+					RequestDispatcher dispatcher = request.getRequestDispatcher("error-page.jsp");
+					dispatcher.forward(request, response);
+				}
 			}
 			
 			session.setAttribute("totalPrice", totalPrice);
