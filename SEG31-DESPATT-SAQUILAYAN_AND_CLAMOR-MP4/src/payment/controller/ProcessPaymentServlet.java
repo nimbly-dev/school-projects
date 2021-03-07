@@ -26,12 +26,19 @@ public class ProcessPaymentServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		LocalDate currentDate = LocalDate.now();
+		paymentInfoBean infoData = new paymentInfoBean();
 		
 		String fullName = request.getParameter("fullName");
+		
 		String expirationDate = request.getParameter("expirationDate");
 		String securityNumber = request.getParameter("securityNumber");
 		String creditCardNumber = request.getParameter("creditCardNumber");
 		String shippingAddress = request.getParameter("shippingAddress");
+		String emailAddress = request.getParameter("emailAddress");
+		
+		infoData.setEmail(emailAddress);
+		infoData.setShipping(shippingAddress);
+		infoData.setName(fullName);
 		
 		HelperMethods luhn = new HelperMethods();
 		if(luhn.checkCardLuhn(creditCardNumber) == true && securityNumber.length() == 4 || securityNumber.length() == 3) {

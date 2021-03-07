@@ -4,6 +4,8 @@ package application.utility;
 import java.io.ByteArrayOutputStream;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,6 +31,7 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
@@ -36,6 +39,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import cart.model.CartItemBean;
+import payment.controller.paymentInfoBean;
 import product.model.Facade;
 
 
@@ -44,8 +48,9 @@ public  class PdfGenerator implements DBOperations, Facade{
 
 	
 	private void EmailPDF() {
-		String sender = "nimbly2016@gmail.com"; // enter valid email of sender
-		String recipient = "clamorbackup22@gmail.com"; // replace with user input for email
+		paymentInfoBean paymentData = new paymentInfoBean();
+		String sender = "bscsmail.se31@gmail.com"; // enter valid email of sender
+		String recipient = "owenclamor22@gmail.com"; // replace with user input for email
 		String content = "dummy content"; //replace with proper content
 		String subject = "dummy subject"; //replace with proper subject
 		
@@ -58,7 +63,7 @@ public  class PdfGenerator implements DBOperations, Facade{
 		
 		Session session = Session.getDefaultInstance(properties,new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication(sender,"EnFeeble_Dendi12"); // (user name of sender, "password of email")
+						return new PasswordAuthentication(sender,"BSCS-SE31"); // (user name of sender, "password of email")
 					}
 		});
 			
@@ -114,58 +119,64 @@ public  class PdfGenerator implements DBOperations, Facade{
 	}
 
 	
-	private void GeneratePDF(ByteArrayOutputStream outputStream) throws SQLException{
+	private void GeneratePDF(ByteArrayOutputStream outputStream) throws SQLException, DocumentException, MalformedURLException, IOException{
 		//NOT NULL POINTER SO NEED TO KNOW WHERE TO CALL TO GET CART
 		
-				String sql = RETRIEVE_PRODUCT_CART;
 				
-				Connection conn = SingletonDB.getConnection();
-				PreparedStatement ptstRetrieveCartItems = conn.prepareStatement(sql);
-				ResultSet rs = ptstRetrieveCartItems.executeQuery();
 				
-				if(rs.next()) {
+				
 					
-					String name = rs.getString("productName");
-					String price = rs.getString("productPrice");
-					String img = rs.getString("productImgPath");
-					String count = rs.getString("productCount");
+//					String name = rs.getString("productName");
+//					String price = rs.getString("productPrice");
+//					String img = rs.getString("productImgPath");
+//					String count = rs.getString("productCount");
 					
-					System.out.println(name);
-					System.out.println(price);
-					System.out.println(count);
+//					System.out.println(name);
+//					System.out.println(price);
+//					System.out.println(count);
 						
-						try {
+						
 							
 							Document pdfsup = new Document(PageSize.A4, 50, 50, 50, 50);
 							PdfWriter writer = PdfWriter.getInstance(pdfsup, outputStream);
 							
-							
+					
 							pdfsup.open();
+							
+							String sql = RETRIEVE_PRODUCT_CART;
+							paymentInfoBean paymentData = new paymentInfoBean();
+							Connection conn = SingletonDB.getConnection();
+							PreparedStatement ptstRetrieveCartItems = conn.prepareStatement(sql);
+							ResultSet rs = ptstRetrieveCartItems.executeQuery();
+							
+			
+							
 							pdfsup.add(new Paragraph("Receipt PDF"));
 							pdfsup.add(new Paragraph("This is your receipt", FontFactory.getFont(FontFactory.TIMES_BOLD, 18, Font.BOLD)));
 							pdfsup.add(new Paragraph("------------------------------------------------------------------------------------"));
-							pdfsup.add(new Paragraph(name));
-							pdfsup.add(new Paragraph(price));
-							pdfsup.add(new Paragraph(count));
 							
+							while(rs.next()) {
+								
+							try {
+								
+								Paragraph pdfResult = new Paragraph(rs.getString("productName") + "  " +rs.getString("productPrice") + ".00 PHP         " +  rs.getString("productCount") + "x");
+								pdfsup.add(pdfResult);
 							
+							} catch (DocumentException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+					
+						
+							
+							}
 							pdfsup.close();
-							
-						} catch (DocumentException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					
-					
-				}else {
-					System.out.println("No Selection");
-				}
-		
 	}
 	
 	@Override
 	public void PDFfunctions() {
 		// TODO Auto-generated method stub
+		 
 		 EmailPDF();
 	}
 
