@@ -5,7 +5,8 @@ TODO:
 
   1.  Bug on confirm-order.jsp where reloading the page will cause to insert again the cart-items data to db.
   2.  Navbar Highlighting Fix.
-  3. PDF Format Fix (REQUIRED).
+  3.  PDF Format Fix (REQUIRED).
+  4.  Adding Quantity to Product
 
 0.47:
 
