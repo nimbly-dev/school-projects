@@ -45,11 +45,6 @@ public class ValentineCupcake extends Product implements ProductPrototype{
 	}
 
 	@Override
-	public boolean isAvailable() {
-		return true;
-	}
-
-	@Override
 	public ProductType productType() {
 		return null;
 	}

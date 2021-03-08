@@ -48,10 +48,6 @@ public class ChurroSticks extends Product implements ProductPrototype{
 		return 15.00;
 	}
 
-	@Override
-	public boolean isAvailable() {
-		return false;
-	}
 
 	@Override
 	public ProductType productType() {

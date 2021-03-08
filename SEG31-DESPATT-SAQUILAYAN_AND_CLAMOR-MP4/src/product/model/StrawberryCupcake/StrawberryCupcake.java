@@ -46,10 +46,6 @@ public class StrawberryCupcake extends Product implements ProductPrototype{
 		return 25.00;
 	}
 
-	@Override
-	public boolean isAvailable() {
-		return true;
-	}
 
 	@Override
 	public ProductType productType() {

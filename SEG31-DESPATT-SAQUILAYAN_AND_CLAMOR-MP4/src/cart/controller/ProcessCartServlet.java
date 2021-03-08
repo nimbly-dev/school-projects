@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import application.utility.SingletonDB;
-import payment.controller.paymentInfoBean;
+import payment.controller.PaymentInfoBean;
 
 public class ProcessCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -50,7 +50,6 @@ public class ProcessCartServlet extends HttpServlet {
 				String holder_productImgPath = productImgPath[i];
 				String holder_productCount = productCount[i];
 				String holder_productPrice = productPrice[i];
-				System.out.println("TEST");
 				SingletonDB.insertCartProduct(holder_productName, holder_productPrice, holder_productImgPath, holder_productCount);
 				
 				/*INEFFICIENT NEED TO BE FIXED*/

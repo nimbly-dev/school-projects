@@ -11,7 +11,6 @@ public interface ProductItem {
 	public String imgPath();
 	public String productInfo();
 	public double productPrice();
-	public boolean isAvailable();
 	public int quantity();
 	
 	public ProductType productType();

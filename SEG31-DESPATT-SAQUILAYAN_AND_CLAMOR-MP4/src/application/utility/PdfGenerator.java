@@ -170,15 +170,11 @@ public  class PdfGenerator implements DBOperations, Facade{
 		 EmailPDF(emailPDF, shippingAddressPDF, fullNamePDF);
 	}
 
-
 	@Override
 	public boolean checkCardLuhn(String cardNo) {
 		return false;
-		// TODO Auto-generated method stub
-		
+
 	}
-
-
 		
 }
 			

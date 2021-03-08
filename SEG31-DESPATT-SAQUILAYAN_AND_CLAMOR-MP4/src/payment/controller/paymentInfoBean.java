@@ -1,6 +1,6 @@
 package payment.controller;
 
-public class paymentInfoBean {
+public class PaymentInfoBean {
 	
 	String name;
 	String email;
@@ -36,7 +36,7 @@ public class paymentInfoBean {
 		this.shipping = shipping;
 	}
 	
-	public paymentInfoBean(String name, String email, String shipping, String totalPrice) {
+	public PaymentInfoBean(String name, String email, String shipping, String totalPrice) {
 		this.name = name;
 		this.email = email;
 		this.shipping = shipping;
@@ -45,7 +45,7 @@ public class paymentInfoBean {
 	
 	
 	
-	public paymentInfoBean() {
+	public PaymentInfoBean() {
 		
 	}
 	

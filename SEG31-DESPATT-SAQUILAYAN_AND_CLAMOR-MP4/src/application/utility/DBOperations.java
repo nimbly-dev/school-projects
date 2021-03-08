@@ -10,7 +10,6 @@ public interface DBOperations {
 			+ "`imgPath` varchar(500) NOT NULL,"
 			+ "`productInfo` varchar(300) NOT NULL,"
 			+ "`productPrice` double NOT NULL, "
-			+ "`isAvailable` tinyint(1) NOT NULL,"
 			+ "`quantity` int NOT NULL,"
 			+ "PRIMARY KEY (`productID`) )"
 			+ "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
@@ -37,8 +36,8 @@ public interface DBOperations {
 	
 	//INSERT OPERATIONS
 	final static String INSERT_PRODUCTS = "INSERT INTO `products`"
-			+ "(productTypeID,productName,imgPath,productInfo,productPrice,isAvailable,quantity)"
-			+ "VALUES (?,?,?,?,?,?,?)";
+			+ "(productTypeID,productName,imgPath,productInfo,productPrice,quantity)"
+			+ "VALUES (?,?,?,?,?,?)";
 	
 	final static String INSERT_PRODUCT_TYPES = "INSERT INTO `product_types`"
 			+ "(productTypeID,productTypeName,wrapperName)"

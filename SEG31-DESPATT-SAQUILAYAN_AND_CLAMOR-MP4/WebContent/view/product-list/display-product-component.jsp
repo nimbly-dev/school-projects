@@ -9,7 +9,7 @@
         for (DisplayProductBean product : SingletonDB.getProductList(
                 (String) request.getParameter("selectedProductType"))) {
     	%>
-        <%if (product.isAvailable() == true){ %>
+        <%if (product.getQuantity() > 0){ %>
         <div class="col mt-5">
             <div class="card" style="width: 18rem;">
                 <img src="<%= product.getProductImgPath()%>" class="card-img-top" alt="...">

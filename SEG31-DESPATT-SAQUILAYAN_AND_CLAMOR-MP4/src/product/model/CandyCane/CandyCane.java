@@ -47,10 +47,6 @@ public class CandyCane extends Product implements ProductPrototype{
 		return 10.00;
 	}
 
-	@Override
-	public boolean isAvailable() {
-		return false;
-	}
 
 	@Override
 	public ProductType productType() {

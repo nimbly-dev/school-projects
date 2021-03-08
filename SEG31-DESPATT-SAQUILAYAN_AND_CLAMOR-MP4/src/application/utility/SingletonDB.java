@@ -114,7 +114,6 @@ public class SingletonDB implements DBOperations{
 				DisplayProductTypeBean productType = new DisplayProductTypeBean();
 				product.setProductType(productType);
 				
-				product.setAvailable(rs.getBoolean("isAvailable"));
 				product.setProductImgPath(rs.getString("imgPath"));
 				product.setProductId(rs.getInt("productID"));
 				product.setProductInfo(rs.getString("productInfo"));
@@ -154,12 +153,12 @@ public class SingletonDB implements DBOperations{
 				DisplayProductTypeBean productType = new DisplayProductTypeBean();
 				product.setProductType(productType);
 				
-				product.setAvailable(rs.getBoolean("isAvailable"));
 				product.setProductImgPath(rs.getString("imgPath"));
 				product.setProductId(rs.getInt("productID"));
 				product.setProductInfo(rs.getString("productInfo"));
 				product.setProductName(rs.getString("productName"));
 				product.setProductPrice(rs.getDouble("productPrice"));
+				product.setQuantity(rs.getInt("quantity"));
 				
 				((DisplayProductTypeBean) product.getProductType()).setProductTypeId(rs.getInt("productTypeID"));
 				
@@ -191,7 +190,7 @@ public class SingletonDB implements DBOperations{
 					product.setProductInfo(rs.getString("productInfo"));
 					product.setProductImgPath(rs.getString("imgPath"));
 					product.setProductPrice(rs.getDouble("productPrice"));
-					product.setAvailable(rs.getBoolean("isAvailable"));
+					product.setQuantity(rs.getInt("quantity"));
 					
 					//FOR SQL QUERIES
 					product.setProductTypeId(rs.getInt("productTypeID"));
@@ -260,7 +259,7 @@ public class SingletonDB implements DBOperations{
 	public static void insertProducts(
 			String productName, String imgPath,
 			String productInfo,double productPrice,
-			boolean isAvailable, int quantity,
+			 int quantity,
 			int productTypeID) {
 		try {
 			Connection conn  = getConnection();
@@ -272,8 +271,7 @@ public class SingletonDB implements DBOperations{
 				ptst.setString(3, imgPath);
 				ptst.setString(4, productInfo);
 				ptst.setDouble(5, productPrice);
-				ptst.setBoolean(6, isAvailable);
-				ptst.setInt(7, quantity);
+				ptst.setInt(6, quantity);
 
 				ptst.executeUpdate();
 				ptst.close();
@@ -443,7 +441,7 @@ public class SingletonDB implements DBOperations{
 					
 		insertProducts(avocadoCupcake.productName(), avocadoCupcake.imgPath(), 
 				avocadoCupcake.productInfo(), avocadoCupcake.productPrice(), 
-				avocadoCupcake.isAvailable(), avocadoCupcake.quantity() ,cupcakeProductType.productTypeId());
+				 avocadoCupcake.quantity() ,cupcakeProductType.productTypeId());
 		
 			
 		//INSERTING CHURRO STICKS TO DATABASE
@@ -451,7 +449,7 @@ public class SingletonDB implements DBOperations{
 		
 		insertProducts(churroSticks.productName(), churroSticks.imgPath(), 
 				churroSticks.productInfo(), churroSticks.productPrice(), 
-				churroSticks.isAvailable(), churroSticks.quantity() ,pastryProductType.productTypeId());
+				churroSticks.quantity() ,pastryProductType.productTypeId());
 
 		
 		//INSERTING CANDY CANE TO DATABASE
@@ -459,14 +457,14 @@ public class SingletonDB implements DBOperations{
 		
 		insertProducts(candyCane.productName(), candyCane.imgPath(), 
 				candyCane.productInfo(), candyCane.productPrice(), 
-				candyCane.isAvailable(), candyCane.quantity() ,candyProductType.productTypeId());
+				candyCane.quantity() ,candyProductType.productTypeId());
 		
 		//INSERTING VALENTINE CUPCAKE TO DATABASE
 		Product valentineCupcake = new ValentineCupcake().clone();
 				
 		insertProducts(valentineCupcake.productName(), valentineCupcake.imgPath(), 
 				valentineCupcake.productInfo(), valentineCupcake.productPrice(), 
-				valentineCupcake.isAvailable(), valentineCupcake.quantity() ,cupcakeProductType.productTypeId());
+				valentineCupcake.quantity() ,cupcakeProductType.productTypeId());
 		
 		
 		//INSERTING JELLY BEANS TO DATABASE
@@ -474,14 +472,14 @@ public class SingletonDB implements DBOperations{
 						
 		insertProducts(jellyBeans.productName(), jellyBeans.imgPath(), 
 				jellyBeans.productInfo(), jellyBeans.productPrice(), 
-				jellyBeans.isAvailable(), jellyBeans.quantity() ,candyProductType.productTypeId());
+				 jellyBeans.quantity() ,candyProductType.productTypeId());
 		
 		//INSERTING Puffed Danish Pastry TO DATABASE
 		Product puffedDanishPastry = new PuffedDanishPastry().clone();
 						
 		insertProducts(puffedDanishPastry.productName(), puffedDanishPastry.imgPath(), 
 				puffedDanishPastry.productInfo(), puffedDanishPastry.productPrice(), 
-				puffedDanishPastry.isAvailable(), puffedDanishPastry.quantity() ,pastryProductType.productTypeId());
+				 puffedDanishPastry.quantity() ,pastryProductType.productTypeId());
 		
 		
 		//INSERTING STRAWBERRY CUPCAKE TO DATABASE
@@ -489,14 +487,14 @@ public class SingletonDB implements DBOperations{
 						
 		insertProducts(strawberryCupcake.productName(), strawberryCupcake.imgPath(), 
 				strawberryCupcake.productInfo(), strawberryCupcake.productPrice(), 
-				strawberryCupcake.isAvailable(), strawberryCupcake.quantity() ,pastryProductType.productTypeId());
+				 strawberryCupcake.quantity() ,pastryProductType.productTypeId());
 		
 		//INSERTING ENGLISH SAUSAGE TO DATABASE
 		Product englishSausage = new EnglishSausage().clone();
 					
 		insertProducts(englishSausage.productName(), englishSausage.imgPath(), 
 				englishSausage.productInfo(), englishSausage.productPrice(), 
-				englishSausage.isAvailable(), englishSausage.quantity() ,pastryProductType.productTypeId());
+				 englishSausage.quantity() ,pastryProductType.productTypeId());
 		
 	}
 	

@@ -32,8 +32,6 @@ public class SearchProductServlet extends HttpServlet {
 		String searchInput = request.getParameter("searchInput");
 		
 		//Create Helper Variables
-		boolean isAvailableInBoolean = false;
-		String isAvailableInString = "";
 		String isProductExist = "";
 		
 		try {
@@ -42,17 +40,17 @@ public class SearchProductServlet extends HttpServlet {
 			
 			product.setProductType(productType);
 			
-			//Convert Boolean to String
-			isAvailableInBoolean = product.isAvailable();
-			isAvailableInString = convertToString(isAvailableInBoolean);
-			
 			
 			//Create request Scope variables
 			isProductExist = "FOUND";
 			request.setAttribute("productExist", isProductExist);
 			request.setAttribute("searchInput", searchInput);
 			request.setAttribute("searchResult", product);
-			request.setAttribute("isAvailable", isAvailableInString);
+			
+			System.out.println("SEARCHED PRODUCT QUANTITY: " + product.getQuantity());
+			request.setAttribute("searchedProductQuantity", product.getQuantity());
+			
+			
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("search-result.jsp");
 			dispatcher.forward(request, response);
@@ -70,8 +68,5 @@ public class SearchProductServlet extends HttpServlet {
 	}
 	
 	
-	public String convertToString(boolean toBeConverted) {
-		if(toBeConverted == true) {return "true";} else{return "false";}
-	}
 	
 }

@@ -18,8 +18,8 @@ public class DisplayProductBean implements ProductPrototype{
 	public String productName;
 	public String productImgPath;
 	public String productInfo;
-	public boolean isAvailable;
 	public double productPrice;
+	public int quantity;
 	
 	public ProductType productType;
 	
@@ -40,12 +40,6 @@ public class DisplayProductBean implements ProductPrototype{
 	}
 	public void setProductInfo(String productInfo) {
 		this.productInfo = productInfo;
-	}
-	public boolean isAvailable() {
-		return isAvailable;
-	}
-	public void setAvailable(boolean isAvailable) {
-		this.isAvailable = isAvailable;
 	}
 	public double getProductPrice() {
 		return productPrice;
@@ -70,6 +64,12 @@ public class DisplayProductBean implements ProductPrototype{
 	}
 	public void setProductId(int productId) {
 		this.productId = productId;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 	
 	

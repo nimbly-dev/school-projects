@@ -49,11 +49,6 @@ public class JellyBeans extends Product implements ProductPrototype{
 	}
 
 	@Override
-	public boolean isAvailable() {
-		return true;
-	}
-
-	@Override
 	public ProductType productType() {
 		return new Candy();
 	}

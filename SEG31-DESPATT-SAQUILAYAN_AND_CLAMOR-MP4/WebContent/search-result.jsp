@@ -3,6 +3,7 @@
 <%!
 	String displayAllUrl = "display-products.action?selectedProductType=All";
 %>
+<% System.out.println(Integer.parseInt(request.getAttribute("searchedProductQuantity").toString())); %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,12 +81,12 @@
                                         <h5 class="card-title">${requestScope.searchResult.getProductName()}</h5>
                                         <h4>Php ${requestScope.searchResult.getProductPrice() }</h4>
                                         <%-- Check if Product is available --%>
-                                        <%if (request.getAttribute("isAvailable") == "true"){ %>
+                                        <%if ( Integer.parseInt(request.getAttribute("searchedProductQuantity").toString()) > 0){ %>
                                         <span class="ht-tm-element badge badge-pill badge-primary"> Available</span>
                                         <%}else{%>
                                         <span class="ht-tm-element badge badge-pill badge-warning"> Not Available</span>
                                         <% } %>
-                                        <%if (request.getAttribute("isAvailable") == "true"){ %>
+                                        <%if (Integer.parseInt(request.getAttribute("searchedProductQuantity").toString()) > 0){ %>
                                         <form action='display-single-product.action' method='GET'>
                                             <p>
                                                 <input type="hidden"

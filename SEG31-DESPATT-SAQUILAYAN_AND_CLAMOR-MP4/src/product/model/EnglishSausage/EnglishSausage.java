@@ -47,10 +47,6 @@ public class EnglishSausage extends Product implements ProductPrototype{
 		return 60.00;
 	}
 
-	@Override
-	public boolean isAvailable() {
-		return true;
-	}
 
 	@Override
 	public ProductType productType() {
