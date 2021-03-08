@@ -6,6 +6,7 @@ TODO:
   1. BUG: on confirm-order.jsp where reloading the page will cause to insert again the cart-items data to db.
   2. Navbar Highlighting Fix.
   3. BUG: Time Out Connection upon clicking submit cart button when user has reverted back to product-list.jsp where his/her past page he/she visited is the confirm-order.jsp
+  4. DESIGN: Cart Modal Spacing Fix
   
 0.48:
 
