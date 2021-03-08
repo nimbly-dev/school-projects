@@ -26,7 +26,9 @@
                         class="btn btn-warning mt-2" 
                         data-productname="<%=product.getProductName() %>"
                         data-productprice="<%=product.getProductPrice()%>"
-                        data-productimgpath="<%=product.getProductImgPath()%>">
+                        data-productimgpath="<%=product.getProductImgPath()%>"
+                        data-productMaxQuantity="<%=product.getQuantity() %>"
+                        >
                         Add to cart
                         </button>
                     </form>

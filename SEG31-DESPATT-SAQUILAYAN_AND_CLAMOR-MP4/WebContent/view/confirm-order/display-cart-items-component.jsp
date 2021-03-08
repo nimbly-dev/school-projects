@@ -28,7 +28,7 @@
                                                 height: 7rem; margin-right: 3rem;" alt="NOT FOUND">
                                             </td>
                                             <th scope="row" class="col-2 align-self-center"><%=cartItem.getProductName() %></th>
-                                            <td scope="row" class="col-2 align-self-center"><%=cartItem.getProductPrice() %></td>
+                                            <td scope="row" class="col-2 align-self-center">Php <%=cartItem.getProductPrice() %></td>
                                             <td scope="row" class="col-2 align-self-center"><%=cartItem.getCount() %></td>
                                         </tr>
                                         <%} %>

@@ -15,11 +15,12 @@ let shoppingCart = (() => {
 
     //Constructor
     class cartItem {
-        constructor(productName, productPrice, productImgPath, count) {
+        constructor(productName, productPrice, productImgPath, count, maxQuantity) {
             this.productName = productName;
             this.productPrice = productPrice;
             this.productImgPath = productImgPath;
             this.count = count;
+            this.maxQuantity = maxQuantity;
         }
     }
 
@@ -42,7 +43,7 @@ let shoppingCart = (() => {
     var item = {};
 
     //Method for Add to Cart
-    item.addItemToCart = (productName, productPrice, productImgPath, count) => {
+    item.addItemToCart = (productName, productPrice, productImgPath, count, maxQuatity) => {
         for (var item in cart) {
             if (cart[item].productName === productName) {
                 cart[item].count++;
@@ -50,7 +51,7 @@ let shoppingCart = (() => {
                 return;
             }
         }
-        var item = new cartItem(productName, productPrice, productImgPath, count);
+        var item = new cartItem(productName, productPrice, productImgPath, count, maxQuatity);
         cart.push(item);
         saveCart();
     };
@@ -140,7 +141,8 @@ function addToCart(obj) {
     var productName = $(obj).attr('data-productname');
     var productPrice = (Number)($(obj).attr('data-productprice'));
     var productImgPath = $(obj).attr('data-productimgpath');
-    shoppingCart.addItemToCart(productName, productPrice, productImgPath, 1);
+    var productMaxQuantity = $(obj).attr('data-productmaxquantity');
+    shoppingCart.addItemToCart(productName, productPrice, productImgPath, 1, productMaxQuantity);
     displayCart();
 };
 
@@ -205,7 +207,7 @@ function displayCart() {
                     <button type="button" class="plus-item btn btn-secondary btn-sm mr-2 ml-2" onclick="addOneItem(this)"
                     data-productname="${cartArray[i].productName}">+
                     </button>
-                    <input class="ml-2 mr-1 w-25" min="1" type="number" value="${cartArray[i].count}">
+                    <input class="ml-2 mr-1" style="width: 30%;" min="1" max="${cartArray[i].maxQuantity}" type="number" value="${cartArray[i].count}">
                     <button type="button" class="minus-item btn btn-danger btn-sm ml-1" onclick="removeOneItem(this)"
                     data-productname="${cartArray[i].productName}">
                     -
