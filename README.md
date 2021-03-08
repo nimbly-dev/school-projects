@@ -3,14 +3,17 @@ Repository for Ent Jav 2 Project
 
 TODO:
 
-  1. Bug on confirm-order.jsp where reloading the page will cause to insert again the cart-items data to db.
+  1. BUG: on confirm-order.jsp where reloading the page will cause to insert again the cart-items data to db.
   2. Navbar Highlighting Fix.
-  3. PDF Format Fix (REQUIRED).
-  4. Removing isAvailable to table and update Item interface variable product
-  5. Adding Quantity limit to Cart
-  6. Replace if statement parameter to single-page.jsp, result-page.jsp and product-list.jsp with quantity
+  3. BUG: Time Out Connection upon clicking submit cart button when user has reverted back to product-list.jsp where his/her past page he/she visited is the confirm-order.jsp
   
 0.48:
+
+  * Completely removed isAvailable variable on Product Table and replace it with quantity
+
+  * PDF format is fixed
+
+  * Added Quantity max-limit on cart modal: 
 
   * Added Quantity on Product Table
   
