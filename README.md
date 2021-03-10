@@ -4,9 +4,13 @@ Repository for Ent Jav 2 Project
 TODO:
 
   1. BUG: on confirm-order.jsp where reloading the page will cause to insert again the cart-items data to db.
-  2. Navbar Highlighting Fix.
-  3. BUG: Time Out Connection upon clicking submit cart button when user has reverted back to product-list.jsp where his/her past page he/she visited is the confirm-order.jsp
-  4. DESIGN: Cart Modal Spacing Fix
+  2. BUG: Time Out Connection when deploying Application to Apache Tomcat
+  3. DESIGN: Cart Modal Spacing Fix
+  4. DESIGN: PDF Receipt Fix
+  5. DESIGN: Navbar Highlighting Fix
+  6. REQUIRED: Menu Builder Class for Ordering Items
+  7. REQUIRED: Menu jsp page for selecting what predefined order will be selected by the user
+  8. REQUIRED: UML Class Diagram for Class Builder Design of Products
   
 0.48:
 
