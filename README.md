@@ -8,9 +8,13 @@ TODO:
   3. DESIGN: Cart Modal Spacing Fix
   4. DESIGN: PDF Receipt Fix
   5. DESIGN: Navbar Highlighting Fix
-  6. REQUIRED: Menu Builder Class for Ordering Items
-  7. REQUIRED: Menu jsp page for selecting what predefined order will be selected by the user
-  8. REQUIRED: UML Class Diagram for Class Builder Design of Products
+  6. REQUIRED: Menu jsp page for selecting what predefined order will be selected by the user
+  7. REQUIRED: UML Class Diagram for Class Builder Design of Products
+  8. REQUIRED (CLASS BUILDER SOLUTION): Add packWithBox checkbox on confirm-order.page
+  9. REQUIRED (CLASS BUILDER SOLUTION): Add isPackedWithBox boolean attribute to cart-items tabke
+  10. REQUIRED (CLASS BUILDER SOLUTION): Modify Order Builder to accept the boolean value of isPackedWithBox
+  11. REQUIRED (CLASS BUILDER SOLUTION): Modify insertToCart() singletonDB method to accept boolean value, if checkbox is checked then it is true and if 
+      it is not checked then it is false.
   
 0.48:
 
