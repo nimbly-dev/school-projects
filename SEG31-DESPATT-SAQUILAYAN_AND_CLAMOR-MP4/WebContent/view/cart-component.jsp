@@ -39,14 +39,20 @@
 	                        </thead>
 	                     <!-- USER CART DATA IS HERE -->
 	                    <tbody class="display-cart-items"/>                   		
-	                    
 	                 </table>   
 	                    <div class="modal-footer">
 	                        <div class="row">
 	                            <div class="col d-inline-flex">
+	                            	<div class="custom-control custom-checkbox ml-5 d-flex flex-column align-content-start">
+									  <input type="checkbox" class="custom-control-input" id="isBoxed" name="isBoxed" value="true">
+									  <label class="custom-control-label" for="isBoxed" class="text-left">
+									  	Would you like to place orders in a box?
+									  </label>
+									</div>
 	                                <h5 class="cart-price-total d-flex flex-wrap align-content-start">
-	                                Total: P &nbsp;<span class="total-items-cart mr-3"></span>
+	                                Total: P &nbsp;<span class="total-items-cart ml-5 mr-3"></span>
 	                                </h5>
+	                                
 	                                <button type="button" class="btn btn-secondary mr-1"
 	                                    data-dismiss="modal">Close</button>
 	                                <button type="submit" class="btn btn-primary ml-1">Submit</button>

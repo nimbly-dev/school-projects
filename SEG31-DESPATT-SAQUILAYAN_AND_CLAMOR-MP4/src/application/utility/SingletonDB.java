@@ -45,7 +45,6 @@ public class SingletonDB implements DBOperations, Iterator{
 		productTypeData =  new ArrayList<DisplayProductTypeBean>();
 		productData = new ArrayList<DisplayProductBean>();
 		
-		
 	}
 	
 	public static Connection getDBConnection() {
@@ -73,7 +72,6 @@ public class SingletonDB implements DBOperations, Iterator{
 			: getDBConnection());		
 	}
 	
-	
 	//INITIALIZE TABLE AND FOREIGN KEY CONSTRAINTS
 	public static boolean initializeTablesAndConstraints() {
 		try {
@@ -93,10 +91,19 @@ public class SingletonDB implements DBOperations, Iterator{
 			ptstCreateCartTable.executeUpdate();
 			ptstCreateCartTable.close();
 			
-			//ADD FOREIGN KEY CONSTRAINTs
+			//Create Order Cart Table
+			PreparedStatement ptstCreateOrderTable = conn.prepareStatement(CREATE_CART_ORDER);
+			ptstCreateOrderTable.executeUpdate();
+			ptstCreateOrderTable.close();
+			
+			//ADD FOREIGN KEY CONSTRAINTS
 			PreparedStatement ptstAddForeignKeyProductTypeID = conn.prepareStatement(ADD_FOREIGN_KEY_PRODUCT_TYPE_ID);
 			ptstAddForeignKeyProductTypeID.executeUpdate();
 			ptstAddForeignKeyProductTypeID.close();
+			
+			PreparedStatement ptstAddForeignKeyOrderID = conn.prepareStatement(ADD_FOREIGN_KEY_ORDER_ID);
+			ptstAddForeignKeyOrderID.executeUpdate();
+			ptstAddForeignKeyOrderID.close();
 			
 			conn.close();
 		}catch(SQLException e) {
@@ -312,7 +319,8 @@ public class SingletonDB implements DBOperations, Iterator{
 	}
 	
 	//SingletonDB Method for Inserting Cart Items to DB
-	public static void insertCartProduct(String productName, String productPrice, String productImgPath, String productCount) {
+	public static void insertCartProduct(String productName, String productPrice, String productImgPath, String productCount,
+			int orderID) {
 		Connection conn = getConnection();
 		try {
 			
@@ -323,10 +331,32 @@ public class SingletonDB implements DBOperations, Iterator{
 				ptst.setString(2, productPrice);
 				ptst.setString(3, productImgPath);
 				ptst.setString(4, productCount);
+				ptst.setInt(5, orderID);
+				
 				ptst.executeUpdate();
 				ptst.close();
 				
 			}
+			conn.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//SingletonDB Method for generating an cart-order row to DB
+	public static void generateOrder(int orderID, boolean isBoxed) {
+		Connection conn = getConnection();
+		try {
+			if(conn!= null) {
+				PreparedStatement ptst = conn.prepareStatement(GENERATE_ORDER);
+				
+				ptst.setInt(1, orderID);
+				ptst.setBoolean(2, isBoxed);
+				
+				ptst.executeUpdate();
+				ptst.close();
+			}
+			System.out.println("CART ORDER ROW GENERATED");
 			conn.close();
 		}catch(SQLException e) {
 			e.printStackTrace();

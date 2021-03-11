@@ -34,6 +34,7 @@ public class ProcessPaymentServlet extends HttpServlet {
 		String shippingAddress = request.getParameter("shippingAddress");
 		String emailAddress = request.getParameter("emailAddress");
 		
+		
 		HelperMethods luhn = new HelperMethods();
 		if(luhn.checkCardLuhn(creditCardNumber) == true && securityNumber.length() == 4 || securityNumber.length() == 3) {
 			System.out.println("PAYMENT SUCCESFUL");
@@ -54,6 +55,8 @@ public class ProcessPaymentServlet extends HttpServlet {
 			
 			request.setAttribute("currentDate", currentDate);
 			request.setAttribute("fullName", fullName);
+			
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("payment-successful.jsp");
 			dispatcher.forward(request, response);
 		}else {

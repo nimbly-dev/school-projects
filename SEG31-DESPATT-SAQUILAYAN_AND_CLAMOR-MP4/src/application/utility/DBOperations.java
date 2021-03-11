@@ -23,6 +23,7 @@ public interface DBOperations {
 	
 	final static String CREATE_CART_TABLE = "CREATE TABLE IF NOT EXISTS `cart_items`"
 			+ "(`cartItemID` int(50) NOT NULL AUTO_INCREMENT,"
+			+ "`orderID` int(50) NOT NULL,"
 			+ "`productName` varchar(150) NOT NULL,"
 			+ "`productPrice` varchar(150) NOT NULL,"
 			+ "`productImgPath` varchar(150) NOT NULL,"
@@ -30,9 +31,19 @@ public interface DBOperations {
 			+ "PRIMARY KEY (`cartItemID`) )"
 			+ "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
 	
+	final static String CREATE_CART_ORDER = "CREATE TABLE IF NOT EXISTS `cart_order`"
+			+ "(`orderID` int(50) NOT NULL AUTO_INCREMENT,"
+			+ "`isBoxed` tinyint(1),"
+			+ "PRIMARY KEY (`orderID`) )"
+			+ "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
+	
 	final static String ADD_FOREIGN_KEY_PRODUCT_TYPE_ID = "ALTER TABLE `products` ADD CONSTRAINT `products_ibfk_1` "
 			+ "FOREIGN KEY (`productTypeID`) "
 			+ "REFERENCES `product_types` (`productTypeID`) ON UPDATE CASCADE";
+	
+	final static String ADD_FOREIGN_KEY_ORDER_ID = "ALTER TABLE `cart_items` ADD CONSTRAINT `cart_items_ibfk_1` "
+			+ "FOREIGN KEY (`orderID`) "
+			+ "REFERENCES `cart_order` (`orderID`) ON UPDATE CASCADE";
 	
 	//INSERT OPERATIONS
 	final static String INSERT_PRODUCTS = "INSERT INTO `products`"
@@ -44,8 +55,13 @@ public interface DBOperations {
 			+ "VALUES (?,?,?)";
 	
 	final static String INSERT_CART_ITEMS = "INSERT INTO `cart_items`"
-			+"(productName,productPrice,productImgPath,productCount)"
-			+"VALUES (?,?,?,?)";
+			+"(productName,productPrice,productImgPath,productCount,orderID)"
+			+"VALUES (?,?,?,?,?)";
+	
+	//GENERATE OPERATIONS
+	final static String GENERATE_ORDER = "INSERT INTO `cart_order`"
+			+"(orderID,isBoxed)"
+			+"VALUES (?,?)";
 	
 	//UPDATE OPERATIONS
 	final static String DEDUCT_QUANTITY = "UPDATE products SET quantity = ? WHERE productName = ?";
@@ -75,7 +91,7 @@ public interface DBOperations {
 	
 	final static String RETRIEVE_CART_PRODUCT_QUANTITY = "SELECT `productCount` FROM `cart_items` "
 			+ "WHERE `productName` = ?";
-	
+		
 	//DATA DISPOSAL OPERATIONS
 	final static String CART_DATA_DISPOSAL = "TRUNCATE TABLE `cart_items`";
 	

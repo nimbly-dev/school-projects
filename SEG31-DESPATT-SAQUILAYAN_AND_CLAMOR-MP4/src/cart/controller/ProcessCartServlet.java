@@ -29,6 +29,9 @@ public class ProcessCartServlet extends HttpServlet {
 		String[] productPrice = request.getParameterValues("productPrice");
 		
 		String totalPrice = request.getParameter("totalPrice");
+		boolean isBoxed = Boolean.parseBoolean(request.getParameter("isBoxed"));
+		
+		System.out.println("BOOLEAN ATTRIBUTE isBoxed: " + isBoxed);
 		
 		//If Cancel Button is clicked on confirm-order.jsp 
 		if(isCancelConfirmOrder.contentEquals("true")) {
@@ -42,6 +45,10 @@ public class ProcessCartServlet extends HttpServlet {
 		else if(productNames != null) {
 			HttpSession session = request.getSession();
 			
+			//NEEDS AUTOMATIC ID GENERATOR
+			//Generating Order
+			SingletonDB.generateOrder(1,isBoxed);
+			
 			//Inserting Cart Data to database
 			for(int i=0; i<productNames.length; i++){
 				System.out.println("PRODUCT NAME: " + productNames[i]);
@@ -50,7 +57,9 @@ public class ProcessCartServlet extends HttpServlet {
 				String holder_productImgPath = productImgPath[i];
 				String holder_productCount = productCount[i];
 				String holder_productPrice = productPrice[i];
-				SingletonDB.insertCartProduct(holder_productName, holder_productPrice, holder_productImgPath, holder_productCount);
+				
+				/*TEMPORARY ID IS 1*/
+				SingletonDB.insertCartProduct(holder_productName, holder_productPrice, holder_productImgPath, holder_productCount, 1);
 				
 				/*INEFFICIENT NEED TO BE FIXED*/
 				//Checker if Quantity is 0

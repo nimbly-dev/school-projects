@@ -111,7 +111,7 @@
                                             name="shippingAddress" data-error=".errorTxt5"
                                             placeholder="Enter Shipping Address" required>
                                         <div class="align-self-center text-danger errorTxt5 ml-1"></div>
-                                    </div>
+                                    </div>  
 
                                     <div class="row">
                                         <button type="button" onclick="location.href='process-cart.action?clickedCancelOrder=true'"
