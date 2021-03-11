@@ -116,7 +116,6 @@ public  class PdfGenerator implements DBOperations, Facade{
 	
 	private void GeneratePDF(ByteArrayOutputStream outputStream, String fullNamePDF, String shippingAddressPDF, String emailPDF) throws SQLException, DocumentException{
 		//NOT NULL POINTER SO NEED TO KNOW WHERE TO CALL TO GET CART
-		
 				String sql = DISPLAY_CART_ITEMS;
 				
 				Connection conn = SingletonDB.getConnection();

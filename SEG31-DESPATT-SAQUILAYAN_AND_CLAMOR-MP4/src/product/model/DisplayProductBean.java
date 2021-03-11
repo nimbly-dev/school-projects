@@ -73,5 +73,4 @@ public class DisplayProductBean implements ProductPrototype{
 	}
 	
 	
-	
 }

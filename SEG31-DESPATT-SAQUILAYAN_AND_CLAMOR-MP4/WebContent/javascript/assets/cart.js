@@ -7,8 +7,6 @@
  * SWEETX SHOPPING CART API
  *
 */
-
-
 let shoppingCart = (() => {
     //THIS IS FOR CART ITEMS STORAGE ARRAY
     cart = [];
@@ -230,4 +228,30 @@ function displayCart() {
     $('.total-items-count').html(shoppingCart.totalCount());//Total Quantity
     document.getElementById('totalPrice').value = shoppingCart.totalCart();//Total Price
 }
+
+
+//3x Avocado Cupcake, 3x Strawberry Cupcake, and 3x Valentine Cupcake
+function orderMenuAllCupcake() {
+    shoppingCart.addItemToCart("Avocado Cupcake", 25.00, "images/products/avocado-biscuit-cupcake.PNG", 3, 20);
+    shoppingCart.addItemToCart("Strawberry Cupcake", 20.00, "images/products/strawberry-cupcake.jpg", 3, 20);
+    shoppingCart.addItemToCart("Valentine Cupcake", 30.00, "images/products/images/products/valentine-cupcake.jpg", 3, 20);
+    displayCart();
+}
+
+//5x CandyCane and 5x JellyBeans
+function orderMenuAllCandy() {
+    shoppingCart.addItemToCart("Candy Cane", 10.00, "images/products/candy-cane.jpg", 5, 20);
+    shoppingCart.addItemToCart("Jelly Beans", 15.00, "images/products/jelly-beans.jpg", 5, 20);
+    displayCart();
+}
+
+//3x English Sausage, 3x Puffed Danish Pastry, 
+function orderMenuAllPastry() {
+    shoppingCart.addItemToCart("Puffed Danish Pastry", 75.00, "images/products/puff-sweetflatbread-pastry.jpg", 3, 20);
+    shoppingCart.addItemToCart("English Sausage", 60.00, "images/products/English-Sausage.jpg", 3, 20);
+    shoppingCart.addItemToCart("Churro Sticks", 15.00, "images/products/churro-sticks.jpg", 3, 20);
+    displayCart();
+}
+
 displayCart();
+

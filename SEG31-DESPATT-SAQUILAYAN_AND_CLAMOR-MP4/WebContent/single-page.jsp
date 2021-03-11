@@ -99,7 +99,9 @@
                     	onclick='addToCart(this)'
                         data-productname="${requestScope.displayDetails.getProductName()}"
                         data-productprice="${requestScope.displayDetails.getProductPrice()}"
-                        data-productimgpath="${requestScope.displayDetails.getProductImgPath()}">Add to Cart
+                        data-productimgpath="${requestScope.displayDetails.getProductImgPath()}"
+                        data-productimgpath="${requestScope.displayDetails.getQuantity()}"
+                        >Add to Cart
                     </button>
                 </div>
 

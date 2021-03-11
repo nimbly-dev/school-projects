@@ -1,6 +1,7 @@
 package application.utility;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,16 +29,23 @@ import productType.model.*;
 import productType.model.Candy.Candy;
 import productType.model.Cupcake.Cupcake;
 import productType.model.Pastry.Pastry;
+import application.iterator.*;
 
-public class SingletonDB implements DBOperations{
+public class SingletonDB implements DBOperations, Iterator{
 	
 	//this is defaulted to null
 	private static Connection connection; 
 	
 	
+	ArrayList<DisplayProductBean> productData;
+	ArrayList<DisplayProductTypeBean> productTypeData;
+	
 	
 	private SingletonDB() {
-	
+		productTypeData =  new ArrayList<DisplayProductTypeBean>();
+		productData = new ArrayList<DisplayProductBean>();
+		
+		
 	}
 	
 	public static Connection getDBConnection() {
@@ -414,6 +422,8 @@ public class SingletonDB implements DBOperations{
 			CODE BLOCK TO POPULATEDB WITH PREDEFINED PRODUCT TYPES DATA
 		 */
 		
+		
+		
 		//INSERTING CANDY DATATYPE TO DATABASE  -- ID 1
 		Candy candyProductType = new Candy().clone();
 		
@@ -510,6 +520,11 @@ public class SingletonDB implements DBOperations{
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public Iterator createIterator() {
+		return null;
 	}
 	
 }

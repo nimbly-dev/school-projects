@@ -1,7 +1,5 @@
 package product.model;
 
-import java.io.ByteArrayOutputStream;
-import java.sql.SQLException;
 
 public interface Facade {
 	
