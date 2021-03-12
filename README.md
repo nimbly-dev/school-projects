@@ -13,10 +13,14 @@ TODO:
   8. DESIGN: Remove Clear button on cart modal
   9. REQUIRED: UML Class Diagram for all design patterns used
   10. REQUIRED (CLASS BUILDER SOLUTION): Modify Order Builder to accept the boolean value of isPackedWithBox
-  11. REQUIRED (CLASS BUILDER SOLUTION): Implement Menu Order Builder to cart-modal
   12. REQUIRED (CLASS BUILDER SOULUTION): Implement Menu Order Builder to ProcessCartServlet
+  13. REQUIRED (CLASS BUILDER SOLUTION): Add new Servlet for Class Builder
+  14. REQUIRED (CLASS BUILDER SOLUTION): Implement Servlet URL to menu-order.jsp 
 
 0.50: 
+  
+  * Menu Order Builder to cart-modal
+
   * Added menu-page.jsp
 
   * cart-order table and its reference constraints are added
