@@ -34,6 +34,9 @@
                         <a class="nav-link" href="index.jsp">Home<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
+                       <a class="submit nav-link" href="menu-page.jsp">Our Bundles</a>
+                    </li>
+                    <li class="nav-item">
                        <a class="submit nav-link" href="<%=displayAllUrl%>">Browse Products</a>
                     </li>
                     <li class="nav-item">

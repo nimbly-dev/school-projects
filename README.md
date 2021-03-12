@@ -5,17 +5,19 @@ TODO:
 
   1. BUG: on confirm-order.jsp where reloading the page will cause to insert again the cart-items data to db.
   2. BUG: Time Out Connection when deploying Application to Apache Tomcat
-  3. DESIGN: Cart Modal Spacing Fix
-  4. DESIGN: PDF Receipt Fix
-  5. DESIGN: Navbar Highlighting Fix
-  6. DESIGN: Checkbox isBoxed boolean input Fix
-  7. REQUIRED: Menu jsp page for selecting what predefined order will be selected by the user
-  8. REQUIRED: UML Class Diagram for all design patterns used
-  9. REQUIRED (CLASS BUILDER SOLUTION): Modify Order Builder to accept the boolean value of isPackedWithBox
-  10. REQUIRED (CLASS BUILDER SOLUTION): Implement Menu Order Builder to cart-modal
-  11. REQUIRED (CLASS BUILDER SOULUTION): Implement Menu Order Builder to ProcessCartServlet
+  3. BUG: Only 1 quantity added per item from cart modal when using bundle add to cart (should be +3 everytime)
+  4. DESIGN: Cart Modal Spacing Fix
+  5. DESIGN: PDF Receipt Fix
+  6. DESIGN: Navbar Highlighting Fix
+  7. DESIGN: Checkbox isBoxed boolean input Fix
+  8. DESIGN: Remove Clear button on cart modal
+  9. REQUIRED: UML Class Diagram for all design patterns used
+  10. REQUIRED (CLASS BUILDER SOLUTION): Modify Order Builder to accept the boolean value of isPackedWithBox
+  11. REQUIRED (CLASS BUILDER SOLUTION): Implement Menu Order Builder to cart-modal
+  12. REQUIRED (CLASS BUILDER SOULUTION): Implement Menu Order Builder to ProcessCartServlet
 
 0.50: 
+  * Added menu-page.jsp
 
   * cart-order table and its reference constraints are added
 

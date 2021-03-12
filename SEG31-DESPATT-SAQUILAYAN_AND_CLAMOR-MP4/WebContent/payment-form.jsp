@@ -34,7 +34,10 @@
                         <a class="nav-link" href="index.jsp">Home<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="submit nav-link" href="<%=displayAllUrl%>">Browse Products</a>
+                       <a class="submit nav-link" href="menu-page.jsp">Our Bundles</a>
+                    </li>
+                    <li class="nav-item">
+                       <a class="submit nav-link" href="<%=displayAllUrl%>">Browse Products</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#!">About</a>
@@ -53,7 +56,6 @@
             </div>
         </nav>
     </header>
-
     <main>
         <section class="confirm-order">
             <div class="row" style="margin-left: 10rem;">
