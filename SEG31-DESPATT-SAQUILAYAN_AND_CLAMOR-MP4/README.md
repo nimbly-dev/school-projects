@@ -13,7 +13,6 @@ TODO:
   8.  Deducting Quantity of Product if successful order (REQUIRED) 
 
 0.47:
-  
 
   * Added Shipping Address input box on payment-form.jsp
 

@@ -233,9 +233,7 @@ function displayCart() {
 //3x Avocado Cupcake, 3x Strawberry Cupcake, and 3x Valentine Cupcake
 function orderMenuAllCupcake() {
     shoppingCart.addItemToCart("Avocado Cupcake", 25.00, "images/products/avocado-biscuit-cupcake.PNG", 3, 20);
-    displayCart();
     shoppingCart.addItemToCart("Strawberry Cupcake", 20.00, "images/products/strawberry-cupcake.jpg", 3, 20);
-    displayCart();
     shoppingCart.addItemToCart("Valentine Cupcake", 30.00, "images/products/images/products/valentine-cupcake.jpg", 3, 20);
     displayCart();
 }
@@ -254,8 +252,6 @@ function orderMenuAllPastry() {
     shoppingCart.addItemToCart("Churro Sticks", 15.00, "images/products/churro-sticks.jpg", 3, 20);
     displayCart();
 }
-
-
 
 displayCart();
 

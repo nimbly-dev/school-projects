@@ -8,7 +8,15 @@ public class DisplayProductTypeBean extends ProductType{
 	protected String productTypeName;
 	protected String wrapper;
 	
+	public DisplayProductTypeBean() {
+
+	}
 	
+	public DisplayProductTypeBean(int productTypeID, String productTypeName, String wrap) {
+		this.productTypeId = productTypeID;
+		this.productTypeName = productTypeName;
+		this.wrapper = wrap;
+	}
 	public int getProductTypeId() {
 		return productTypeId;
 	}
@@ -21,12 +29,7 @@ public class DisplayProductTypeBean extends ProductType{
 	public void setProductTypeName(String productTypeName) {
 		this.productTypeName = productTypeName;
 	}
-	public String getWrapper() {
-		return wrapper;
-	}
-	public void setWrapper(String wrapper) {
-		this.wrapper = wrapper;
-	}
+
 	
 	@Deprecated
 	@Override

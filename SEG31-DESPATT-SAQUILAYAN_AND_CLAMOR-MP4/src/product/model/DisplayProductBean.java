@@ -72,5 +72,18 @@ public class DisplayProductBean implements ProductPrototype{
 		this.quantity = quantity;
 	}
 	
+	public DisplayProductBean() {
+
+	}
+	public DisplayProductBean(String productName, String productImgPath, String productInfo, double productPrice, int quantity,
+			int productTypeId) {
+		this.productTypeId = productTypeId;
+		this.productName = productName;
+		this.productImgPath = productImgPath;
+		this.productInfo = productInfo;
+		this.productPrice = productPrice;
+		this.quantity = quantity;
+	}
+	
 	
 }
