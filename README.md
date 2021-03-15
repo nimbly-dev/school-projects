@@ -17,7 +17,12 @@ TODO:
   12. REQUIRED (CLASS BUILDER SOLUTION): Implement Menu Order Builder to cart-modal
   13. REQUIRED (CLASS BUILDER SOULUTION): Implement Menu Order Builder to ProcessCartServlet
 
+ 
+
 0.50: 
+  
+  * Menu Order Builder to cart-modal
+
   * Added menu-page.jsp
 
   * cart-order table and its reference constraints are added
