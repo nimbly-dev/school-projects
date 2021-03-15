@@ -10,27 +10,22 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import application.utility.SingletonDB;
+import product.builder.Order;
+import product.builder.OrderBuilder;
 
-public class ProcessCartServlet extends HttpServlet {
+
+public class ProccessBundledOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		doPost(request,response);
 	}
-
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String isCancelConfirmOrder = request.getParameter("clickedCancelOrder");
-		//Parameter Value Names
-		String[] productNames = request.getParameterValues("productName");
-		String[] productImgPath = request.getParameterValues("productImgPath");
-		String[] productCount = request.getParameterValues("count");
-		String[] productPrice = request.getParameterValues("productPrice");
-		
 		String totalPrice = request.getParameter("totalPrice");
-		boolean isBoxed = Boolean.parseBoolean(request.getParameter("isBoxed"));
-		
-		System.out.println("BOOLEAN ATTRIBUTE isBoxed: " + isBoxed);
 		
 		//If Cancel Button is clicked on confirm-order.jsp 
 		if(isCancelConfirmOrder.contentEquals("true")) {
@@ -41,44 +36,25 @@ public class ProcessCartServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 		//User is coming outside of confirm-order.jsp where submit button on the cart-modal was clicked.
-		else if(productNames != null) {
+		else if(isCancelConfirmOrder.contentEquals("false")) {
+			OrderBuilder orderBuilder = new OrderBuilder();
+			
+			//Insert IF statements
+			Order orderCupcake = orderBuilder.prepareAllCupcakeOrder();
+			
+			orderCupcake.insertBundledOrderToDB();
+			
 			HttpSession session = request.getSession();
-			
-			//NEEDS AUTOMATIC ID GENERATOR
-			//Generating Order
-			SingletonDB.generateOrder(1,isBoxed);
-			
-			//Inserting Cart Data to database
-			for(int i=0; i<productNames.length; i++){
-				System.out.println("PRODUCT NAME: " + productNames[i]);
-				
-				String holder_productName = productNames[i];
-				String holder_productImgPath = productImgPath[i];
-				int holder_productCount = Integer.parseInt(productCount[i]);
-				double holder_productPrice = Double.parseDouble(productPrice[i]);
-				
-				/*TEMPORARY ID IS 1*/
-				SingletonDB.insertCartProduct(holder_productName, holder_productPrice, holder_productImgPath, holder_productCount, 1);
-				
-				/*INEFFICIENT NEED TO BE FIXED*/
-				//Checker if Quantity is 0
-				if(holder_productCount <= 0) {
-					RequestDispatcher dispatcher = request.getRequestDispatcher("error-page.jsp");
-					dispatcher.forward(request, response);
-				}
-			}
 			
 			session.setAttribute("totalPrice", totalPrice);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("confirm-order.jsp");
 			dispatcher.forward(request, response);
-		}
-		
-		else {
+		}else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("error-page.jsp");
 			dispatcher.forward(request, response);
 		}
+		
 	}
-	
 
 }

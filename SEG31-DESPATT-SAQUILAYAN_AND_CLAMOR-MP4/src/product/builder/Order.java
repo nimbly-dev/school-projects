@@ -3,6 +3,7 @@ package product.builder;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.utility.SingletonDB;
 import product.model.ProductItem;
 
 public class Order {
@@ -52,7 +53,13 @@ public class Order {
 		return productImgPath;
 	}
 	
-
+	public void insertBundledOrderToDB() {
+		//Default is 1 needs to be fixed
+		for (ProductItem item : items) {
+			SingletonDB.insertCartProduct(item.productName(), item.productPrice() , item.imgPath(), item.quantity(), 1);
+	    }		
+	}
+	
 	
 	
 }

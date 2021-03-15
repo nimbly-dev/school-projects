@@ -63,6 +63,16 @@
     <url-pattern>/process-payment.action</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>ProccessBundledOrderServlet</servlet-name>
+    <servlet-class>cart.controller.ProccessBundledOrderServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ProccessBundledOrderServlet</servlet-name>
+    <url-pattern>/process-bundled-order.action</url-pattern>
+  </servlet-mapping>
+  
   <!-- Web Listeners  -->
   <listener>
     <listener-class>application.config.InitializeConfig</listener-class>

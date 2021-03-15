@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%!
+<%!
 	String displayAllUrl = "display-products.action?selectedProductType=All";
 %>
 <%@ page import = "application.utility.SingletonDB" %>
@@ -51,41 +51,35 @@
             </div>
         </nav>
     </header>
-    
-    
-   
-   
-   
+    <!--   process-cart.action?clickedCancelOrder=placeholder -->
    <main>
         <section class="product-list">
        
- <div class="row">
-    <div class="d-inline-flex flex-wrap justify-content-between">
-   		<div class="col mt-5">
-            <div class="card" style="width: 18rem;">
-                <img src="images/products/assorted-cupcakes.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Assorted Cupcakes</h5>
-                    <span class='ht-tm-element badge badge-pill badge-primary'>Available</span>
-                    <h4>Price: 10,000Php</h4>
-                    <form action='display-single-product.action' method='POST'>
-                        <input type="hidden" name="selectedProduct" value="">
-                        
-     					<!-- ADD TO CART BUTTON -->
-                        <button type="button" 
-                        onclick='orderMenuAllCupcake()'
-                        class="btn btn-warning mt-2">
-                        Add to cart
-                        </button>
-                        <h5 class="card-title">An Assortment of our delicious cupcakes. Three of each.</h5>
-                        
-                    	</form>
-               		 </div>
-           		 </div>
-       		</div>
-   		 </div>
-   </div>
-   
+		 <div class="row">
+		    <div class="d-inline-flex flex-wrap justify-content-between">
+		   		<div class="col mt-5">
+		            <div class="card" style="width: 18rem;">
+		                <img src="images/products/assorted-cupcakes.jpg" class="card-img-top" alt="...">
+		                <div class="card-body">
+		                    <h5 class="card-title">Assorted Cupcakes</h5>
+		                    <span class='ht-tm-element badge badge-pill badge-primary'>Available</span>
+		                    <h4>Price: 250</h4>
+		                    <form action='process-bundled-order.action?clickedCancelOrder=false' method='POST'>
+		                        <input type="hidden" name="totalPrice" value="250">
+		     					<!-- ADD TO CART BUTTON -->
+		                        <button type="submit" 
+		                        onclick='orderMenuAllCupcake()'
+		                        class="btn btn-warning mt-2">
+		                        Add to cart
+		                        </button>
+		                        <h5 class="card-title">An Assortment of our delicious cupcakes. Three of each.</h5>
+		                        
+		                    	</form>
+		               		 </div>
+		           		 </div>
+		       		</div>
+		   		 </div>
+		   </div>
   
         </section>
     </main>

@@ -10,7 +10,7 @@ TODO:
   5.  Updating Database of Product Table with Quantity (REQUIRED)
   6.  Removing isAvailable to table and product display, and replace it with quantity
   7.  Adding Quantity limit to Cart
-  8.  Deducting Quantity of Product if successful order (REQUIRED) 
+  8.  Deducting Quantity of Product if successful order (REQUIRED. BUG ON PARSE, FLOATING POINT) 
 
 0.47:
 

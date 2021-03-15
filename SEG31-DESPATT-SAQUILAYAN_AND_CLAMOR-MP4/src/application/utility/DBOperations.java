@@ -25,9 +25,9 @@ public interface DBOperations {
 			+ "(`cartItemID` int(50) NOT NULL AUTO_INCREMENT,"
 			+ "`orderID` int(50) NOT NULL,"
 			+ "`productName` varchar(150) NOT NULL,"
-			+ "`productPrice` varchar(150) NOT NULL,"
+			+ "`productPrice` double NOT NULL,"
 			+ "`productImgPath` varchar(150) NOT NULL,"
-			+ "`productCount` varchar(150) NOT NULL,"
+			+ "`productCount` double NOT NULL,"
 			+ "PRIMARY KEY (`cartItemID`) )"
 			+ "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
 	

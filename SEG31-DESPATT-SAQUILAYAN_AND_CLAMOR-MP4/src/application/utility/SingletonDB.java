@@ -1,94 +1,39 @@
 package application.utility;
 
 import java.sql.Connection;
-
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-import javax.imageio.spi.ServiceRegistry;
+
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import cart.model.CartItemBean;
-import packaging.model.Wrapper;
+
 import product.exceptions.ProductNotFoundException;
 import product.model.*;
-import product.model.AvocadoCupcake.AvocadoCupcake;
-import product.model.CandyCane.CandyCane;
-import product.model.ChurroSticks.ChurroSticks;
-import product.model.EnglishSausage.EnglishSausage;
-import product.model.JellyBeans.JellyBeans;
-import product.model.PuffedDanishPastry.PuffedDanishPastry;
-import product.model.StrawberryCupcake.StrawberryCupcake;
-import product.model.ValentineCupcake.ValentineCupcake;
+
 import productType.model.*;
-import productType.model.Candy.Candy;
-import productType.model.Cupcake.Cupcake;
-import productType.model.Pastry.Pastry;
 import application.iterator.*;
 
-public class SingletonDB implements DBOperations, Iterator{
+public class SingletonDB implements DBOperations{
+	
+	static ProductData productData;
+	static ProductTypeData productTypeData;
+	
+	static ProductIterator iterProduct;
+	static ProductIterator iterProductType;
 	
 	//this is defaulted to null
 	private static Connection connection; 
-	static Iterator iterProduct;
+
 	
-	ArrayList<DisplayProductBean> productData;
-	ArrayList<DisplayProductTypeBean> productTypeData;
-	
-	
-	//Product Data Initializers
-	private SingletonDB() {
-		productTypeData =  new ArrayList<DisplayProductTypeBean>();
-		productData = new ArrayList<DisplayProductBean>();
-		
-		
-		//Declaration of Product and ProductType Class
-		Candy candyProductType = new Candy().clone();
-		Cupcake cupcakeProductType = new Cupcake().clone();
-		Pastry pastryProductType = new Pastry().clone();
-		
-		Product avocadoCupcake = new AvocadoCupcake().clone();
-		Product churroSticks = new ChurroSticks().clone();
-		Product candyCane = new CandyCane().clone();
-		Product valentineCupcake = new ValentineCupcake().clone();
-		Product jellyBeans = new JellyBeans().clone();
-		Product puffedDanishPastry = new PuffedDanishPastry().clone();
-		Product strawberryCupcake = new StrawberryCupcake().clone();
-		Product englishSausage = new EnglishSausage().clone();
-		
-	
-		addProductType(candyProductType.productTypeId(), candyProductType.productTypeName(), candyProductType.wrapper().wrap());// ID 1
-		addProductType(cupcakeProductType.productTypeId(), cupcakeProductType.productTypeName(), cupcakeProductType.wrapper().wrap());// ID 2
-		addProductType(pastryProductType.productTypeId(), pastryProductType.productTypeName(), pastryProductType.wrapper().wrap());// ID 3
-		
-		addProduct(avocadoCupcake.productName(), avocadoCupcake.imgPath(), avocadoCupcake.productInfo(), 
-				avocadoCupcake.productPrice(), avocadoCupcake.quantity(), cupcakeProductType.productTypeId());
-		
-		addProduct(churroSticks.productName(), churroSticks.imgPath(), churroSticks.productInfo(), 
-				churroSticks.productPrice(), churroSticks.quantity(), pastryProductType.productTypeId());
-		
-		addProduct(candyCane.productName(), candyCane.imgPath(), candyCane.productInfo(), 
-				candyCane.productPrice(), candyCane.quantity(), candyProductType.productTypeId());
-		
-		addProduct(valentineCupcake.productName(), valentineCupcake.imgPath(), valentineCupcake.productInfo(), 
-				valentineCupcake.productPrice(), valentineCupcake.quantity(), cupcakeProductType.productTypeId());
-		
-		addProduct(jellyBeans.productName(), jellyBeans.imgPath(), jellyBeans.productInfo(), 
-				jellyBeans.productPrice(), jellyBeans.quantity(), candyProductType.productTypeId());
-		
-		addProduct(puffedDanishPastry.productName(), puffedDanishPastry.imgPath(), puffedDanishPastry.productInfo(), 
-				puffedDanishPastry.productPrice(), puffedDanishPastry.quantity(), pastryProductType.productTypeId());
-		
-		addProduct(strawberryCupcake.productName(), strawberryCupcake.imgPath(), strawberryCupcake.productInfo(), 
-				strawberryCupcake.productPrice(), strawberryCupcake.quantity(), pastryProductType.productTypeId());
-		
-		System.out.println("CALLED SINGLETONDB CONSTRUCTOR");
+	private SingletonDB() {	
 	}
 	
 	public static Connection getDBConnection() {
@@ -161,45 +106,25 @@ public class SingletonDB implements DBOperations, Iterator{
 		return true;
 	}
 	
-	/*PRINT PRODUCTS*/
-	//SingletonDB method that will get all produts for display 
-	public static List<DisplayProductBean> getAllProducts(){
-		//Calls data from the Database and creates an Array List
-		List<DisplayProductBean> products = new ArrayList<DisplayProductBean>();
-		try {
-			Connection conn = getConnection();
-			PreparedStatement st = conn.prepareStatement(DISPLAY_ALL_PRODUCTS);
-			ResultSet rs = st.executeQuery();
-			while(rs.next()) {
-				DisplayProductBean product = new DisplayProductBean();
-				//Initialize ProductType in order to avoid Null Pointer Exception
-				DisplayProductTypeBean productType = new DisplayProductTypeBean();
-				product.setProductType(productType);
-				
-				product.setProductImgPath(rs.getString("imgPath"));
-				product.setProductId(rs.getInt("productID"));
-				product.setProductInfo(rs.getString("productInfo"));
-				product.setProductName(rs.getString("productName"));
-				product.setProductPrice(rs.getDouble("productPrice"));
-				
-				((DisplayProductTypeBean) product.getProductType()).setProductTypeId(rs.getInt("productTypeID"));
-				
-				products.add(product);
-			}
-		}catch(SQLException sqlException){
-			sqlException.getStackTrace();
-		}
-		return products;
-	}
-	
 	/**PRODUCT SORT METHOD*/
 	//SingletonDB method that will get Product list based on user input
 	public static List<DisplayProductBean> getProductList(String selectedTypeOfProduct){
+		//Initialize Iterator
+		productData = new ProductData();
+		productTypeData = new ProductTypeData();
+		
+		initialize(productData,productTypeData);
+		
 		//Calls data from the Database and creates an Array List
 		List<DisplayProductBean> products = new ArrayList<DisplayProductBean>();
 		try {
 			Connection conn = getConnection();
 			PreparedStatement st = null;
+			
+			//Adds Product data to DB
+			Iterator<DisplayProductBean> productIterator = iterProduct.createIterator();
+			//Iterator<DisplayProductTypeBean> productTypeIterator = iterProductType.createIterator();
+			
 			if(selectedTypeOfProduct.equalsIgnoreCase("Candy")) {
 				st = conn.prepareStatement(DISPLAY_CANDY);
 			}else if(selectedTypeOfProduct.equalsIgnoreCase("Cupcake")){
@@ -210,10 +135,13 @@ public class SingletonDB implements DBOperations, Iterator{
 			    st = conn.prepareStatement(DISPLAY_ALL_PRODUCTS);
 			}
 			ResultSet rs = st.executeQuery();
-			while(rs.next()) {
-				DisplayProductBean product = new DisplayProductBean();
-				//Initialize ProductType in order to avoid Null Pointer Exception
+			while(rs.next() && productIterator.hasNext()/* && productTypeIterator.haxNext()*/) {
+				DisplayProductBean product = (DisplayProductBean) productIterator.next();
+				//Initialize ProductType in order to avoid Null Pointer Exception 
+				//ITERATOR PRODUCT TYPECURRENTLY NOT WORKING: POSSIBLE PROBLEM IS THAT ITERATOR IS SEQUENTIAL
+				//DisplayProductTypeBean productType = (DisplayProductTypeBean) productTypeIterator.next();
 				DisplayProductTypeBean productType = new DisplayProductTypeBean();
+				
 				product.setProductType(productType);
 				
 				product.setProductImgPath(rs.getString("imgPath"));
@@ -223,7 +151,7 @@ public class SingletonDB implements DBOperations, Iterator{
 				product.setProductPrice(rs.getDouble("productPrice"));
 				product.setQuantity(rs.getInt("quantity"));
 				
-				((DisplayProductTypeBean) product.getProductType()).setProductTypeId(rs.getInt("productTypeID"));
+				( (DisplayProductTypeBean) product.getProductType()).setProductTypeId(rs.getInt("productTypeID"));
 				
 				products.add(product);
 			}	
@@ -237,8 +165,13 @@ public class SingletonDB implements DBOperations, Iterator{
 	}
 	
 	//SingletonDB Method for Getting Product
-	//SingletonDB method that will specific product
 	public static DisplayProductBean getProduct(String searchInput) throws ProductNotFoundException {
+		//Initialize Iterator
+		productData = new ProductData();
+		productTypeData = new ProductTypeData();
+		
+		initialize(productData,productTypeData);
+		
 		Factory factory = new Factory();
 		try {
 			Connection conn = factory.getConnectionObject(searchInput);
@@ -247,8 +180,12 @@ public class SingletonDB implements DBOperations, Iterator{
 				ptst.setString(1, searchInput);
 				ResultSet rs = ptst.executeQuery();
 				
-				DisplayProductBean product = new DisplayProductBean();
-				while(rs.next()) {
+				//Adds Product data to DB
+				Iterator<DisplayProductBean> productIterator = iterProduct.createIterator();
+
+				while(rs.next() && productIterator.hasNext()) {
+					DisplayProductBean product = (DisplayProductBean) productIterator.next();
+					
 					//MAIN DATA
 					product.setProductName(rs.getString("productName"));
 					product.setProductInfo(rs.getString("productInfo"));
@@ -258,9 +195,9 @@ public class SingletonDB implements DBOperations, Iterator{
 					
 					//FOR SQL QUERIES
 					product.setProductTypeId(rs.getInt("productTypeID"));
+					return product;
 				}
 				conn.close();
-				return product;
 			}
 		}catch(SQLException sqle) {
 			sqle.getStackTrace();
@@ -269,7 +206,6 @@ public class SingletonDB implements DBOperations, Iterator{
 	}
 	
 	//SingletonDB Method for Getting Product Type
-	//SingletonDB method that will get product Type
 	public static DisplayProductTypeBean getProductType(int productTypeID) {
 		try {
 			Connection conn = getConnection();
@@ -294,7 +230,6 @@ public class SingletonDB implements DBOperations, Iterator{
 	}
 	
 	//SingletonDB Method for Getting Cart-Item
-	//SingletonDB method get all cart items
 	public static List<CartItemBean> getCartItems() {
 		try {
 			Connection conn = getConnection();
@@ -322,7 +257,6 @@ public class SingletonDB implements DBOperations, Iterator{
 	}
 	
 	//SingletonDB Method for Inserting Products to DB
-	//SingletonDB method that will insert products
 	public static void insertProducts(
 			String productName, String imgPath,
 			String productInfo,double productPrice,
@@ -351,7 +285,6 @@ public class SingletonDB implements DBOperations, Iterator{
 	}
 	
 	//SingletonDB Method for Inserting Product Types to DB
-	//SingletonDB method that will insert product types
 	public static void insertProductTypes(int ProductTypeID, String productTypeName,String wrapper) {
 		try {
 			Connection conn = getConnection();
@@ -372,8 +305,7 @@ public class SingletonDB implements DBOperations, Iterator{
 	}
 	
 	//SingletonDB Method for Inserting Cart Items to DB
-	//SingletonDB method for inserting user cart
-	public static void insertCartProduct(String productName, String productPrice, String productImgPath, String productCount,
+	public static void insertCartProduct(String productName, double productPrice, String productImgPath, int productCount,
 			int orderID) {
 		Connection conn = getConnection();
 		try {
@@ -382,9 +314,9 @@ public class SingletonDB implements DBOperations, Iterator{
 				PreparedStatement ptst = conn.prepareStatement(INSERT_CART_ITEMS);
 				
 				ptst.setString(1, productName);
-				ptst.setString(2, productPrice);
+				ptst.setDouble(2, productPrice);
 				ptst.setString(3, productImgPath);
-				ptst.setString(4, productCount);
+				ptst.setInt(4, productCount);
 				ptst.setInt(5, orderID);
 				
 				ptst.executeUpdate();
@@ -398,7 +330,6 @@ public class SingletonDB implements DBOperations, Iterator{
 	}
 	
 	//SingletonDB Method for generating an cart-order row to DB
-	//SingletonDB method for generating order
 	public static void generateOrder(int orderID, boolean isBoxed) {
 		Connection conn = getConnection();
 		try {
@@ -419,7 +350,6 @@ public class SingletonDB implements DBOperations, Iterator{
 	}
 	
 	//SingletonDB Method for Getting Product Quantity of Cart Product
-	//SingletonDB method for getting the cart quantity
 	public static int getCartProductQuantity(String productName) {
 		Connection conn = getConnection();	
 		try {
@@ -444,7 +374,6 @@ public class SingletonDB implements DBOperations, Iterator{
 	}
 	
 	//SingletonDB Method for Getting Quantity of Specified Product
-	//SingletonDB method for getting the product quantity
 	public static int getProductQuantity(String productName) {
 		Connection conn = getConnection();	
 		try {
@@ -468,8 +397,7 @@ public class SingletonDB implements DBOperations, Iterator{
 		return 0;
 	}
 	
-	//SingletonDB Method for Deducting Cart 
-	//SingletonDB method for deducting the original product quantity based on the quantity on the cart
+	//SingletonDB Method for deducting the original product quantity based on the quantity on the cart
 	public static void deductQuantityCart(int originalQuantity, int orderQuantity, String productName) {
 		Connection conn = getConnection();
 		try {
@@ -489,9 +417,8 @@ public class SingletonDB implements DBOperations, Iterator{
 			e.printStackTrace();
 		}
 	}
-	
-	//SingletonDB Method for Dispoting Cart Table Data
-	//SingletonDB method that will dispose cart table data
+
+	//SingletonDB Method that will dispose cart table data
 	public static void disposeCartTableData() {
 		Connection conn = getConnection();
 		try {
@@ -507,91 +434,32 @@ public class SingletonDB implements DBOperations, Iterator{
 	
 	//PopulateDB with pre-defined products and product types
 	public static void populateDb() {
-		/**
-			CODE BLOCK TO POPULATEDB WITH PREDEFINED PRODUCT TYPES DATA
-		 */
+		productData = new ProductData();
+		productTypeData = new ProductTypeData();
 		
-		//INSERTING CANDY DATATYPE TO DATABASE  -- ID 1
-		Candy candyProductType = new Candy().clone();
+		initialize(productData,productTypeData);
 		
-		insertProductTypes(candyProductType.productTypeId(), candyProductType.productTypeName(), candyProductType.wrapper().wrap() );
 		
-		//INSERTING CUPCAKE DATATYPE TO DATABASE -- ID 2
-		Cupcake cupcakeProductType = new Cupcake().clone();
+		//Adds Product Type Data to DB
+		Iterator<DisplayProductTypeBean> productTypeIterator = iterProductType.createIterator();
 		
-		insertProductTypes(cupcakeProductType.productTypeId(), cupcakeProductType.productTypeName(), cupcakeProductType.wrapper().wrap());
-		
-		//INSERTING PASTRY DATATYPE TO DATABASE -- ID 3
-		Pastry pastryProductType = new Pastry().clone();
-		
-		insertProductTypes(pastryProductType.productTypeId(), pastryProductType.productTypeName(), pastryProductType.wrapper().wrap());
-		
-		/**END OF PRODUCT TYPE INSERTION*/
-		
-		/**
-		CODE BLOCK TO POPULATEDB WITH PREDEFINED PRODUCTS DATA
-		 */
-		
-		//INSERTING AVOCADO CUPCAKE TO DATABASE
-		Product avocadoCupcake = new AvocadoCupcake().clone();
-		
-					
-		insertProducts(avocadoCupcake.productName(), avocadoCupcake.imgPath(), 
-				avocadoCupcake.productInfo(), avocadoCupcake.productPrice(), 
-				 avocadoCupcake.quantity() ,cupcakeProductType.productTypeId());
-		
+		while(productTypeIterator.hasNext()) {
+			DisplayProductTypeBean productType = (DisplayProductTypeBean) productTypeIterator.next();
 			
-		//INSERTING CHURRO STICKS TO DATABASE
-		Product churroSticks = new ChurroSticks().clone();
-		
-		insertProducts(churroSticks.productName(), churroSticks.imgPath(), 
-				churroSticks.productInfo(), churroSticks.productPrice(), 
-				churroSticks.quantity() ,pastryProductType.productTypeId());
-
-		
-		//INSERTING CANDY CANE TO DATABASE
-		Product candyCane = new CandyCane().clone();
-		
-		insertProducts(candyCane.productName(), candyCane.imgPath(), 
-				candyCane.productInfo(), candyCane.productPrice(), 
-				candyCane.quantity() ,candyProductType.productTypeId());
-		
-		//INSERTING VALENTINE CUPCAKE TO DATABASE
-		Product valentineCupcake = new ValentineCupcake().clone();
-				
-		insertProducts(valentineCupcake.productName(), valentineCupcake.imgPath(), 
-				valentineCupcake.productInfo(), valentineCupcake.productPrice(), 
-				valentineCupcake.quantity() ,cupcakeProductType.productTypeId());
+			insertProductTypes(productType.getProductTypeId(), productType.getProductTypeName(), productType.getWrapper());
+		}
 		
 		
-		//INSERTING JELLY BEANS TO DATABASE
-		Product jellyBeans = new JellyBeans().clone();
-						
-		insertProducts(jellyBeans.productName(), jellyBeans.imgPath(), 
-				jellyBeans.productInfo(), jellyBeans.productPrice(), 
-				 jellyBeans.quantity() ,candyProductType.productTypeId());
-		
-		//INSERTING Puffed Danish Pastry TO DATABASE
-		Product puffedDanishPastry = new PuffedDanishPastry().clone();
-						
-		insertProducts(puffedDanishPastry.productName(), puffedDanishPastry.imgPath(), 
-				puffedDanishPastry.productInfo(), puffedDanishPastry.productPrice(), 
-				 puffedDanishPastry.quantity() ,pastryProductType.productTypeId());
+		//Adds Product data to DB
+		Iterator<DisplayProductBean> productIterator = iterProduct.createIterator();
 		
 		
-		//INSERTING STRAWBERRY CUPCAKE TO DATABASE
-		Product strawberryCupcake = new StrawberryCupcake().clone();
-						
-		insertProducts(strawberryCupcake.productName(), strawberryCupcake.imgPath(), 
-				strawberryCupcake.productInfo(), strawberryCupcake.productPrice(), 
-				 strawberryCupcake.quantity() ,pastryProductType.productTypeId());
-		
-		//INSERTING ENGLISH SAUSAGE TO DATABASE
-		Product englishSausage = new EnglishSausage().clone();
-					
-		insertProducts(englishSausage.productName(), englishSausage.imgPath(), 
-				englishSausage.productInfo(), englishSausage.productPrice(), 
-				 englishSausage.quantity() ,pastryProductType.productTypeId());
+		while(productIterator.hasNext()) {
+			DisplayProductBean product = (DisplayProductBean) productIterator.next();
+			
+			insertProducts(product.getProductName(),product.getProductImgPath(),
+					product.getProductInfo(),product.getProductPrice(),product.getQuantity(), product.getProductTypeId());
+		}
 		
 	}
 	
@@ -609,22 +477,11 @@ public class SingletonDB implements DBOperations, Iterator{
 		}
 	}
 
-	@Override
-	public Iterator createIterator() {
-		return null;
+	//INSIDE SINGLETONDB METHOD FUNCTIONS
+	public static void initialize(ProductIterator newProductData, ProductIterator newProductType) {
+		iterProduct = newProductData;
+		iterProductType = newProductType;
 	}
 	
-	public void addProduct(String productName,String imgPath,String productInfo,
-			double productPrice,int quantity,int productTypeID) {
-		DisplayProductBean product = new DisplayProductBean
-				(productName,imgPath,productInfo,
-						productPrice,quantity,productTypeID);
-		productData.add(product);
-	}
-	
-	public void addProductType(int productTypeID, String productTypeName, String string) {
-		DisplayProductTypeBean productType = new DisplayProductTypeBean(productTypeID, productTypeName, string);
-		productTypeData.add(productType);
-	}
 	
 }

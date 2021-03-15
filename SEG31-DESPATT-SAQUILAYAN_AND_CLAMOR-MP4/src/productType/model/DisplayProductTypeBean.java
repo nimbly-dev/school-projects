@@ -8,14 +8,16 @@ public class DisplayProductTypeBean extends ProductType{
 	protected String productTypeName;
 	protected String wrapper;
 	
+	public Wrapper wrapperType;
+	
 	public DisplayProductTypeBean() {
 
 	}
 	
-	public DisplayProductTypeBean(int productTypeID, String productTypeName, String wrap) {
+	public DisplayProductTypeBean(int productTypeID, String productTypeName, String wrapper) {
 		this.productTypeId = productTypeID;
 		this.productTypeName = productTypeName;
-		this.wrapper = wrap;
+		this.wrapper = wrapper;
 	}
 	public int getProductTypeId() {
 		return productTypeId;
@@ -30,22 +32,34 @@ public class DisplayProductTypeBean extends ProductType{
 		this.productTypeName = productTypeName;
 	}
 
-	
-	@Deprecated
+	public String getWrapper() {
+		return wrapper;
+	}
+
+	public void setWrapper(String wrapper) {
+		this.wrapper = wrapper;
+	}
+
 	@Override
 	public int productTypeId() {
-		return 0;
+		// TODO Auto-generated method stub
+		return productTypeId;
 	}
-	@Deprecated
+
 	@Override
 	public String productTypeName() {
-		return null;
+		// TODO Auto-generated method stub
+		return productTypeName;
 	}
-	@Deprecated
+
 	@Override
 	public Wrapper wrapper() {
-		return null;
+		// TODO Auto-generated method stub
+		return wrapperType;
 	}
+
+	
+
 	
 	
 	
