@@ -1,5 +1,6 @@
 package product.builder;
 
+import product.model.DisplayProductBean;
 import product.model.AvocadoCupcake.AvocadoCupcake;
 import product.model.CandyCane.CandyCane;
 import product.model.ChurroSticks.ChurroSticks;
@@ -12,10 +13,16 @@ import product.model.ValentineCupcake.ValentineCupcake;
 public class OrderBuilder {
 	
 	public Order prepareAllCupcakeOrder() {
+		AvocadoCupcake avocadoCupcake = new AvocadoCupcake();
+		avocadoCupcake.setCount(3);
+		ValentineCupcake valentineCupcake = new ValentineCupcake();
+		valentineCupcake.setCount(3);
+		StrawberryCupcake strawberryCupcake = new StrawberryCupcake();
+		strawberryCupcake.setCount(3);
 		Order order = new Order();
-		order.addItem(new AvocadoCupcake());
-		order.addItem(new StrawberryCupcake());
-		order.addItem(new ValentineCupcake());
+		order.addItem(avocadoCupcake);
+		order.addItem(valentineCupcake);
+		order.addItem(strawberryCupcake);
 		
 		return order;
 	}

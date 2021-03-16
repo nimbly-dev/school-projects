@@ -3,7 +3,7 @@ package cart.model;
 public class CartItemBean {
 	private String productName;
 	private String productPrice;
-	private String count;
+	private int count;
 	private String productImgPath;
 	
 	
@@ -19,10 +19,10 @@ public class CartItemBean {
 	public void setProductPrice(String productPrice) {
 		this.productPrice = productPrice;
 	}
-	public String getCount() {
+	public int getCount() {
 		return count;
 	}
-	public void setCount(String count) {
+	public void setCount(int count) {
 		this.count = count;
 	}
 	public String getProductImgPath() {
@@ -32,7 +32,7 @@ public class CartItemBean {
 		this.productImgPath = productImgPath;
 	}
 	
-	public CartItemBean(String productName, String productPrice, String count, String productImgPath) {
+	public CartItemBean(String productName, String productPrice, int count, String productImgPath) {
 		this.productName = productName;
 		this.productPrice = productPrice;
 		this.count = count;
@@ -41,6 +41,7 @@ public class CartItemBean {
 	
 	public CartItemBean() {
 	}
+
 	
 	
 }

@@ -6,7 +6,7 @@ import productType.model.ProductType;
 
 public class ValentineCupcake extends Product implements ProductPrototype{
 	
-	
+	int count = 20;
 	
 	//CLONING
 	@Override
@@ -51,6 +51,14 @@ public class ValentineCupcake extends Product implements ProductPrototype{
 	
 	@Override
 	public int quantity() {
-		return 20;
+		return count;
 	}
+
+	@Override
+	public void setCount(int count) {
+		// TODO Auto-generated method stub
+		this.count = count;
+	}
+
+
 }

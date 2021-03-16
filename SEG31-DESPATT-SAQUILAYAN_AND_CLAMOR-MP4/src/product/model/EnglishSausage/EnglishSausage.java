@@ -7,7 +7,7 @@ import productType.model.Pastry.Pastry;
 
 public class EnglishSausage extends Product implements ProductPrototype{
 
-	
+	int count = 20;
 	//CLONING
 	@Override
 	public EnglishSausage clone() {
@@ -56,6 +56,14 @@ public class EnglishSausage extends Product implements ProductPrototype{
 	@Override
 	public int quantity() {
 		return 20;
+	}
+
+	
+
+	@Override
+	public void setCount(int count) {
+		this.count = count;
+		
 	}
 	
 }

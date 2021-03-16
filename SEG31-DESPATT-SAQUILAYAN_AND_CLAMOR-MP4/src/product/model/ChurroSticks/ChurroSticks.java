@@ -7,7 +7,7 @@ import productType.model.Pastry.Pastry;
 
 public class ChurroSticks extends Product implements ProductPrototype{
 	
-	
+	int count = 0;
 	//CLONING
 	@Override
 	public ChurroSticks clone() {
@@ -57,6 +57,13 @@ public class ChurroSticks extends Product implements ProductPrototype{
 	@Override
 	public int quantity() {
 		return 0;
+	}
+
+	
+	@Override
+	public void setCount(int count) {
+		this.count = count;
+		
 	}
 	
 }

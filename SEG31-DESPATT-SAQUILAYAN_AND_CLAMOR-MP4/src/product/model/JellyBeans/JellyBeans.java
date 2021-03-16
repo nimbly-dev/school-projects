@@ -8,7 +8,7 @@ import productType.model.Candy.Candy;
 public class JellyBeans extends Product implements ProductPrototype{
 	
 	
-	
+	int count = 20;
 	//CLONING
 	@Override
 	public JellyBeans clone() {
@@ -55,6 +55,14 @@ public class JellyBeans extends Product implements ProductPrototype{
 
 	@Override
 	public int quantity() {
-		return 20;
+		return count;
 	}
+
+	@Override
+	public void setCount(int count) {
+		this.count = count;
+		
+	}
+
+	
 }

@@ -27,7 +27,7 @@ public interface DBOperations {
 			+ "`productName` varchar(150) NOT NULL,"
 			+ "`productPrice` double NOT NULL,"
 			+ "`productImgPath` varchar(150) NOT NULL,"
-			+ "`productCount` double NOT NULL,"
+			+ "`productCount` int NOT NULL,"
 			+ "PRIMARY KEY (`cartItemID`) )"
 			+ "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
 	

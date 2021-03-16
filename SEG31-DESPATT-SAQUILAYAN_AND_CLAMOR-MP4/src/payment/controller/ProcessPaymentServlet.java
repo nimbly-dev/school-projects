@@ -44,7 +44,7 @@ public class ProcessPaymentServlet extends HttpServlet {
 			for(CartItemBean cartItem: SingletonDB.getCartItems()){
 				int holder_originalProductCount = SingletonDB.getProductQuantity(cartItem.getProductName());//Original Count Product
 				
-				SingletonDB.deductQuantityCart(holder_originalProductCount, Integer.parseInt(cartItem.getCount()),
+				SingletonDB.deductQuantityCart(holder_originalProductCount, cartItem.getCount(),
 						cartItem.getProductName());
 			}
 			

@@ -25,6 +25,11 @@ public class ProcessCartServlet extends HttpServlet {
 		String[] productNames = request.getParameterValues("productName");
 		String[] productImgPath = request.getParameterValues("productImgPath");
 		String[] productCount = request.getParameterValues("count");
+		int size = productCount.length;
+		int [] countArray = new int[size];
+			for(int i = 0; i<size; i++) {
+				countArray[i] = Integer.parseInt(productCount[i]);
+			}
 		String[] productPrice = request.getParameterValues("productPrice");
 		
 		String totalPrice = request.getParameter("totalPrice");
@@ -54,7 +59,7 @@ public class ProcessCartServlet extends HttpServlet {
 				
 				String holder_productName = productNames[i];
 				String holder_productImgPath = productImgPath[i];
-				int holder_productCount = Integer.parseInt(productCount[i]);
+				int holder_productCount = countArray[i];
 				double holder_productPrice = Double.parseDouble(productPrice[i]);
 				
 				/*TEMPORARY ID IS 1*/

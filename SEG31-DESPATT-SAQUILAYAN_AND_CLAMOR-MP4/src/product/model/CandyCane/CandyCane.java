@@ -6,6 +6,7 @@ import productType.model.ProductType;
 
 public class CandyCane extends Product implements ProductPrototype{
 
+	int count = 0;
 	
 	//CLONING
 	@Override
@@ -57,6 +58,14 @@ public class CandyCane extends Product implements ProductPrototype{
 	@Override
 	public int quantity() {
 		return 0;
+	}
+
+	
+
+	@Override
+	public void setCount(int count) {
+	 this.count = count;
+		
 	}
 	
 

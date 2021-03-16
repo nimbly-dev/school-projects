@@ -243,7 +243,7 @@ public class SingletonDB implements DBOperations{
 					cart.setProductName(rs.getString("productName"));
 					cart.setProductImgPath(rs.getString("productImgPath"));
 					cart.setProductPrice(rs.getString("productPrice"));
-					cart.setCount(rs.getString("productCount"));
+					cart.setCount(rs.getInt("productCount"));
 					
 					cartItems.add(cart);
 				}
