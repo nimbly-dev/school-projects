@@ -433,11 +433,13 @@ public class SingletonDB implements DBOperations{
 	}
 	
 	//SingletonDB Method that will dispose order table data
-	public static void disposeGeneratedOrder() {
+	public static void disposeGeneratedOrder(int orderId) {
 		Connection conn = getConnection();
 		try {
 			if(conn!=null) {
 				PreparedStatement ptst = conn.prepareStatement(ORDER_GENERATED_DISPOSAL);
+				
+				ptst.setInt(1, orderId);
 				
 				ptst.executeUpdate();
 			}

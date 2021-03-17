@@ -31,7 +31,7 @@ public class ProccessBundledOrderServlet extends HttpServlet {
 		if(isCancelConfirmOrder.contentEquals("true")) {
 			System.out.println("DISPOSING CART DATA NOW");
 			SingletonDB.disposeCartTableData();
-			SingletonDB.disposeGeneratedOrder();
+			SingletonDB.disposeGeneratedOrder(1);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);

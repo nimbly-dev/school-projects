@@ -29,7 +29,7 @@ public class ProcessCartServlet extends HttpServlet {
 		if(isCancelConfirmOrder.contentEquals("true")) {
 			System.out.println("DISPOSING CART DATA AND GENERATED ORDER");
 			SingletonDB.disposeCartTableData();
-			SingletonDB.disposeGeneratedOrder();
+			SingletonDB.disposeGeneratedOrder(1);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
