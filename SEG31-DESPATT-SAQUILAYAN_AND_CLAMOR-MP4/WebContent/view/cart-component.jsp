@@ -27,6 +27,7 @@
                 
               <form action="process-cart.action?clickedCancelOrder=placeholder" method="POST">
                 	<input type="hidden" id="totalPrice" value="" name="totalPrice">
+    				<input type="hidden" id="totalQuantity" value="" name="totalQuantity">
 	                <div class="modal-body">
 	                   <table class="table table-borderless">
 	                        <thead>
@@ -45,9 +46,6 @@
 	                            <div class="col d-inline-flex">
 	                            	<div class="custom-control custom-checkbox ml-5 d-flex flex-column align-content-start">
 									  <input type="checkbox" class="custom-control-input" id="isBoxed" name="isBoxed" value="true">
-									  <label class="custom-control-label" for="isBoxed" class="text-left">
-									  	Would you like to place orders in a box?
-									  </label>
 									</div>
 	                                <h5 class="cart-price-total d-flex flex-wrap align-content-start">
 	                                Total: P &nbsp;<span class="total-items-cart ml-5 mr-3"></span>

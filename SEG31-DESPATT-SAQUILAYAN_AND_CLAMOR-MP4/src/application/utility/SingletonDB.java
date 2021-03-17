@@ -432,6 +432,20 @@ public class SingletonDB implements DBOperations{
 		}
 	}
 	
+	//SingletonDB Method that will dispose order table data
+	public static void disposeGeneratedOrder() {
+		Connection conn = getConnection();
+		try {
+			if(conn!=null) {
+				PreparedStatement ptst = conn.prepareStatement(ORDER_GENERATED_DISPOSAL);
+				
+				ptst.executeUpdate();
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	//PopulateDB with pre-defined products and product types
 	public static void populateDb() {
 		productData = new ProductData();
@@ -470,7 +484,7 @@ public class SingletonDB implements DBOperations{
 			Connection conn = getConnection();
 			PreparedStatement ptst = conn.prepareStatement(dropDb);
 			
-			ptst.executeQuery();
+			ptst.executeUpdate();
 			ptst.close();
 		}catch(SQLException e) {
 			e.printStackTrace();

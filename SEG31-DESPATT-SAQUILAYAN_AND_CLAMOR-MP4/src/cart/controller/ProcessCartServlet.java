@@ -14,6 +14,7 @@ import application.utility.SingletonDB;
 public class ProcessCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request,response);
 	}
@@ -21,38 +22,47 @@ public class ProcessCartServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String isCancelConfirmOrder = request.getParameter("clickedCancelOrder");
-		//Parameter Value Names
 		String[] productNames = request.getParameterValues("productName");
-		String[] productImgPath = request.getParameterValues("productImgPath");
-		String[] productCount = request.getParameterValues("count");
-		int size = productCount.length;
-		int [] countArray = new int[size];
-			for(int i = 0; i<size; i++) {
-				countArray[i] = Integer.parseInt(productCount[i]);
-			}
-		String[] productPrice = request.getParameterValues("productPrice");
 		
-		String totalPrice = request.getParameter("totalPrice");
-		boolean isBoxed = Boolean.parseBoolean(request.getParameter("isBoxed"));
-		
-		System.out.println("BOOLEAN ATTRIBUTE isBoxed: " + isBoxed);
 		
 		//If Cancel Button is clicked on confirm-order.jsp 
 		if(isCancelConfirmOrder.contentEquals("true")) {
-			System.out.println("DISPOSING CART DATA NOW");
+			System.out.println("DISPOSING CART DATA AND GENERATED ORDER");
 			SingletonDB.disposeCartTableData();
+			SingletonDB.disposeGeneratedOrder();
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
 		}
 		//User is coming outside of confirm-order.jsp where submit button on the cart-modal was clicked.
 		else if(productNames != null) {
+			String[] productImgPath = request.getParameterValues("productImgPath");
+			String[] productPrice = request.getParameterValues("productPrice");
+			String totalPrice = request.getParameter("totalPrice");
+			
+			String[] productCount = request.getParameterValues("count");
+			
+			/*Code Block to Convert String[] productCount to integer array named countArray[]*/
+			int size = productCount.length;
+			int [] countArray = new int[size];
+			for(int i = 0; i<size; i++) {
+				countArray[i] = Integer.parseInt(productCount[i]);
+			}
+			
+			int totalQuantity = Integer.parseInt(request.getParameter("totalQuantity"));
 			HttpSession session = request.getSession();
 			
-			//NEEDS AUTOMATIC ID GENERATOR
-			//Generating Order
-			SingletonDB.generateOrder(1,isBoxed);
-			
+			//Total Quantity is greater or equal to 8 then order of the user will be boxed
+	    	if(totalQuantity >= 8) {
+	    		System.out.println("TOTAL QUANTITY IS GREATER OR EQUAL TO 8, NEED TO BE BOXED");
+	    		SingletonDB.generateOrder(1, true);
+	    	}
+	    	//Total Quantity is greater or equal to 8 then order of the user will not be boxed
+	    	else {
+	    		System.out.println("TOTAL QUANTITY IS LESS THAN 8, NO NEED TO BE BOXED");
+	    		SingletonDB.generateOrder(1, false);
+	    	}
+	    	
 			//Inserting Cart Data to database
 			for(int i=0; i<productNames.length; i++){
 				System.out.println("PRODUCT NAME: " + productNames[i]);
@@ -85,5 +95,4 @@ public class ProcessCartServlet extends HttpServlet {
 		}
 	}
 	
-
 }

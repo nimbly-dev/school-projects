@@ -227,6 +227,7 @@ function displayCart() {
     $('.total-items-cart').html(shoppingCart.totalCart()); //Total Price
     $('.total-items-count').html(shoppingCart.totalCount());//Total Quantity
     document.getElementById('totalPrice').value = shoppingCart.totalCart();//Total Price
+    document.getElementById('totalQuantity').value = shoppingCart.totalCount();//Total Quantity
 }
 
 

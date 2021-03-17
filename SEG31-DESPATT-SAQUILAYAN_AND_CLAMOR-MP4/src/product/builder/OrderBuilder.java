@@ -1,9 +1,6 @@
 package product.builder;
 
-import product.model.DisplayProductBean;
 import product.model.AvocadoCupcake.AvocadoCupcake;
-import product.model.CandyCane.CandyCane;
-import product.model.ChurroSticks.ChurroSticks;
 import product.model.EnglishSausage.EnglishSausage;
 import product.model.JellyBeans.JellyBeans;
 import product.model.PuffedDanishPastry.PuffedDanishPastry;
@@ -12,6 +9,12 @@ import product.model.ValentineCupcake.ValentineCupcake;
 
 public class OrderBuilder {
 	
+	
+	/**
+	 * BUNDLE NAME = All Cupcake Bundle
+	 * TOTAL QTY = 9
+	 * TOTAL PRICE = 200
+	 * */
 	public Order prepareAllCupcakeOrder() {
 		AvocadoCupcake avocadoCupcake = new AvocadoCupcake();
 		avocadoCupcake.setCount(3);
@@ -27,19 +30,33 @@ public class OrderBuilder {
 		return order;
 	}
 	
+	/**
+	 * BUNDLE NAME = All Pastry Bundle
+	 * TOTAL QTY = 10
+	 * TOTAL PRICE = 499
+	 * */
 	public Order prepareAllPastryOrder() {
 		Order order = new Order();
-		order.addItem(new PuffedDanishPastry());
-		order.addItem(new EnglishSausage());
-		order.addItem(new ChurroSticks());
+		PuffedDanishPastry puffedDanishPastry = new PuffedDanishPastry();
+		puffedDanishPastry.setCount(5);
+		EnglishSausage englishSausage = new EnglishSausage();
+		englishSausage.setCount(5);
+		order.addItem(puffedDanishPastry);
+		order.addItem(englishSausage);
 		
 		return order;
 	}
 	
-	public Order prepareAllCandyOrder() {
+	/**
+	 * BUNDLE NAME = Jelly Beans Mania Bundle
+	 * TOTAL QTY = 10
+	 * TOTAL PRICE = 99
+	 * */
+	public Order prepareJellyBeansMania() {
 		Order order = new Order();
-		order.addItem(new CandyCane());
-		order.addItem(new JellyBeans());
+		JellyBeans jellyBeans = new JellyBeans();
+		jellyBeans.setCount(10);
+		order.addItem(jellyBeans);
 		
 		return order;
 	}

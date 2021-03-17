@@ -24,9 +24,6 @@ public class InitializeConfig implements ServletContextListener {
     	//GENERATING CLIENT-SIDE JSON PRODUCT LIST
     	System.out.println("USER PATH: " + userPath);
     	
-    	//FOR TESTING:
-    	System.out.println("FOR TESTING ONLY(NEED TO BE REMOVED): GENERATING ORDER ROW AT CART-ORDER TABLE");
-    	SingletonDB.generateOrder(1, true);
     	
     	System.out.println("Sweetx Data has been loaded");
     }

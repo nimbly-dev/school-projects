@@ -61,14 +61,16 @@
 		            <div class="card" style="width: 18rem;">
 		                <img src="images/products/assorted-cupcakes.jpg" class="card-img-top" alt="...">
 		                <div class="card-body">
-		                    <h5 class="card-title">Assorted Cupcakes</h5>
+		                    <h5 class="card-title">Assorted Cupcake</h5>
 		                    <span class='ht-tm-element badge badge-pill badge-primary'>Available</span>
 		                    <h4>Price: 250</h4>
 		                    <form action='process-bundled-order.action?clickedCancelOrder=false' method='POST'>
-		                        <input type="hidden" name="totalPrice" value="250">
+		                    	<input type="hidden" name="selectedBundle" value="orderAllCupcakeBundle">
+		                        <input type="hidden" name="totalPrice" value="200">
+		                        <input type="hidden" name="totalQuantity" value="9">
 		     					<!-- ADD TO CART BUTTON -->
 		                        <button type="submit" 
-		                        onclick='orderMenuAllCupcake()'
+		                        onclick='orderMenuAllCupcake()'s
 		                        class="btn btn-warning mt-2">
 		                        Add to cart
 		                        </button>

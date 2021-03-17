@@ -9,14 +9,18 @@ TODO:
   4. DESIGN: Cart Modal Spacing Fix
   5. DESIGN: PDF Receipt Fix
   6. DESIGN: Navbar Highlighting Fix
-  7. DESIGN: Checkbox isBoxed boolean input Fix
-  8. DESIGN: Remove Clear button on cart modal
-  9. REQUIRED: UML Class Diagram for all design patterns used
-  10. REQUIRED (CLASS BUILDER SOLUTION): Modify Order Builder to accept the boolean value of isPackedWithBox
-  11. REQUIRED (CLASS BUILDER SOLUTION): Implement Menu Order Builder to cart-modal
-  12. REQUIRED (CLASS BUILDER SOULUTION): Implement Menu Order Builder to ProcessCartServlet
+  7. DESIGN: Remove Clear button on cart modal
+  8. DESIGN: Fix Navbar links
+  0. REQUIRED: UML Class Diagram for all design patterns used
 
  
+0.51:
+
+  * Added Menu Builder Class Full Functionality
+
+  * Update References on menu.page.jsp
+
+  * Fixed bug where cancel button on confirm-order.jsp throws NullFormatException
 
 0.50: 
   * Fixed Quantity and Floating point bugs

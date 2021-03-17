@@ -57,7 +57,7 @@ public class CandyCane extends Product implements ProductPrototype{
 	
 	@Override
 	public int quantity() {
-		return 0;
+		return count;
 	}
 
 	

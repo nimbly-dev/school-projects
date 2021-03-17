@@ -95,4 +95,6 @@ public interface DBOperations {
 	//DATA DISPOSAL OPERATIONS
 	final static String CART_DATA_DISPOSAL = "TRUNCATE TABLE `cart_items`";
 	
+	final static String ORDER_GENERATED_DISPOSAL = "TRUNCATE TABLE `cart_order`";
+	
 }

@@ -55,7 +55,7 @@ public class EnglishSausage extends Product implements ProductPrototype{
 	
 	@Override
 	public int quantity() {
-		return 20;
+		return count;
 	}
 
 	

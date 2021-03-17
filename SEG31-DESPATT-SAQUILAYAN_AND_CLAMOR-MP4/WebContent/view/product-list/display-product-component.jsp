@@ -7,7 +7,7 @@
         <!-- PRODUCTS DISPLAY HERE -->
         <%
         for (DisplayProductBean product : SingletonDB.getProductList(
-                (String) request.getParameter("selectedProductType"))) {
+                (String) request.getParameter("selectedProductType")) ) {
     	%>
 	        <%if (product.getQuantity() > 0){ %>
 	        <div class="col mt-5">

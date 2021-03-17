@@ -46,7 +46,7 @@ public class ProductData implements ProductIterator{
 		
 		addProduct(avocadoCupcake.productName(), avocadoCupcake.imgPath(), avocadoCupcake.productInfo(), 
 				avocadoCupcake.productPrice(), avocadoCupcake.quantity(), cupcakeProductType.productTypeId());
-		
+
 		addProduct(churroSticks.productName(), churroSticks.imgPath(), churroSticks.productInfo(), 
 				churroSticks.productPrice(), churroSticks.quantity(), pastryProductType.productTypeId());
 		
