@@ -8,7 +8,7 @@ import application.utility.SingletonDB;
 
 public class InitializeConfig implements ServletContextListener {
     public void contextInitialized(ServletContextEvent event) {
-    	String userPath = event.getServletContext().getRealPath("/javascript/data/product-list.json");
+    	String userPath = event.getServletContext().getRealPath("/javascript/data/");
     	
         // Do stuff during webapp's startup.
     	System.out.println("Initializing Sweetx Data.....");

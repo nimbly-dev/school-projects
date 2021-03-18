@@ -499,5 +499,7 @@ public class SingletonDB implements DBOperations{
 		iterProductType = newProductType;
 	}
 	
+
+	
 	
 }

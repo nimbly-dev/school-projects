@@ -114,7 +114,7 @@
                                     </div>  
 
                                     <div class="row">
-                                        <button type="button" onclick="location.href='process-cart.action?clickedCancelOrder=true'"
+                                        <button type="button" onclick="location.href='process-cart.action?clickedCancelOrder=true';shoppingCart.clearCart()"
                                             class="btn btn-danger d-flex justify-content-end mt-4 mr-5">Cancel</button>
                                         <button type="submit" class="btn btn-success mt-4 mr-5">Submit</button>
                                     </div>
