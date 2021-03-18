@@ -5,13 +5,16 @@ TODO:
 
   1. BUG: on confirm-order.jsp where reloading the page will cause to insert again the cart-items data to db.
   2. BUG: Time Out Connection when deploying Application to Apache Tomcat
-  3. BUG: Deduction parse causes a floating point error
-  4. DESIGN: Cart Modal Spacing Fix
-  5. DESIGN: PDF Receipt Fix
-  6. DESIGN: Navbar Highlighting Fix
-  7. DESIGN: Remove Clear button on cart modal
-  8. DESIGN: Fix Navbar links
-  0. REQUIRED: UML Class Diagram for all design patterns used
+  3. DESIGN: Cart Modal Spacing Fix
+  4. DESIGN: PDF Receipt Fix
+  5. DESIGN: Navbar Highlighting Fix
+  6. DESIGN: Remove Clear button on cart modal
+  7. DESIGN: Fix Navbar links
+  8. REQUIRED: UML Class Diagram for all design patterns used
+
+0.60:
+
+  * Replace foreach loop on displaying cart-items with Iterator
 
  
 0.51:
