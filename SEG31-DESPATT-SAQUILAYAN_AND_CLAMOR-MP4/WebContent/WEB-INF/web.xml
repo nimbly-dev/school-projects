@@ -58,6 +58,16 @@
     <servlet-class>payment.controller.ProcessPaymentServlet</servlet-class>
   </servlet>
   
+  <context-param>
+  <param-name>emailSender</param-name>
+  <param-value>bscsmail.se31@gmail.com</param-value>
+  </context-param>
+  
+  <context-param>
+  <param-name>passwordSender</param-name>
+  <param-value>BSCS-SE31</param-value>
+  </context-param>
+  
   <servlet-mapping>
     <servlet-name>ProcessPaymentServlet</servlet-name>
     <url-pattern>/process-payment.action</url-pattern>
@@ -72,6 +82,9 @@
     <servlet-name>ProccessBundledOrderServlet</servlet-name>
     <url-pattern>/process-bundled-order.action</url-pattern>
   </servlet-mapping>
+  
+  
+  
   
   <!-- Web Listeners  -->
   <listener>

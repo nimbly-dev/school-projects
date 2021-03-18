@@ -43,8 +43,8 @@ public  class PdfGenerator implements DBOperations, Facade{
 	
 
 	
-	private void EmailPDF(String emailPDF, String shippingAddressPDF, String fullNamePDF) {
-		String sender = "bscsmail.se31@gmail.com"; // enter valid email of sender
+	private void EmailPDF(String emailPDF, String shippingAddressPDF, String fullNamePDF, String emailSender, String passwordSender) {
+		String sender = emailSender; // enter valid email of sender
 		String recipient = emailPDF; // replace with user input for email
 		String content = "dummy content"; //replace with proper content
 		String subject = "dummy subject"; //replace with proper subject
@@ -58,7 +58,7 @@ public  class PdfGenerator implements DBOperations, Facade{
 		
 		Session session = Session.getDefaultInstance(properties,new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication(sender,"BSCS-SE31"); // (user name of sender, "password of email")
+						return new PasswordAuthentication(sender, passwordSender); // (user name of sender, "password of email")
 					}
 		});
 			
@@ -131,7 +131,7 @@ public  class PdfGenerator implements DBOperations, Facade{
 				pdfsup.add(new Paragraph("Receipt PDF"));
 				pdfsup.add(new Paragraph("This is your receipt", FontFactory.getFont(FontFactory.TIMES_BOLD, 18, Font.BOLD)));
 				pdfsup.add(new Paragraph("------------------------------------------------------------------------------------"));
-				pdfsup.add(new Paragraph("Customer Name: " + fullNamePDF));
+				pdfsup.add(new Paragraph("Customer Email: " + fullNamePDF));
 				pdfsup.add(new Paragraph("Shipping Address: " + shippingAddressPDF));
 				pdfsup.add(new Paragraph("------------------------------------------------------------------------------------"));
 				
@@ -149,7 +149,7 @@ public  class PdfGenerator implements DBOperations, Facade{
 					
 						try {
 							
-							pdfsup.add(new Paragraph(name + " Price: " + price + ".00   " + count + "x"));
+							pdfsup.add(new Paragraph(name + " Price: " + price + "   " + count + "x"));
 							pdfsup.add(new Paragraph(""));
 							
 						} catch (DocumentException e) {
@@ -164,9 +164,9 @@ public  class PdfGenerator implements DBOperations, Facade{
 	}
 	
 	@Override
-	public void PDFfunctions(String emailPDF, String shippingAddressPDF, String fullNamePDF) {
+	public void PDFfunctions(String emailPDF, String shippingAddressPDF, String fullNamePDF, String emailSender, String passwordSender) {
 		// TODO Auto-generated method stub
-		 EmailPDF(emailPDF, shippingAddressPDF, fullNamePDF);
+		 EmailPDF(emailPDF, shippingAddressPDF, fullNamePDF, emailSender, passwordSender);
 	}
 
 	@Override

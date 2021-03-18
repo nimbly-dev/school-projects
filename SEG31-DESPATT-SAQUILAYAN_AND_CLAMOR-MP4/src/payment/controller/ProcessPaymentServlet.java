@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +35,10 @@ public class ProcessPaymentServlet extends HttpServlet {
 		String shippingAddress = request.getParameter("shippingAddress");
 		String emailAddress = request.getParameter("emailAddress");
 		
+		ServletContext context = getServletContext();
+		
+		String emailSender = context.getInitParameter("emailSender");
+		String passwordSender = context.getInitParameter("passwordSender");
 		
 		HelperMethods luhn = new HelperMethods();
 		if(luhn.checkCardLuhn(creditCardNumber) == true && securityNumber.length() == 4 || securityNumber.length() == 3) {
@@ -49,7 +54,7 @@ public class ProcessPaymentServlet extends HttpServlet {
 			}
 			
 			PdfGenerator generatePDF = new PdfGenerator();
-			generatePDF.PDFfunctions(emailAddress, shippingAddress, fullName);
+			generatePDF.PDFfunctions(emailAddress, shippingAddress, fullName, emailSender, passwordSender);
 			System.out.println("DISPOSING CART ITEM");
 			SingletonDB.disposeCartTableData();
 			

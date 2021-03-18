@@ -43,7 +43,7 @@ public class HelperMethods implements Facade{
 
 
 	@Override
-	public void PDFfunctions(String emailPDF, String shippingAddressPDF, String fullNamePDF) {
+	public void PDFfunctions(String emailPDF, String shippingAddressPDF, String fullNamePDF, String emailSender, String passwordSender) {
 		// TODO Auto-generated method stub
 		
 	}

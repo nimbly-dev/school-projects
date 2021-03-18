@@ -13,6 +13,10 @@ TODO:
   8. REQUIRED: UML Class Diagram for all design patterns used
 
 0.60:
+  
+  * Updated sweetX.drawio diagram
+	
+  * Added sender email details to context param
 
   * Replace foreach loop on displaying cart-items with Iterator
 
