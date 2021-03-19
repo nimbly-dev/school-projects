@@ -10,7 +10,6 @@ TODO:
   5. DESIGN: Navbar Highlighting Fix
   6. DESIGN: Remove Clear button on cart modal
   7. DESIGN: Fix Navbar links
-  8. REQUIRED: UML Class Diagram for all design patterns used
 
 0.60:
   
