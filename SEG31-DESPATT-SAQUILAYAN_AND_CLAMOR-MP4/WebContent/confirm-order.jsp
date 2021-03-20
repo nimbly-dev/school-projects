@@ -31,11 +31,14 @@
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav mr-auto mt-2 mt-md-0">
-                    <li class="nav-item active" id="home">
-                        <a class="nav-link" href="index.jsp">Home<span class="sr-only">(current)</span></a>
+                    <li class="nav-item" id="home">
+                        <a class="nav-link" href="index.jsp">Home</a>
                     </li>
                     <li class="nav-item">
-                       <a class="submit nav-link" href="<%=displayAllUrl%>">Browse Products</a>
+                        <a class="nav-link" href="menu-page.jsp">Bundles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="submit nav-link" href="<%=displayAllUrl%>">Browse Products</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#!">About</a>
@@ -54,18 +57,18 @@
             </div>
         </nav>
     </header>
-    
-   	<%-- GETS THE CART COMPONENT --%>
-	<jsp:include page="view/cart-component.jsp"/>
-    
-    
+
+    <%-- GETS THE CART COMPONENT --%>
+    <jsp:include page="view/cart-component.jsp" />
+
+
     <main>
- 		<%-- CONFIRM ORDER COMPONENT --%>
- 		<jsp:include page="view/confirm-order/display-cart-items-component.jsp"/>
- 		
-    </main> 
-    
-    
+        <%-- CONFIRM ORDER COMPONENT --%>
+        <jsp:include page="view/confirm-order/display-cart-items-component.jsp" />
+
+    </main>
+
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -77,4 +80,5 @@
     <script src="javascript/assets/cart.js"></script>
     <script src="javascript/assets/product-list.js"></script>
     <script src="javascript/assets/autocomplete.js"></script>
+
 </html>

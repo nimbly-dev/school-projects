@@ -30,11 +30,14 @@
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav mr-auto mt-2 mt-md-0">
-                    <li class="nav-item active" id="home">
+                    <li class="nav-item" id="home">
                         <a class="nav-link" href="index.jsp">Home</a>
                     </li>
                     <li class="nav-item">
-                       <a class="nav-link" href="<%=displayAllUrl%>">Browse Product<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="menu-page.jsp">Bundles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%=displayAllUrl%>">Browse Product</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#!">About</a>
@@ -53,12 +56,12 @@
             </div>
         </nav>
     </header>
-    
-    
-	<%-- GETS THE CART MODAL COMPONENT --%>
-    <jsp:include page="view/cart-component.jsp"/>
-	
-	
+
+
+    <%-- GETS THE CART MODAL COMPONENT --%>
+    <jsp:include page="view/cart-component.jsp" />
+
+
     <main>
         <section class="single-product">
 
@@ -94,21 +97,18 @@
                 </div>
 
                 <div class="row justify-content-center">
-                    <button type="button"
-                    	class="mt-4 ht-tm-element btn btn-warning"
-                    	onclick='addToCart(this)'
+                    <button type="button" class="mt-4 ht-tm-element btn btn-warning" onclick='addToCart(this)'
                         data-productname="${requestScope.displayDetails.getProductName()}"
                         data-productprice="${requestScope.displayDetails.getProductPrice()}"
                         data-productimgpath="${requestScope.displayDetails.getProductImgPath()}"
-                        data-productimgpath="${requestScope.displayDetails.getQuantity()}"
-                        >Add to Cart
+                        data-productimgpath="${requestScope.displayDetails.getQuantity()}">Add to Cart
                     </button>
                 </div>
 
             </div>
         </section>
     </main>
-    
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

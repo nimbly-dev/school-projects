@@ -30,8 +30,12 @@
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav mr-auto mt-2 mt-md-0">
-                    <li class="nav-item active" id="home">
-                        <a class="nav-link" href="index.jsp">Home<span class="sr-only">(current)</span></a>
+                    <li class="nav-item" id="home">
+                        <a class="nav-link" href="index.jsp">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="submit nav-link" href="menu-page.jsp">Bundles<span
+                                class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="submit nav-link" href="<%=displayAllUrl%>">Browse Products</a>
@@ -72,7 +76,7 @@
                                             placeholder="Enter Full Name" required>
                                         <div class="align-self-center text-danger errorTxt1 ml-1"></div>
                                     </div>
-                                    
+
                                     <div class="row mt-2 mb-2">
                                         <label for="emailAddress" class="mr-2 mt-2">Email Address: </label>
                                         <input type="text" class="form-control w-50" id="emailAddress"
@@ -88,7 +92,7 @@
                                             placeholder="Enter Credit Card" required>
                                         <div class="align-self-center text-danger errorTxt2 ml-1"></div>
                                     </div>
-                                    
+
                                     <div class="row mt-2 mb-2">
                                         <label for="expirationDate" class="mr-2 mt-2">Expiration Date: </label>
                                         <input type="date" class="form-control w-25" name="expirationDate"
@@ -104,21 +108,22 @@
                                             placeholder="Enter Security Number" required>
                                         <div class="align-self-center text-danger errorTxt4 ml-1"></div>
                                     </div>
-                                    
-									<div class="row mt-2 mb-2">
+
+                                    <div class="row mt-2 mb-2">
                                         <label for="shippingAddress" class="mr-2 mt-2">Shipping Address: </label>
                                         <input type="text" class="form-control w-50" id="shippingAddress"
                                             name="shippingAddress" data-error=".errorTxt5"
                                             placeholder="Enter Shipping Address" required>
                                         <div class="align-self-center text-danger errorTxt5 ml-1"></div>
-                                    </div>  
+                                    </div>
 
                                     <div class="row">
-                                        <button type="button" onclick="location.href='process-cart.action?clickedCancelOrder=true';shoppingCart.clearCart()"
+                                        <button type="button"
+                                            onclick="location.href='process-cart.action?clickedCancelOrder=true';shoppingCart.clearCart()"
                                             class="btn btn-danger d-flex justify-content-end mt-4 mr-5">Cancel</button>
                                         <button type="submit" class="btn btn-success mt-4 mr-5">Submit</button>
                                     </div>
-                                    
+
                                 </div>
                             </form>
 

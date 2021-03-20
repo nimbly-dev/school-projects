@@ -7,9 +7,14 @@ TODO:
   2. BUG: Time Out Connection when deploying Application to Apache Tomcat
   3. DESIGN: Cart Modal Spacing Fix
   4. DESIGN: PDF Receipt Fix
-  5. DESIGN: Navbar Highlighting Fix
   6. DESIGN: Remove Clear button on cart modal
-  7. DESIGN: Fix Navbar links
+  7. DESIGN: Bundle Page design neets to be revamped.
+
+0.61: 
+
+  * Fixed Navbar Highlighting
+
+  * Fixed Navbar links to all pages
 
 0.60:
   

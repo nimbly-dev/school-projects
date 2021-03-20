@@ -30,11 +30,15 @@
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav mr-auto mt-2 mt-md-0">
-                    <li class="nav-item active" id="home">
+                    <li class="nav-item" id="home">
                         <a class="nav-link" href="index.jsp">Home</a>
                     </li>
                     <li class="nav-item">
-                       <a class="nav-link" href="<%=displayAllUrl%>">Browse Product<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="menu-page.jsp">Bundles</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="<%=displayAllUrl%>">Browse Product<span
+                                class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#!">About</a>
@@ -53,26 +57,26 @@
             </div>
         </nav>
     </header>
-	
-	<%-- GETS THE CART COMPONENT --%>
-	<jsp:include page="view/cart-component.jsp"/>
+
+    <%-- GETS THE CART COMPONENT --%>
+    <jsp:include page="view/cart-component.jsp" />
 
     <main>
         <section class="product-list">
             <div class="contrainer fluid m-sm-5 ">
-            
-                <div class="card">
-                
-                    <div class="card-body">
-                    	
-                    	<%-- GETS THE PRODUCT SORT BREADCRUMB --%>
-						<jsp:include page="view/product-list/product-sort-component.jsp"/>
 
-						<%-- GETS THE DISPLAY PRODUCT --%>
-                        <jsp:include page="view/product-list/display-product-component.jsp"/>
+                <div class="card">
+
+                    <div class="card-body">
+
+                        <%-- GETS THE PRODUCT SORT BREADCRUMB --%>
+                        <jsp:include page="view/product-list/product-sort-component.jsp" />
+
+                        <%-- GETS THE DISPLAY PRODUCT --%>
+                        <jsp:include page="view/product-list/display-product-component.jsp" />
                         <!-- END OF INNER CARD BODY -->
-                     </div>
-                     <!-- END OF INNER CARD  -->
+                    </div>
+                    <!-- END OF INNER CARD  -->
                 </div>
             </div>
         </section>
@@ -85,7 +89,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.2.1/bloodhound.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.2.1/typeahead.jquery.min.js"></script>
-  	<script src="javascript/assets/cart.js"></script>
+    <script src="javascript/assets/cart.js"></script>
     <script src="javascript/assets/autocomplete.js"></script>
 </body>
 

@@ -50,7 +50,7 @@ public class OrderBuilder {
 	/**
 	 * BUNDLE NAME = Jelly Beans Mania Bundle
 	 * TOTAL QTY = 10
-	 * TOTAL PRICE = 99
+	 * TOTAL PRICE = 99	
 	 * */
 	public Order prepareJellyBeansMania() {
 		Order order = new Order();

@@ -235,14 +235,13 @@ function displayCart() {
 function orderMenuAllCupcake() {
     shoppingCart.addItemToCart("Avocado Cupcake", 25.00, "images/products/avocado-biscuit-cupcake.PNG", 3, 20);
     shoppingCart.addItemToCart("Strawberry Cupcake", 20.00, "images/products/strawberry-cupcake.jpg", 3, 20);
-    shoppingCart.addItemToCart("Valentine Cupcake", 30.00, "images/products/images/products/valentine-cupcake.jpg", 3, 20);
+    shoppingCart.addItemToCart("Valentine Cupcake", 30.00, "images/products/valentine-cupcake.jpg", 3, 20);
     displayCart();
 }
 
-//5x CandyCane and 5x JellyBeans
+//10x JellyBeans
 function orderMenuAllCandy() {
-    shoppingCart.addItemToCart("Candy Cane", 10.00, "images/products/candy-cane.jpg", 5, 20);
-    shoppingCart.addItemToCart("Jelly Beans", 15.00, "images/products/jelly-beans.jpg", 5, 20);
+    shoppingCart.addItemToCart("Jelly Beans", 15.00, "images/products/jelly-beans.jpg", 10, 20);
     displayCart();
 }
 

@@ -98,7 +98,7 @@ public class ProccessBundledOrderServlet extends HttpServlet {
 		    		SingletonDB.generateOrder(1, false);
 		    	}
 				
-				Order jellyBeansBundle = orderBuilder.prepareAllPastryOrder();
+				Order jellyBeansBundle = orderBuilder.prepareJellyBeansMania();
 				
 				jellyBeansBundle.insertBundledOrderToDB();
 				

@@ -31,11 +31,14 @@
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav mr-auto mt-2 mt-md-0">
-                    <li class="nav-item active" id="home">
+                    <li class="nav-item" id="home">
                         <a class="nav-link" href="index.jsp">Home</a>
                     </li>
                     <li class="nav-item">
-                       <a class="nav-link" href="<%=displayAllUrl%>">Browse Product<span class="sr-only">(current)</span>s</a>
+                        <a class="nav-link" href="menu-page.jsp">Bundles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%=displayAllUrl%>">Browse Product</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#!">About</a>
@@ -54,13 +57,13 @@
             </div>
         </nav>
     </header>
-	
-	
-	
-	<%-- GETS THE CART MODAL COMPONENT --%>
-    <jsp:include page="view/cart-component.jsp"/>
-	
-	
+
+
+
+    <%-- GETS THE CART MODAL COMPONENT --%>
+    <jsp:include page="view/cart-component.jsp" />
+
+
     <main>
         <section class="result-container">
             <div class="container-fluid">
@@ -72,11 +75,12 @@
                 <div class="card">
                     <div class="card-body d-flex justify-content-center">
                         <div class="row">
-						
+
                             <%if (request.getAttribute("productExist") == "FOUND"){ %>
                             <div class="col mt-3">
                                 <div class="card" style="width: 18rem;">
-                                    <img src='${requestScope.searchResult.getProductImgPath()}' class="card-img-top" alt="...">
+                                    <img src='${requestScope.searchResult.getProductImgPath()}' class="card-img-top"
+                                        alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">${requestScope.searchResult.getProductName()}</h5>
                                         <h4>Php ${requestScope.searchResult.getProductPrice() }</h4>

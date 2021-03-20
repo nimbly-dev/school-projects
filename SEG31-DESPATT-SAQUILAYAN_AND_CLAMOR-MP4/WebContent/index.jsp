@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%!
 	String displayAllUrl = "display-products.action?selectedProductType=All";
+	String currentPage = "index";
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,11 +34,11 @@
                     <li class="nav-item active" id="home">
                         <a class="nav-link" href="index.jsp">Home<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item active" id="home">
-                        <a class="nav-link" href="menu-page.jsp">Bundles<span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu-page.jsp">Bundles</a>
                     </li>
                     <li class="nav-item">
-                       <a class="submit nav-link" href="<%=displayAllUrl%>">Browse Products</a>
+                        <a class="submit nav-link" href="<%=displayAllUrl%>">Browse Products</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#!">About</a>
@@ -46,7 +47,7 @@
                         <a class="nav-link" href="#!" data-toggle="modal" data-target="#product-cart">Cart</a>
                     </li>
                 </ul>
-                <form action='search-product.action' method="post" class="form-inline my-2 my-lg-0">
+                <form action='search-product.action' method="POST" class="form-inline my-2 my-lg-0">
                     <div class="input-group ui-widget">
                         <input class="form-control mr-sm-2 typeahead tt-query" type="text" name="searchInput"
                             autocomplete="off" placeholder="Enter Something!">
@@ -56,10 +57,10 @@
             </div>
         </nav>
     </header>
-	
-	<%-- GETS THE CART COMPONENT --%>
-	<jsp:include page="view/cart-component.jsp"/>
-	
+
+    <%-- GETS THE CART COMPONENT --%>
+    <jsp:include page="view/cart-component.jsp" />
+
     <main>
         <div id="carousel-landingPage" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
