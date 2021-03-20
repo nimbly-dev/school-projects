@@ -5,111 +5,156 @@
 	String currentPage = "index";
 %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesheets/bootstrap4-bubblegum.min.css">
-    <link rel="stylesheet" href="stylesheets/stylesheet.min.css">
-    <link rel="icon" href="images/icon/favicon.png" type="image/png">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
-    <title>Sweetx</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="stylesheets/landing_page.min.css">
+
+  <script src="https://kit.fontawesome.com/dec412c784.js" crossorigin="anonymous"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  <title>SweetX</title>
 </head>
 
 <body>
-    <header>
-        <nav class="navbar fixed-top navbar-expand-md ht-tm-element navbar-dark bg-danger">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <img src="images/icon/Sweetx.png">
-            <a class="navbar-brand" href="#!">Sweetx</a>
+  <%-- GETS THE CART COMPONENT --%>
+  <jsp:include page="view/cart-component.jsp" />
 
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                <ul class="navbar-nav mr-auto mt-2 mt-md-0">
-                    <li class="nav-item active" id="home">
-                        <a class="nav-link" href="index.jsp">Home<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="menu-page.jsp">Bundles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="submit nav-link" href="<%=displayAllUrl%>">Browse Products</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#!">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#!" data-toggle="modal" data-target="#product-cart">Cart</a>
-                    </li>
-                </ul>
-                <form action='search-product.action' method="POST" class="form-inline my-2 my-lg-0">
-                    <div class="input-group ui-widget">
-                        <input class="form-control mr-sm-2 typeahead tt-query" type="text" name="searchInput"
-                            autocomplete="off" placeholder="Enter Something!">
-                        <button type="submit" class="ht-tm-element btn btn-warning">Search</button>
-                    </div>
-                </form>
-            </div>
-        </nav>
-    </header>
 
-    <%-- GETS THE CART COMPONENT --%>
-    <jsp:include page="view/cart-component.jsp" />
+  <!-- NAVBAR -->
+  <section id="title">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand navbar-title" href="#">SweetX</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+          aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <main>
-        <div id="carousel-landingPage" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active" data-interval="10000">
-                    <img src="images/carousel/colorful-marshmellows.jpg" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item" data-interval="2000">
-                    <img src="images/carousel/sweet-cupcake.jpg" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/carousel/donuts.jpg" class="d-block w-100" alt="...">
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carousel-landingPage" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel-landingPage" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+
+              <a class="nav-link" href="#search-function">Browse Products</a>
+
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="menu-page.jsp">Our Bundles!</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Title -->
+      <div class="row">
+        <div class="col-lg-6 title-quote">
+          <h1 class="h1-title">Things just got a whole lot tastier!</h1>
+          <button type="button" onclick="location.href='<%=displayAllUrl%>'"
+            class="btn btn-light btn-lg btn-order">Order
+            Now!</button>
+        </div>
+        <div class="col-lg-6">
+          <img class="title-image" src="images/landing_page/cupcake.png" alt="header-photo">
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- carousel -->
+  <div class="container-fluid features-container">
+    <h2 class="feature-quote">Select from a multitude of desserts!</h2>
+
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+
+          <a href="#"><img class="testimonial-image" src="images/landing_page/churros.png" alt="dog-profile"></a>
+
+        </div>
+        <div class="carousel-item">
+
+          <a href="#"><img class="testimonial-image" src="images/landing_page/valentine-cupcake.jpg"
+              alt="lady-profile"></a>
+
         </div>
 
-        <div class="ht-tm-element jumbotron m-sm-5">
-            <h1 class="display-3">This never gets more Sweeter!</h1>
-            <p class="lead">Our store has cupcakes, candies, pastries, shakes, and many more
-                to satisfy your sweet cravings
-            </p>
-            <hr class="my-4">
-            <p>We hope you like our products! Click this button to see our Merchandise</p>
-            <p class="lead">
-                <a class="btn btn-danger" href="product-list.jsp" role="button">Crave for Sweets!</a>
-            </p>
+        <div class="carousel-item">
+
+          <a href="#"><img class="testimonial-image" src="images/landing_page/pancakes.jpg" alt="lady-profile"></a>
+
         </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
 
-    </main>
+  </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.2.1/bloodhound.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.2.1/typeahead.jquery.min.js"></script>
-    <script src="javascript/assets/cart.js"></script>
-    <script src="javascript/assets/product-list.js"></script>
-    <script src="javascript/assets/autocomplete.js"></script>
+
+
+
+  <section id="search-function">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+          <form class="card card-sm" action='search-product.action' method="POST">
+            <div class="card-body row no-gutters align-items-center search-border">
+              <div class="col-auto">
+                <i class="fas fa-search h4 text-body"></i>
+              </div>
+              <!--end of col-->
+              <div class="col">
+                <input class="form-control form-control-lg form-control-borderless" type="search" name="searchInput"
+                  autocomplete="off" placeholder="Search topics or keywords">
+              </div>
+              <!--end of col-->
+              <div class="col-auto">
+                <button class="btn btn-danger btn-lg search-button" type="submit">Search</button>
+              </div>
+              <!--end of col-->
+            </div>
+          </form>
+        </div>
+        <!--end of col-->
+      </div>
+    </div>
+
+    <footer id="footer">
+      <i class="fab fa-twitter footer-icon"></i>
+      <i class="fab fa-facebook-f footer-icon"></i>
+      <i class="fab fa-instagram footer-icon"></i>
+      <i class="fas fa-envelope footer-icon"></i>
+    </footer>
+  </section>
+
+
 </body>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+  integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script src="javascript/assets/cart.js"></script>
+<script src="javascript/assets/product-list.js"></script>
+<script src="javascript/assets/autocomplete.js"></script>
 
 </html>

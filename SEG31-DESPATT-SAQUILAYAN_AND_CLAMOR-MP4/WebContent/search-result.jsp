@@ -3,7 +3,6 @@
 <%!
 	String displayAllUrl = "display-products.action?selectedProductType=All";
 %>
-<% System.out.println(Integer.parseInt(request.getAttribute("searchedProductQuantity").toString())); %>
 <!DOCTYPE html>
 <html lang="en">
 

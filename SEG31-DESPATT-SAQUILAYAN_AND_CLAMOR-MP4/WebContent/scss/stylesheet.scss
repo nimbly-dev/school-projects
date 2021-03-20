@@ -1,0 +1,196 @@
+
+* {
+    font-family: 'PT Serif', serif;
+}
+
+
+header{
+    img{
+        width: 80px;
+        height:80px;
+    }
+}
+
+main{
+    #carousel-landingPage{
+        img{
+            min-width: 300px;
+            min-height: 250px;
+            width: 100%;
+            height: 700px;
+            filter: brightness(90%);   
+        }
+    }
+
+    section.product-list{
+        padding: 5px;
+        padding-bottom: 100px;
+        padding-top: 150px;
+
+        img{
+            min-width: 200px;
+            max-height: 300px;
+            width: 100%;
+            height: 350px;
+        }
+
+        .btn-link{
+            border-radius: none;
+            border: none;
+            outline: none;
+            color: none;
+            background: none;
+            cursor: pointer;
+            color: #0000EE;
+            padding: 0;
+            text-decoration: none;
+            font-family: inherit;
+            font-size: inherit;
+        }
+    }
+
+    section.single-product{
+        padding: 5px;
+        padding-bottom: 100px;
+        padding-top: 200px;
+        align-content: center;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        img{
+            min-width: 350px;
+            min-height: 500px;
+            max-height: 350px;
+            min-width: 450px;
+        }
+    }
+
+    section.result-container{
+        padding: 5px;
+        padding-bottom: 100px;
+        padding-top: 150px;
+        display: flexbox;
+        text-align: center;
+
+        img{
+            min-width: 200px;
+            max-height: 300px;
+            width: 100%;
+            height: 350px;
+        }
+    }
+
+    section.confirm-order{
+        padding: 5px;
+        padding-bottom: 100px;
+        padding-top: 100px;
+        display: flexbox;
+        text-align: center;
+
+        div.table{
+            img{
+                width: 8rem;
+                height: 8rem;
+            }
+        }
+    }
+    
+    section.process-payment{
+        padding: 5px;
+        padding-bottom: 100px;
+        padding-top: 100px;
+        display: flexbox;
+
+    }
+
+    section.error-page{
+        padding: 5px;
+        padding-bottom: 100px;
+        padding-top: 100px;
+        display: flexbox;
+      
+        img{
+            width: 20rem;
+            height: 20rem;
+        }
+    }
+
+    section.payment-successful{
+        padding: 5px;
+        padding-bottom: 100;
+        padding-top: 100px;
+        display:flexbox;
+    }
+}
+
+// TYPEAHAED UI FOR SEARCHBAR
+.typeahead{
+    background-color: #FFFFFF;
+
+    :focus{
+        border: 2px solid #0097CF;
+    }
+
+    .tt-query, .tt-hint {
+        border: 2px solid #CCCCCC;
+        border-radius: 8px;
+        font-size: 18px; /* Set input font size */
+        height: 10px;
+        line-height: 20px;
+        outline: medium none;
+        padding: 8px 12px;
+        width: 396px;
+    }
+
+}
+.tt-query{
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+
+.tt-hint{
+    color: #999999;
+}
+
+.tt-menu{
+    background-color: #FFFFFF;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	margin-top: 12px;
+	padding: 8px 0;
+	width: 300px;
+}
+.tt-suggestion{
+    font-size: 16px;  /* Set suggestion dropdown font size */
+    padding: 3px 20px;
+    
+    :hover{
+        cursor: pointer;
+        background-color: #0097CF;
+        color: #FFFFFF;
+    }
+    p{
+        margin: 0;
+    }
+}
+.bs-example {
+	font-family: sans-serif;
+	position: relative;
+	margin: 100px;
+}
+
+
+//MODAL
+.product-cart{
+    .modal{
+        .modal-content{
+            .modal-body{
+                img{
+                    width: 7rem;
+                    height: 7rem;
+                }
+            }
+        }
+    }
+}
+

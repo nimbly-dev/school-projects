@@ -1,0 +1,77 @@
+#title{
+  background-color: #e4bad4;
+
+}
+
+/* NAVBAR */
+.navbar-brand{
+  padding-left: 5rem;
+  font-weight: bold;
+}
+.navbar-title{
+  font-size: 55px !important;
+  font-family: 'Pacifico', cursive;
+}
+.nav-item{
+  padding: 0 18px;
+  font-size: 25px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+.container-fluid{
+  padding: 3% 15%;
+}
+
+
+
+/* TITLE */
+.title-quote{
+  padding-top: 10rem;
+  font-size: 50px;
+}
+.h1-title{
+  padding-left: 20rem;
+  font-family: 'Montserrat', sans-serif;
+}
+.btn-order{
+  padding-left: 20rem;
+  margin-left: 20rem;
+}
+.title-image{
+  width: 50%;
+  padding-top: 5rem;
+}
+
+@media (max-width: 990px){
+  .h1-title{
+    font-size: 40px;
+  }
+  .title-image{
+    position: static;
+    width: 65%;
+    margin-left: 6rem;
+  }
+}
+
+/* FEATURE-SECTION */
+.features-container{
+  background-color: #caf7e3
+}
+.feature-quote{
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+  text-align: center;
+  line-height: 1.5;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  font-size: 40px;
+}
+.testimonial-image{
+  width: 55%;
+  margin: 20px;
+  border-radius: 20%;
+}
+.carousel-item{
+  text-align: center;
+  padding-bottom: 5rem;
+}
