@@ -46,8 +46,8 @@ public  class PdfGenerator implements DBOperations, Facade{
 	private void EmailPDF(String emailPDF, String shippingAddressPDF, String fullNamePDF, String emailSender, String passwordSender) {
 		String sender = emailSender; // enter valid email of sender
 		String recipient = emailPDF; // replace with user input for email
-		String content = "dummy content"; //replace with proper content
-		String subject = "dummy subject"; //replace with proper subject
+		String content = "Thank you for trusting our shop! We hope to serve you again soon!"; //replace with proper content
+		String subject = "SweetX Receipt"; //replace with proper subject
 		
 		Properties properties = new Properties();
 		properties.put("mail.smtp.host", "smtp.gmail.com");
@@ -128,7 +128,7 @@ public  class PdfGenerator implements DBOperations, Facade{
 				
 				pdfsup.open();
 				
-				pdfsup.add(new Paragraph("Receipt PDF"));
+				pdfsup.add(new Paragraph("SweetX"));
 				pdfsup.add(new Paragraph("This is your receipt", FontFactory.getFont(FontFactory.TIMES_BOLD, 18, Font.BOLD)));
 				pdfsup.add(new Paragraph("------------------------------------------------------------------------------------"));
 				pdfsup.add(new Paragraph("Customer Email: " + fullNamePDF));
