@@ -42,7 +42,7 @@
                                     	<%while(cartIterator.hasNext()){%>
                                     		<%
                                     		CartItemBean cartItem = (CartItemBean) cartIterator.next(); 
-                                    		%>
+                                    		%>	
 	                                        <tr class="d-flex justify-content-between">
 	                                            <td>
 	                                                <img src="<%=cartItem.getProductImgPath()%>" style="width: 7rem;

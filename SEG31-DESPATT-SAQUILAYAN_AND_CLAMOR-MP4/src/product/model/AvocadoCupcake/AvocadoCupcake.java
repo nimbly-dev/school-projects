@@ -1,4 +1,4 @@
-package product.model.AvocadoCupcake;
+	package product.model.AvocadoCupcake;
 
 import application.utility.ProductPrototype;
 import product.model.Product;

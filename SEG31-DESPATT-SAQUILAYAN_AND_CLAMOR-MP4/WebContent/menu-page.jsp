@@ -57,84 +57,84 @@
 	<!--   process-cart.action?clickedCancelOrder=placeholder -->
 	<main>
 		<section class="product-list">
-			<!-- Assorted Cupcake Bundle -->
-			<div class="row">
-				<div class="d-inline-flex flex-wrap justify-content-between">
-					<div class="col mt-5">
-						<div class="card" style="width: 18rem;">
-							<img src="images/products/assorted-cupcakes.jpg" class="card-img-top" alt="...">
-							<div class="card-body">
-								<h5 class="card-title">Assorted Cupcake</h5>
-								<span class='ht-tm-element badge badge-pill badge-primary'>Available</span>
-								<h4>Price: 499</h4>
-								<form action='process-bundled-order.action?clickedCancelOrder=false' method='POST'>
+			<div class="container">
+
+
+				<div class="row">
+					<div class="d-inline-flex flex-wrap justify-content-between">
+
+						<!-- Assorted Cupcake Bundle -->
+						<div class="col mt-5">
+							<div class="card" style="width: 18rem;">
+								<img src="images/products/assorted-cupcakes.jpg" class="card-img-top" alt="...">
+								<div class="card-body">
+									<h5 class="card-title">Assorted Cupcake</h5>
+									<span class='ht-tm-element badge badge-pill badge-primary'>Available</span>
+									<h4>Price: 499</h4>
+									<form action='process-bundled-order.action?clickedCancelOrder=false' method='POST'>
+										<input type="hidden" name="selectedBundle" value="orderAllCupcakeBundle">
+										<input type="hidden" name="totalPrice" value="200">
+										<input type="hidden" name="totalQuantity" value="9">
+										<!-- ADD TO CART BUTTON -->
+										<button type="submit" onclick='orderMenuAllCupcake()' s
+											class="btn btn-warning mt-2">
+											Add to cart
+										</button>
+										<h5 class="card-title">An Assortment of our delicious cupcakes. Three of each.
+										</h5>
+									</form>
+								</div>
+							</div>
+						</div>
+
+						<!-- Pastry Bundle -->
+						<div class="col mt-5">
+							<div class="card" style="width: 18rem;">
+								<img src="images/products/English-Sausage.jpg" class="card-img-top" alt="...">
+								<div class="card-body">
+									<h5 class="card-title">Pastry Bundle</h5>
+									<span class='ht-tm-element badge badge-pill badge-primary'>Not Available</span>
+									<h4>Price: 99</h4>
+
 									<input type="hidden" name="selectedBundle" value="orderAllCupcakeBundle">
-									<input type="hidden" name="totalPrice" value="200">
-									<input type="hidden" name="totalQuantity" value="9">
-									<!-- ADD TO CART BUTTON -->
-									<button type="submit" onclick='orderMenuAllCupcake()' s
-										class="btn btn-warning mt-2">
-										Add to cart
-									</button>
-									<h5 class="card-title">An Assortment of our delicious cupcakes. Three of each.</h5>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			</div>
-
-			<!-- Pastry Bundle -->
-			<div class="row">
-				<div class="d-inline-flex flex-wrap justify-content-between">
-					<div class="col mt-5">
-						<div class="card" style="width: 18rem;">
-							<img src="images/products/English-Sausage.jpg" class="card-img-top" alt="...">
-							<div class="card-body">
-								<h5 class="card-title">Pastry Bundle</h5>
-								<span class='ht-tm-element badge badge-pill badge-primary'>Not Available</span>
-								<h4>Price: 99</h4>
-
-								<input type="hidden" name="selectedBundle" value="orderAllCupcakeBundle">
-								<input type="hidden" name="totalPrice" value="99">
-								<input type="hidden" name="totalQuantity" value="10">
-								<!-- ADD TO CART BUTTON -->
-								<button type="button" disabled onclick='' s class="btn btn-warning mt-2">
-									Add to cart
-								</button>
-								<h5 class="card-title">An Assortment of our delicious cupcakes. Three of each.</h5>
-
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!--Jelly Beans Bundle -->
-			<div class="row">
-				<div class="d-inline-flex flex-wrap justify-content-between">
-					<div class="col mt-5">
-						<div class="card" style="width: 18rem;">
-							<img src="images/products/jelly-beans.jpg" class="card-img-top" alt="...">
-							<div class="card-body">
-								<h5 class="card-title">Jelly Beans Bundle</h5>
-								<span class='ht-tm-element badge badge-pill badge-primary'>Available</span>
-								<h4>Price: 250</h4>
-								<form action='process-bundled-order.action?clickedCancelOrder=false' method='POST'>
-									<input type="hidden" name="selectedBundle" value="jellyBeansMania">
 									<input type="hidden" name="totalPrice" value="99">
 									<input type="hidden" name="totalQuantity" value="10">
 									<!-- ADD TO CART BUTTON -->
-									<button type="submit" onclick='orderMenuAllCandy()' s class="btn btn-warning mt-2">
+									<button type="button" disabled onclick='' s class="btn btn-warning mt-2">
 										Add to cart
 									</button>
 									<h5 class="card-title">An Assortment of our delicious cupcakes. Three of each.</h5>
 
-								</form>
+
+								</div>
 							</div>
 						</div>
+
+						<!--Jelly Beans Bundle -->
+						<div class="col mt-5">
+							<div class="card" style="width: 18rem;">
+								<img src="images/products/jelly-beans.jpg" class="card-img-top" alt="...">
+								<div class="card-body">
+									<h5 class="card-title">Jelly Beans Bundle</h5>
+									<span class='ht-tm-element badge badge-pill badge-primary'>Available</span>
+									<h4>Price: 250</h4>
+									<form action='process-bundled-order.action?clickedCancelOrder=false' method='POST'>
+										<input type="hidden" name="selectedBundle" value="jellyBeansMania">
+										<input type="hidden" name="totalPrice" value="99">
+										<input type="hidden" name="totalQuantity" value="10">
+										<!-- ADD TO CART BUTTON -->
+										<button type="submit" onclick='orderMenuAllCandy()' s
+											class="btn btn-warning mt-2">
+											Add to cart
+										</button>
+										<h5 class="card-title">An Assortment of our delicious cupcakes. Three of each.
+										</h5>
+
+									</form>
+								</div>
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</div>
