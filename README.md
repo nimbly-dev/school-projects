@@ -1,14 +1,11 @@
 school-projects
 Repository for Ent Jav 2 Project
 
-TODO:
 
-  1. BUG: on confirm-order.jsp where reloading the page will cause to insert again the cart-items data to db.
-  2. BUG: Time Out Connection when deploying Application to Apache Tomcat
-  3. DESIGN: Cart Modal Spacing Fix
-  4. DESIGN: PDF Receipt Fix
-  6. DESIGN: Remove Clear button on cart modal
-  7. DESIGN: Bundle Page design neets to be revamped.
+Sweetx Changelogs: 
+"""
+TODO:
+	DESPATT 2 FINISHED
 
 0.61: 
 
@@ -121,3 +118,5 @@ TODO:
 0.10:
 
   * Added MP1 Project
+
+"""
