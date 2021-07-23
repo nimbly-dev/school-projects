@@ -1,11 +1,11 @@
-school-projects
-Repository for Ent Jav 2 Project
+school-projects during time as comp sci student
 
 
 Sweetx Changelogs: 
+
+
 """
-TODO:
-	DESPATT 2 FINISHED
+TODO: DESPATT 2 FINISHED
 
 0.61: 
 
